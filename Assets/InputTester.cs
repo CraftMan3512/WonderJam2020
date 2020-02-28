@@ -21,8 +21,8 @@ public class InputTester : MonoBehaviour
             direction = context.ReadValue<Vector2>();
 
         };
-        controls.PlayerControls.Enter.performed += ctx => CheckEnter(ctx.ReadValue<float>());
-        controls.PlayerControls.Cancel.performed += ctx => CheckCancel(ctx.ReadValue<float>());
+        //controls.PlayerControls.Enter.performed += ctx => CheckEnter(ctx.ReadValue<float>());
+        //controls.PlayerControls.Cancel.performed += ctx => CheckCancel(ctx.ReadValue<float>());
 
     }
 
