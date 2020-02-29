@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public float movementSpeed;
     private Rigidbody2D rb;
     private Vector2 direction;
-    private Controls controls;
+    private Vector2 direction2;
     public Gun gunPrefab;
     private Vector2 hands;
     private Gun gunModel;
@@ -37,27 +37,27 @@ public class Player : MonoBehaviour
             
         }
     }
-
-    private void Awake()
-    {
-        controls = new Controls();
-        controls.PlayerControls.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>());
-        controls.PlayerControls.Enter.performed += ctx => gunModel.Shoot(transform.eulerAngles.z); 
-    }
     
-    private void Move(Vector2 direction)
-    {
-        this.direction = direction;
-    }
-
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
     private void Update()
     {
         
+        //get new inputs
+        //Debug.Log(Input.GetAxisRaw("x1"));
+        direction=new Vector2(Input.GetAxisRaw("x1"),Input.GetAxisRaw("y1"));
+        if(Input.GetButtonDown("submit1")) gunModel.Shoot(angle);
+        if (Input.GetAxisRaw("rightx1") != 0 || Input.GetAxisRaw("righty1") != 0)
+        {
+            
+            angle = Mathf.Atan2(Input.GetAxisRaw("rightx1"), Input.GetAxisRaw("righty1")) * Mathf.Rad2Deg;
+            angle -= 90;   
+            
+        }
+
+    }
+
+    private void Move(Vector2 direction)
+    {
+        this.direction = direction;
     }
 
     // Update is called once per frame
@@ -70,7 +70,6 @@ public class Player : MonoBehaviour
         object_pos = Camera.main.WorldToScreenPoint(target.position);
         mouse_pos.x = mouse_pos.x - object_pos.x;
         mouse_pos.y = mouse_pos.y - object_pos.y;
-        angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle-90));
     }
 }
