@@ -6816,7 +6816,7 @@ RectTransform:
   - {fileID: 32437416}
   - {fileID: 1405035117}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8492,7 +8492,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1545771242
 GameObject:
@@ -9545,13 +9545,19 @@ PrefabInstance:
     - target: {fileID: 298874116915577630, guid: 556abe432246f0a498b220b413db2c9c,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.58
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 298874116915577630, guid: 556abe432246f0a498b220b413db2c9c,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.58
+      value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 298874116915577630, guid: 556abe432246f0a498b220b413db2c9c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bd0494f5d3317024a91348c678ec535f,
+        type: 3}
     - target: {fileID: 2067887114222646921, guid: 556abe432246f0a498b220b413db2c9c,
         type: 3}
       propertyPath: m_Name
@@ -9560,12 +9566,12 @@ PrefabInstance:
     - target: {fileID: 3797958304257144265, guid: 556abe432246f0a498b220b413db2c9c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3797958304257144265, guid: 556abe432246f0a498b220b413db2c9c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3797958304257144265, guid: 556abe432246f0a498b220b413db2c9c,
         type: 3}
@@ -9647,14 +9653,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5833333, y: 0.5833333}
-    newSize: {x: 0.58, y: 0.58}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 2, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5833333, y: 0.5833333}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &1668984551
 GameObject:
