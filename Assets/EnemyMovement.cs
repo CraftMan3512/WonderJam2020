@@ -77,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
             TargetClosestPlayer();
         }
         if (collision.transform != Target) {
-            if (collision.tag.Equals("Joueur")){
+            if (collision.tag.Equals("Player")){
                 Target = collision.transform;
                 AI.Target = collision.gameObject;
             }
@@ -107,7 +107,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void TargetClosestPlayer()
     {
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Joueur"))
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
         {
             if (Target == null)
             {
