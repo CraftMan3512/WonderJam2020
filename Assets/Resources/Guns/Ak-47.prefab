@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5819840294932269655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,5 +99,5 @@ MonoBehaviour:
   rpm: 750
   bullet: {fileID: 8326293947191301807, guid: 5bab1d9a9727caa4399d679c3e457e7a, type: 3}
   barrelLenght: 0.5
-  gunLenght: 0.4
-  ammoMax: 90
+  gunLenght: 0.25
+  ammoMax: 60
