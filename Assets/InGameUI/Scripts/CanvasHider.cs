@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CanvasHider : MonoBehaviour
 {
@@ -15,9 +16,9 @@ public class CanvasHider : MonoBehaviour
     void Start()
     {
         changeNbPlayers(nbPlayers);
+        
     }
 
-    // Update is called once per frame
     void changeNbPlayers(int nb)
     {
         if (nb == 1)
