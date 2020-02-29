@@ -15,17 +15,22 @@ public class CubeDropping : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetButtonDown("box" + GetComponent<Player>().player))
         {
-            held = true;
-            boxChan =  Instantiate((GameObject)Resources.Load("Box"),new Vector3((int)transform.position.x,(int)transform.position.y,transform.position.z),Quaternion.identity);
-            boxChan.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
-            boxChan.GetComponent<BoxCollider2D>().enabled = false;
-            StartCoroutine(HoldingBox());
+            if (!held)
+            {
+                
+                held = true;
+                boxChan =  Instantiate((GameObject)Resources.Load("Box"),new Vector3((int)transform.position.x,(int)transform.position.y,transform.position.z),Quaternion.identity);
+                boxChan.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+                boxChan.GetComponent<BoxCollider2D>().enabled = false;
+                StartCoroutine(HoldingBox());   
+                
+            }
 
         }
 
-        if (Input.GetKeyUp(KeyCode.K))
+        if (Input.GetButtonUp("box" + GetComponent<Player>().player))
         {
             held = false;
         }
