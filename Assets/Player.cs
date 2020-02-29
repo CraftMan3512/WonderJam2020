@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public Gun gunPrefab;
     private Vector2 hands;
     private Gun gunModel;
-    public bool glovesOn;
+    private bool glovesOn;
     
     //TURNING 
     private Vector3 mouse_pos;
@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     private Vector3 object_pos;
     private float angle;
     private Gun gloves;
+
+    private bool shooting;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
                 new Vector3(transform.position.x + hands.x + gunPrefab.gunLenght*Mathf.Cos((transform.eulerAngles.z+90)*Mathf.Deg2Rad), transform.position.y + hands.y+ gunPrefab.gunLenght*Mathf.Sin((transform.eulerAngles.z+90)*Mathf.Deg2Rad), transform.position.z),
                 Quaternion.identity);
             gunModel.transform.parent = gameObject.transform;
+            glovesOn = false;
         }
         else
         {
@@ -45,15 +48,14 @@ public class Player : MonoBehaviour
     private void Update()
     {
         
-        //get new inputs
-        //Debug.Log(Input.GetAxisRaw("x1"));
         direction=new Vector2(Input.GetAxisRaw("x1"),Input.GetAxisRaw("y1"));
         if (Input.GetButtonDown("submit1"))
         {
-            if (glovesOn)
-                gloves.Shoot(angle);
-            else
-                gunModel.Shoot(angle);
+            shooting = true;
+        }
+        if (Input.GetButtonUp("submit1"))
+        {
+            shooting = false;
         }
         
         if (Input.GetAxisRaw("rightx1") != 0 || Input.GetAxisRaw("righty1") != 0)
@@ -62,6 +64,14 @@ public class Player : MonoBehaviour
             angle = Mathf.Atan2(Input.GetAxisRaw("rightx1"), Input.GetAxisRaw("righty1")) * Mathf.Rad2Deg;
             angle -= 90;   
             
+        }
+
+        if (shooting.Equals(true))
+        {
+            if(!glovesOn)
+            gunModel.Shoot(angle);
+            else
+            gloves.Shoot(angle);
         }
 
     }

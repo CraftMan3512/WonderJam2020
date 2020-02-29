@@ -1621,8 +1621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  gunPrefab: {fileID: 0}
-  glovesOn: 0
+  gunPrefab: {fileID: 2750545584919744068, guid: 1adf4bb3f7bea564a92e1ea43449bbe9,
+    type: 3}
 --- !u!1 &435498464
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,6 +4389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gloves
+      objectReference: {fileID: 0}
+    - target: {fileID: 8757270229726797008, guid: 6c140387f5936a642b124c534fd80cdd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c140387f5936a642b124c534fd80cdd, type: 3}
