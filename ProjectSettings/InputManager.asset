@@ -31,8 +31,8 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0.2
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 2
     axis: 0
@@ -47,8 +47,8 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0.2
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 2
     axis: 0
@@ -63,8 +63,8 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0.2
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 2
     axis: 0
@@ -137,8 +137,8 @@ InputManager:
     m_Name: submit1
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 1 button 0
+    negativeButton: joystick 1 button 5
+    positiveButton: joystick 1 button 4
     altNegativeButton: 
     altPositiveButton: return
     gravity: 0
@@ -153,8 +153,8 @@ InputManager:
     m_Name: submit2
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: joystick 2 button 0
+    negativeButton: joystick 2 button 4
+    positiveButton: joystick 2 button 5
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
@@ -270,7 +270,7 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0.2
+    dead: 0.5
     sensitivity: 1
     snap: 1
     invert: 0
@@ -307,7 +307,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 2
+    axis: 3
     joyNum: 3
   - serializedVersion: 3
     m_Name: rightx4
@@ -323,7 +323,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 2
+    axis: 3
     joyNum: 4
   - serializedVersion: 3
     m_Name: righty1
@@ -334,7 +334,7 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0.2
+    dead: 0.5
     sensitivity: 1
     snap: 1
     invert: 0
@@ -350,7 +350,7 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0.2
+    dead: 0.5
     sensitivity: 1
     snap: 1
     invert: 0
@@ -371,7 +371,7 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 3
+    axis: 4
     joyNum: 3
   - serializedVersion: 3
     m_Name: righty4
@@ -387,5 +387,5 @@ InputManager:
     snap: 1
     invert: 0
     type: 2
-    axis: 3
+    axis: 4
     joyNum: 4
