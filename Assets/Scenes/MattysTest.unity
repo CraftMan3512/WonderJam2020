@@ -7981,7 +7981,7 @@ GameObject:
   - component: {fileID: 1305779569}
   - component: {fileID: 1305779568}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WaveSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7999,6 +7999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec8bfbb4bf30a04c8cbdd116c7ffa0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveTimer: 0
+  timeSinceWaveStarted: 0
 --- !u!4 &1305779569
 Transform:
   m_ObjectHideFlags: 0

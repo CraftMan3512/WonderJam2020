@@ -23,6 +23,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Enemies/EnemyAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/NewMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Enemies/Spawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CubeDropping.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/PlayerSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player.cs" root0="FORCE_HIGHLIGHTING" />
@@ -44,6 +45,7 @@
         <option value="$PROJECT_DIR$/Assets/Enemies/EnemyAI.cs" />
         <option value="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Menu/Scripts/Players.cs" />
+        <option value="$PROJECT_DIR$/Assets/Enemies/Spawner.cs" />
       </list>
     </option>
   </component>
