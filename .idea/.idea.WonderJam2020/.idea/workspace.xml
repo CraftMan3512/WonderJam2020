@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f32ba7f8-52b0-4c62-bb15-03c282e9aac8" name="Default Changelist" comment="" />
+    <list default="true" id="f32ba7f8-52b0-4c62-bb15-03c282e9aac8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,11 +19,19 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/InputTester.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBarFrenzy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InGameUI/Scripts/CanvasHider.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/InputTester.cs" />
+        <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBarFrenzy.cs" />
+        <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBars.cs" />
+        <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBarsP2.cs" />
+        <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBarsP3.cs" />
+        <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBarsP4.cs" />
+        <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/CanvasHider.cs" />
       </list>
     </option>
   </component>
@@ -28,9 +43,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="Rider.SolutionExplorerActivator" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TWShift.3" value="true" />
     <property name="TWShift.4" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -69,6 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582852386224</updated>
       <workItem from="1582852396245" duration="351000" />
+      <workItem from="1582934574328" duration="4374000" />
     </task>
     <servers />
   </component>
@@ -82,10 +101,18 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="277" y="75" key="SettingsEditor" timestamp="1582934642365">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="277" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1582934642365" />
   </component>
 </project>
