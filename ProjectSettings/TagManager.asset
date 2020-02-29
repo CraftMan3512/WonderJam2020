@@ -16,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - buttons
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: NB Players
+    uniqueID: 2883658483
     locked: 0
