@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
+    public int maxHealth=100;
+    public int maxFrenezie = 100;
+    
+    private int health;
+    private int frenezie;
+    private float crateLevel = 0;
+
     public float movementSpeed;
     private Rigidbody2D rb;
     private Vector2 direction;
@@ -29,6 +37,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth;
+        frenezie = 0;
+        crateLevel = 0;
+
         gloves = transform.GetChild(0).gameObject.GetComponent<Gun>();
         target = this.transform;
         hands=transform.Find("Hands").GetComponent<Transform>().localPosition;

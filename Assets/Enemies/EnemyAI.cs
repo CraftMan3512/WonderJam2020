@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         damage = 2;
-        maxHp = 20;
+        maxHp = 10;
         hp = maxHp;
     }
 
@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour
         if(hp <= 0)
         {
             //death
-            if((int)Random.Range(0,30) == 1)
+            if((int)Random.Range(0,15) == 1)
             {
                 Instantiate(Resources.Load<GameObject>("Weapon Crate"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             }

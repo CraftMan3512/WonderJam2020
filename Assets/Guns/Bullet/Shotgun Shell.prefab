@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   angleRdm: 5
-  damagePerBullet: 1
+  damagePerBullet: 5
 --- !u!1001 &1896338900018989290
 PrefabInstance:
   m_ObjectHideFlags: 0
