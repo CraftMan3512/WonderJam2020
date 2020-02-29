@@ -145,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195019493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.558, z: 0}
+  m_LocalPosition: {x: 0.153, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 428418298}
@@ -160,7 +160,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 428418298}
-  - component: {fileID: 428418295}
   - component: {fileID: 428418294}
   - component: {fileID: 428418299}
   - component: {fileID: 428418296}
@@ -193,21 +192,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &428418295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428418293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7ff0278f965e5440bdf7265c920c282, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 5
-  gunPrefab: {fileID: 2750545584919744068, guid: 1adf4bb3f7bea564a92e1ea43449bbe9,
-    type: 3}
 --- !u!212 &428418296
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -301,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ff0278f965e5440bdf7265c920c282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
+  movementSpeed: 5
   gunPrefab: {fileID: 2750545584919744068, guid: 1adf4bb3f7bea564a92e1ea43449bbe9,
     type: 3}
 --- !u!1 &1305779567
