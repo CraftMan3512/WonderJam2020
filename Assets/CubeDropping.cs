@@ -8,6 +8,12 @@ public class CubeDropping : MonoBehaviour
     private bool held;
     private float timeSinceLastDrop;
 
+    public float TimeSinceLastDrop
+    {
+        get => timeSinceLastDrop;
+        set => timeSinceLastDrop = value;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +66,12 @@ public class CubeDropping : MonoBehaviour
             held = false;
         }
 
-        timeSinceLastDrop += Time.deltaTime;
+        if (timeSinceLastDrop < 3&&!held)
+        {
+            timeSinceLastDrop += Time.deltaTime;
+        }
+        else if(!held)
+            timeSinceLastDrop = 3;
     }
 
     IEnumerator HoldingBox()
@@ -91,5 +102,5 @@ public class CubeDropping : MonoBehaviour
 
     }
 
-
+    
 }

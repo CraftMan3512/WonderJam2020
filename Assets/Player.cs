@@ -10,6 +10,18 @@ public class Player : MonoBehaviour
     public int maxFrenezie = 100;
     
     private int health;
+
+    public int Health
+    {
+        get => health;
+    }
+
+    public int Frenezie
+    {
+        get => frenezie;
+    }
+
+
     private int frenezie;
     private float crateLevel = 0;
 
@@ -139,5 +151,12 @@ public class Player : MonoBehaviour
     public void DropGun(GameObject gun)
     {
         gloves.gameObject.SetActive(true);
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        health -= dmg;
+        if (health < 0)
+            health = 0;
     }
 }

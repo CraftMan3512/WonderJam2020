@@ -34,6 +34,9 @@ public class PlayerSpawner : MonoBehaviour
             player.GetComponent<Player>().SetPlayerNumber(i);
             targetGroup.m_Targets[i-1] = new CinemachineTargetGroup.Target();
             targetGroup.m_Targets[i-1].target = player.transform;
+            GameObject.Find("HealthBar" + i).GetComponent<HealthBar>().setPlayer(player);
+            GameObject.Find("FrenzyBar" + i).GetComponent<FrenzyBar>().setPlayer(player);
+            GameObject.Find("BoxesBar" + i).GetComponent<BoxesBar>().setPlayer(player);
 
 
         }

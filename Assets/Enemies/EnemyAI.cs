@@ -47,11 +47,10 @@ public class EnemyAI : MonoBehaviour
                             attackCooldown = 0;
                         }else if (target.tag.Equals("Player"))
                         {
-                            if(Vector2.Distance(transform.position, target.transform.position) <= 0.5f)
-                            {
-                                // target.GetComponent<Player>(); faire prendre des degats au player
+                            
+                                target.GetComponent<Player>().TakeDamage(damage); 
                                 attackCooldown = 0;
-                            }
+                            
                         }
                     }
                     else
