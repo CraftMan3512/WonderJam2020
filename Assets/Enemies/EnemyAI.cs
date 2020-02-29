@@ -35,20 +35,43 @@ public class EnemyAI : MonoBehaviour
     {
         if (target != null)
         {
-            if (attackCooldown >= 2f)
+            if (attackCooldown >= 1.5f)
             {
                 if (Vector2.Distance(transform.position, target.transform.position) <= 1f)
                 {
-                    if (target.tag.Equals("Box"))
+                    if (attackCooldown >= 2f)
                     {
-                        target.GetComponent<Cube>().TakeDamage(damage);
-                        attackCooldown = 0;
+                        if (target.tag.Equals("Box"))
+                        {
+                            target.GetComponent<Cube>().TakeDamage(damage);
+                            attackCooldown = 0;
+                        }else if (target.tag.Equals("Player"))
+                        {
+                            if(Vector2.Distance(transform.position, target.transform.position) <= 0.5f)
+                            {
+                                // target.GetComponent<Player>(); faire prendre des degats au player
+                                attackCooldown = 0;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        attackCooldown += Time.deltaTime;
                     }
                 }
+                else
+                {
+                    attackCooldown = 1.5f;
+                }
+
+
             }
             else
             {
-                attackCooldown += Time.fixedDeltaTime;
+                if (attackCooldown < 1.5f)
+                {
+                    attackCooldown += Time.fixedDeltaTime;
+                }
             }
         }
         else
@@ -64,6 +87,11 @@ public class EnemyAI : MonoBehaviour
         hp -= damage;
         if(hp <= 0)
         {
+            //death
+            if((int)Random.Range(0,30) == 1)
+            {
+                Instantiate(Resources.Load<GameObject>("Weapon Crate"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }
