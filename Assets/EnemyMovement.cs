@@ -121,8 +121,15 @@ public class EnemyMovement : MonoBehaviour
             {
                 if (Target == null)
                 {
-                    Target = obj.transform;
-                    AI.Target = obj;
+                    try //parce que wtf obj yer null
+                    {
+                        Target = obj.transform;
+                        AI.Target = obj;
+                    }
+                    catch (System.Exception e)
+                    {
+                        
+                    }
                 }
                 else
                 {
