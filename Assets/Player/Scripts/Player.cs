@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         
         //get new inputs
         //Debug.Log(Input.GetAxisRaw("x1"));
-        Move(new Vector2(Input.GetAxisRaw("x1"),Input.GetAxisRaw("y1")));
+        direction=new Vector2(Input.GetAxisRaw("x1"),Input.GetAxisRaw("y1"));
         if(Input.GetButtonDown("submit1")) gunModel.Shoot(angle);
         if (Input.GetAxisRaw("rightx1") != 0 || Input.GetAxisRaw("righty1") != 0)
         {

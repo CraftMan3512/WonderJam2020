@@ -20,7 +20,7 @@ public class Gun : MonoBehaviour
     {
         Debug.Log("Shot");
         GameObject tempBullet = Instantiate(bullet,
-            new Vector3(transform.position.x+barrelLenght*Mathf.Cos((angle+90)*Mathf.Deg2Rad), transform.position.y+barrelLenght*Mathf.Sin((angle+90)*Mathf.Deg2Rad), transform.position.z),
+            new Vector3(transform.position.x+barrelLenght*Mathf.Cos((angle)*Mathf.Deg2Rad), transform.position.y+barrelLenght*Mathf.Sin((angle)*Mathf.Deg2Rad), transform.position.z),
             transform.rotation);
         tempBullet.GetComponent<BulletScript>().damage = dmgPerBullet;
     }
