@@ -53,12 +53,12 @@ public class Player : MonoBehaviour
         
         //get new inputs
         //Debug.Log(Input.GetAxisRaw("x1"));
-        direction=new Vector2(Input.GetAxisRaw("x1"),Input.GetAxisRaw("y1"));
-        if (Input.GetButtonDown("submit1"))
+        direction=new Vector2(Input.GetAxisRaw("x"+player),Input.GetAxisRaw("y"+player));
+        if (Input.GetButtonDown("submit"+player))
         {
             shooting = true;
         }
-        if (Input.GetButtonUp("submit1"))
+        if (Input.GetButtonUp("submit"+player))
         {
             shooting = false;
         }
