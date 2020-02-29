@@ -32,11 +32,20 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        StartCoroutine(DamageEffect());
         hp -= damage;
         if(hp <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator DamageEffect()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0, 0, 1);
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        
     }
 
 
