@@ -13,8 +13,20 @@ public class Wall : MonoBehaviour
     {
        BoxCollider2D bx = GetComponent<BoxCollider2D>();
        bx.size = GetComponent<SpriteRenderer>().size;
-        xSize = bx.size.x+1.1f; //valeur de convertion tile->real world size;
-        ySize = bx.size.y+1.1f;
+        
+        xSize = bx.size.x; //valeur de convertion tile->real world size;
+        ySize = bx.size.y;
+
+        if(xSize > ySize)
+        {
+            xSize += 1.1f;
+            ySize += 0.2f;
+        }
+        else
+        {
+            ySize += 1.1f;
+            xSize += 0.2f;
+        }
 
 
     }
