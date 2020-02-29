@@ -103,7 +103,7 @@ MonoBehaviour:
   maxHealth: 100
   maxFrenezie: 100
   movementSpeed: 5
-  gunPrefab: {fileID: 1437974027839898447, guid: ac853430d991f2c41a0e71dfbf4b6f2c,
+  gunPrefab: {fileID: 2750545584919744068, guid: 1adf4bb3f7bea564a92e1ea43449bbe9,
     type: 3}
   player: 0
 --- !u!212 &2727095382557001445
