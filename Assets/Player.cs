@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     private Vector2 direction2;
     public Gun gunPrefab;
     private Vector2 hands;
-    private Gun gunModel;
-    public bool glovesOn;
+    private GameObject gunModel;
+    private bool glovesOn;
     
     //TURNING 
     private Vector3 mouse_pos;
@@ -24,19 +24,18 @@ public class Player : MonoBehaviour
     //Player ID
     public int player;
 
+    private bool shooting;
+
     // Start is called before the first frame update
     void Start()
     {
         gloves = transform.GetChild(0).gameObject.GetComponent<Gun>();
         target = this.transform;
-        hands=transform.Find("Hands").GetComponent<Transform>().position;
+        hands=transform.Find("Hands").GetComponent<Transform>().localPosition;
         rb = GetComponent<Rigidbody2D>();
         if (gunPrefab)
         {
-            gunModel=Instantiate(gunPrefab,Vector3.zero,Quaternion.identity,transform);
-            gunModel.transform.localPosition = new Vector3(0.2f,
-                hands.y +
-                gunPrefab.gunLenght * Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.Deg2Rad), transform.position.z);
+            EquipGun(gunPrefab.gameObject);
         }
         else
         {
@@ -49,14 +48,15 @@ public class Player : MonoBehaviour
     {
         
         //get new inputs
-        //Debug.Log(Input.GetAxisRaw("x" + player));
-        direction=new Vector2(Input.GetAxisRaw("x" + player),Input.GetAxisRaw("y" + player));
-        if (Input.GetButtonDown("submit" + player))
+        //Debug.Log(Input.GetAxisRaw("x1"));
+        direction=new Vector2(Input.GetAxisRaw("x"+player),Input.GetAxisRaw("y"+player));
+        if (Input.GetButtonDown("submit"+player))
         {
-            if (glovesOn)
-                gloves.Shoot(angle);
-            else
-                gunModel.Shoot(angle);
+            shooting = true;
+        }
+        if (Input.GetButtonUp("submit"+player))
+        {
+            shooting = false;
         }
         
         if (Input.GetAxisRaw("rightx" + player) != 0 || Input.GetAxisRaw("righty" + player) != 0)
@@ -67,12 +67,25 @@ public class Player : MonoBehaviour
             
         }
 
+        if (shooting.Equals(true))
+        {
+            if(!glovesOn)
+            gunModel.GetComponent<Gun>().Shoot(angle);
+            else
+            gloves.Shoot(angle);
+        }
+
     }
 
     private void Move(Vector2 direction)
     {
         this.direction = direction;
     }
+
+    public bool GlovesOn()
+    {
+        return glovesOn;
+    } 
 
     // Update is called once per frame
     void FixedUpdate()
@@ -93,5 +106,26 @@ public class Player : MonoBehaviour
         this.player = nb;
 
     }
-    
+
+    public void DestroyGun(GameObject gun)
+    {
+        Destroy(gun);
+        glovesOn = true;
+        gloves.gameObject.SetActive(true);
+    }
+
+    public void EquipGun(GameObject gun)
+    {
+        gloves.gameObject.SetActive(false);
+        glovesOn = false;
+        gunModel=Instantiate(gun,Vector3.zero,transform.rotation,transform);
+        gunModel.transform.localPosition = new Vector3(hands.x,
+            hands.y +
+            gun.GetComponent<Gun>().gunLenght, transform.position.z);
+    }
+
+    public void DropGun(GameObject gun)
+    {
+        gloves.gameObject.SetActive(true);
+    }
 }
