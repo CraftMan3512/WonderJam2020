@@ -8,14 +8,14 @@ public class GlovesScript : MonoBehaviour
     public float distance = 0.2f;
     private CircleCollider2D _circleCollider2D;
     public float speed=0.6f;
-    private float startPos;
+    private Vector2 startPos;
 
     private bool movingFwd;
     private bool stopped;
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.localPosition.y;
+        startPos = transform.localPosition;
         _circleCollider2D = GetComponent<CircleCollider2D>();
         _circleCollider2D.enabled = false;
     }
@@ -27,9 +27,9 @@ public class GlovesScript : MonoBehaviour
         {
             _circleCollider2D.enabled = true;
             transform.localPosition+=Vector3.up*Time.deltaTime*speed*1.3f;
-            if (transform.localPosition.y - startPos >= distance)
+            if (transform.localPosition.y - startPos.y >= distance)
             {
-                transform.localPosition = new Vector3(0,distance+startPos);
+                transform.localPosition = new Vector3(startPos.x,distance+startPos.y);
                 movingFwd = false;
                 stopped = false;
             }
@@ -38,9 +38,9 @@ public class GlovesScript : MonoBehaviour
         {
             _circleCollider2D.enabled = true;
             transform.localPosition+=Vector3.down*Time.deltaTime*speed;
-            if (transform.localPosition.y<=startPos)
+            if (transform.localPosition.y<=startPos.y)
             {
-                transform.localPosition = new Vector3(0,startPos);
+                transform.localPosition = new Vector3(startPos.x,startPos.y);
                 movingFwd = false;
                 stopped = true;
             }
