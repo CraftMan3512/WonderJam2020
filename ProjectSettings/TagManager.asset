@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Joueur
   - Enemy
+  - Box
   layers:
   - Default
   - TransparentFX
