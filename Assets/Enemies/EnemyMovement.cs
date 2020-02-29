@@ -56,9 +56,9 @@ public class EnemyMovement : MonoBehaviour
           
             
                 transform.position = Vector2.MoveTowards(transform.position, dodgeTarget, speed * Time.fixedDeltaTime);
-                float angle = Mathf.Atan2(dodgeTarget.y - transform.position.y, dodgeTarget.x - transform.position.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90 ));
-                if(Vector2.Distance(transform.position,dodgeTarget) <= 0.1f)
+                float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+            if (Vector2.Distance(transform.position,dodgeTarget) <= 0.1f)
                {
                 dodgingWall = false;
                }
@@ -94,13 +94,13 @@ public class EnemyMovement : MonoBehaviour
             }else if (collision.tag.Equals("Wall"))
             {
                 
-                if (Vector2.Distance(collision.transform.position, transform.position) < Vector2.Distance(target.position, transform.position))
-                {               
+              //  if (Vector2.Distance(collision.transform.position, transform.position) < Vector2.Distance(target.position, transform.position))
+               // {               
                     dodgingWall = true;
                     dodgeTarget = collision.gameObject.GetComponent<Wall>().Dodge(transform);
-                }
-                else
-                {
+             //   }
+              //  else
+               // {
                     if (collision.GetComponent<Wall>().XSide(transform))
                     {
                         if(Mathf.Sign(collision.transform.position.y - transform.position.y) != Mathf.Sign(collision.transform.position.y - target.position.y))
@@ -117,7 +117,7 @@ public class EnemyMovement : MonoBehaviour
                             dodgeTarget = collision.gameObject.GetComponent<Wall>().Dodge(transform);
                         }
                     }
-                }
+               // }
             }
         }
     }
