@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Box
   - Wall
+  - CameraCollision
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - UI2
   - buttons
   - Particles
-  - 
+  - CameraCollision
   - 
   - 
   - 
