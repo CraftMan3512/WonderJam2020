@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f32ba7f8-52b0-4c62-bb15-03c282e9aac8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/perso 2 avec arme.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/perso 2 avec arme.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/perso 3 dessus avec arme .png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/perso 3 dessus avec arme .png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/perso 4 avecgun.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/perso 4 avecgun.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/perso de dessus avec gun.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/perso de dessus avec gun.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/perso de dessus.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/perso de dessus.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/zombiw 2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/zombiw 2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/zoombie.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/zoombie.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +23,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0-preview.5/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/images/perso de dessus.png.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
@@ -84,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582852386224</updated>
       <workItem from="1582852396245" duration="351000" />
-      <workItem from="1582929266818" duration="10423000" />
+      <workItem from="1582929266818" duration="11072000" />
     </task>
     <servers />
   </component>
