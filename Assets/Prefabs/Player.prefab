@@ -100,8 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ff0278f965e5440bdf7265c920c282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  maxFrenezie: 100
   movementSpeed: 5
-  gunPrefab: {fileID: 0}
+  gunPrefab: {fileID: 1437974027839898447, guid: ac853430d991f2c41a0e71dfbf4b6f2c,
+    type: 3}
   player: 0
 --- !u!212 &2727095382557001445
 SpriteRenderer:

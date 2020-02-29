@@ -29,10 +29,12 @@ public class BulletScript : MonoBehaviour
             collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
             
             Destroy(gameObject);
+            if (transform.childCount >0) transform.GetChild(0).SetParent(null);
         }else if (collision.gameObject.tag.Equals("Box"))
         {
             collision.gameObject.GetComponent<Cube>().TakeDamage(damage);
             Destroy(gameObject);
+            if (transform.childCount >0) transform.GetChild(0).SetParent(null);
         }
     }
 }
