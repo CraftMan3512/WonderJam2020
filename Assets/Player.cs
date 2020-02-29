@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public Gun gunPrefab;
     private Vector2 hands;
     private Gun gunModel;
-    public bool glovesOn;
+    private bool glovesOn;
     
     //TURNING 
     private Vector3 mouse_pos;
@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     //Player ID
     public int player;
 
+    private bool shooting;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (gunPrefab)
         {
+            glovesOn = false;
             gunModel=Instantiate(gunPrefab,Vector3.zero,Quaternion.identity,transform);
             gunModel.transform.localPosition = new Vector3(0.2f,
                 hands.y +
@@ -49,14 +52,15 @@ public class Player : MonoBehaviour
     {
         
         //get new inputs
-        //Debug.Log(Input.GetAxisRaw("x" + player));
-        direction=new Vector2(Input.GetAxisRaw("x" + player),Input.GetAxisRaw("y" + player));
-        if (Input.GetButtonDown("submit" + player))
+        //Debug.Log(Input.GetAxisRaw("x1"));
+        direction=new Vector2(Input.GetAxisRaw("x"+player),Input.GetAxisRaw("y"+player));
+        if (Input.GetButtonDown("submit"+player))
         {
-            if (glovesOn)
-                gloves.Shoot(angle);
-            else
-                gunModel.Shoot(angle);
+            shooting = true;
+        }
+        if (Input.GetButtonUp("submit"+player))
+        {
+            shooting = false;
         }
         
         if (Input.GetAxisRaw("rightx" + player) != 0 || Input.GetAxisRaw("righty" + player) != 0)
@@ -65,6 +69,14 @@ public class Player : MonoBehaviour
             angle = Mathf.Atan2(Input.GetAxisRaw("rightx" + player), Input.GetAxisRaw("righty" + player)) * Mathf.Rad2Deg;
             angle -= 90;   
             
+        }
+
+        if (shooting.Equals(true))
+        {
+            if(!glovesOn)
+            gunModel.Shoot(angle);
+            else
+            gloves.Shoot(angle);
         }
 
     }

@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 5
   distance: 0.2
+  speed: 0.6
 --- !u!1 &7978522830831814687
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 5
   distance: 0.2
+  speed: 0.6
 --- !u!1 &8757270229726797008
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,8 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fist: 1
   spread: 0
-  rpm: 20
-  dmgPerBullet: 1
+  rpm: 150
   bullet: {fileID: 8326293947191301807, guid: 5bab1d9a9727caa4399d679c3e457e7a, type: 3}
   barrelLenght: 1
   gunLenght: 3
