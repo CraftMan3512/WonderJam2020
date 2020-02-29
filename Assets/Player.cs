@@ -12,16 +12,19 @@ public class Player : MonoBehaviour
     public Gun gunPrefab;
     private Vector2 hands;
     private Gun gunModel;
+    public bool glovesOn;
     
     //TURNING 
     private Vector3 mouse_pos;
     private Transform target; //Assign to the object you want to rotate
     private Vector3 object_pos;
     private float angle;
+    private Gun gloves;
 
     // Start is called before the first frame update
     void Start()
     {
+        gloves = transform.GetChild(0).gameObject.GetComponent<Gun>();
         target = this.transform;
         hands=transform.Find("Hands").GetComponent<Transform>().position;
         rb = GetComponent<Rigidbody2D>();
@@ -34,7 +37,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            
+            transform.GetChild(0).gameObject.SetActive(true);
+            glovesOn = true;
         }
     }
     
@@ -44,7 +48,14 @@ public class Player : MonoBehaviour
         //get new inputs
         //Debug.Log(Input.GetAxisRaw("x1"));
         direction=new Vector2(Input.GetAxisRaw("x1"),Input.GetAxisRaw("y1"));
-        if(Input.GetButtonDown("submit1")) gunModel.Shoot(angle);
+        if (Input.GetButtonDown("submit1"))
+        {
+            if (glovesOn)
+                gloves.Shoot(angle);
+            else
+                gunModel.Shoot(angle);
+        }
+        
         if (Input.GetAxisRaw("rightx1") != 0 || Input.GetAxisRaw("righty1") != 0)
         {
             
