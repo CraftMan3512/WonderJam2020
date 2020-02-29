@@ -20,13 +20,20 @@ public class Gun : MonoBehaviour
     private GameObject RightPunch;
     private GameObject LeftPunch;
     private float originalPos;
-
     private float coolDown;
 
+    private bool isShooting;
+    private Vector3 posWeaponOriginal;
+    public float recoilSpeed=1f;
+    public float maxRecoilDistance = 1f;
+    public float recoilSpeedBack = 1f;
+
     public void Shoot(float angle)
-    {
+    { 
+        isShooting = false;
         if (coolDown >= 60 / rpm)
         {
+           
             coolDown = 0;
             if (!fist)
             {
@@ -37,7 +44,7 @@ public class Gun : MonoBehaviour
                     transform.rotation);
                 usedAmmo++;
                 checkAmmo();
-
+                isShooting = true;
             }
             else
             {
@@ -59,18 +66,46 @@ public class Gun : MonoBehaviour
 
     public void Update()
     {
+        if (isShooting)
+        {
+            if (transform.localPosition.y > posWeaponOriginal.y - maxRecoilDistance)
+            {
+                transform.localPosition -= new Vector3(0, Time.deltaTime * recoilSpeed*50f);
+            }else transform.localPosition=new Vector3(posWeaponOriginal.x,posWeaponOriginal.y-maxRecoilDistance);
+        }
+        else
+        {
+            if (transform.localPosition.y < posWeaponOriginal.y)
+            {
+                transform.localPosition += new Vector3(0, Time.deltaTime * recoilSpeedBack*0.5f);
+            }
+            else
+                transform.localPosition = posWeaponOriginal;
+        }
+        
+        
+        
         coolDown += Time.deltaTime;
     }
 
+    public void Stopped()
+         {
+             isShooting = false;
+         }
+    public void Shooting()
+    {
+        isShooting = true;
+    }
     public void Start()
     {
+        isShooting = false;
         if (fist)
         {
             RightPunch = transform.GetChild(1).gameObject;
             LeftPunch = transform.GetChild(0).gameObject;
             originalPos = transform.GetChild(0).localPosition.y;
         }
-
+        posWeaponOriginal = transform.localPosition;
     }
 
     private void checkAmmo()

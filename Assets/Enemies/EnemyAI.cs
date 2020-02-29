@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     private int damage;
     private GameObject target;
     private float attackCooldown;
+    private int scorePoints;
 
     public int Hp { get => hp; set => hp = value; }
     public int MaxHp { get => maxHp; set => maxHp = value; }
@@ -23,6 +24,7 @@ public class EnemyAI : MonoBehaviour
         damage = 2;
         maxHp = 10;
         hp = maxHp;
+        scorePoints = 10;
     }
 
     // Update is called once per frame
