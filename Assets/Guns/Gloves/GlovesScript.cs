@@ -51,9 +51,21 @@ public class GlovesScript : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            Debug.Log("gloves hit the enemie");
             collision.gameObject.GetComponent<EnemyAI>().TakeDamage(dmg);
+            if (collision.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+            {
+                transform.parent.parent.gameObject.GetComponent<Player>().addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
+            }
         }
+
+        if (collision.gameObject.tag.Equals("Player")&&!collision.gameObject.GetComponent<Player>().GlovesOn())
+        {
+            
+            transform.parent.parent.gameObject.GetComponent<Player>().EquipGun(collision.gameObject.GetComponent<Player>().getGun());
+            transform.parent.parent.gameObject.GetComponent<Player>().getGun().GetComponent<Gun>().UsedAmmo=collision.gameObject.GetComponent<Player>().getGun().GetComponent<Gun>().UsedAmmo;
+            collision.gameObject.GetComponent<Player>().DestroyGun();
+        }
+        
     }
 
     public void Shoot()
