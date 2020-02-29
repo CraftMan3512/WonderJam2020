@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f32ba7f8-52b0-4c62-bb15-03c282e9aac8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" afterDir="false" />
-    </list>
+    <list default="true" id="f32ba7f8-52b0-4c62-bb15-03c282e9aac8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,12 +19,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/InputTester.cs" />
-        <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBarFrenzy.cs" />
         <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBars.cs" />
         <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBarsP2.cs" />
         <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBarsP3.cs" />
         <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBarsP4.cs" />
         <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/CanvasHider.cs" />
+        <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/StatusBarFrenzy.cs" />
       </list>
     </option>
   </component>
@@ -87,7 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582852386224</updated>
       <workItem from="1582852396245" duration="351000" />
-      <workItem from="1582934574328" duration="4374000" />
+      <workItem from="1582934574328" duration="4771000" />
     </task>
     <servers />
   </component>
