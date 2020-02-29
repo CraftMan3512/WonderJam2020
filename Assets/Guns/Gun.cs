@@ -17,6 +17,12 @@ public class Gun : MonoBehaviour
     public int ammoMax=10;
     private int usedAmmo = 0;
 
+    public int UsedAmmo
+    {
+        get => usedAmmo;
+        set => usedAmmo = value;
+    }
+
     private GameObject RightPunch;
     private GameObject LeftPunch;
     private float originalPos;
@@ -42,7 +48,10 @@ public class Gun : MonoBehaviour
                     new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
                         transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad), transform.position.z),
                     transform.rotation);
-                tempBullet.GetComponent<BulletScript>().Ply = transform.parent.gameObject;
+                if(tempBullet.GetComponent<BulletScript>()) 
+                    tempBullet.GetComponent<BulletScript>().Ply = transform.parent.gameObject;
+                if (tempBullet.GetComponent<ShotgunShell>())
+                    tempBullet.GetComponent<ShotgunShell>().Ply = transform.parent.gameObject;
                 usedAmmo++;
                 checkAmmo();
                 isShooting = true;
@@ -111,6 +120,6 @@ public class Gun : MonoBehaviour
 
     private void checkAmmo()
     {
-        if(usedAmmo>=ammoMax) ((Player) transform.parent.gameObject.GetComponent<Player>()).DestroyGun(gameObject);
+        if(usedAmmo>=ammoMax) ((Player) transform.parent.gameObject.GetComponent<Player>()).DestroyGun();
     }
 }

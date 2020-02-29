@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     private GameObject target;
     private float attackCooldown;
     private int scorePoints;
+    public bool dead;
 
     public int ScorePoints
     {

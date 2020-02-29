@@ -80,12 +80,12 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("submit"+player))
         {
             shooting = true;
-            gunModel.GetComponent<Gun>().Shooting();
+            if(gunModel) gunModel.GetComponent<Gun>().Shooting();
         }
         if (Input.GetButtonUp("submit"+player))
         {
             shooting = false;
-            gunModel.GetComponent<Gun>().Stopped();
+            if(gunModel) gunModel.GetComponent<Gun>().Stopped();
         }
         
         if (Input.GetAxisRaw("rightx" + player) != 0 || Input.GetAxisRaw("righty" + player) != 0)
@@ -136,9 +136,9 @@ public class Player : MonoBehaviour
 
     }
 
-    public void DestroyGun(GameObject gun)
+    public void DestroyGun()
     {
-        Destroy(gun);
+        Destroy(gunModel.gameObject);
         glovesOn = true;
         gloves.gameObject.SetActive(true);
     }
@@ -153,9 +153,9 @@ public class Player : MonoBehaviour
             gun.GetComponent<Gun>().gunLenght, transform.position.z);
     }
 
-    public void DropGun(GameObject gun)
+    public GameObject getGun()
     {
-        gloves.gameObject.SetActive(true);
+        return gunModel.gameObject;
     }
 
     public void TakeDamage(int dmg)

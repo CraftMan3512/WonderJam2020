@@ -57,6 +57,15 @@ public class GlovesScript : MonoBehaviour
                 transform.parent.parent.gameObject.GetComponent<Player>().addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
             }
         }
+
+        if (collision.gameObject.tag.Equals("Player")&&!collision.gameObject.GetComponent<Player>().GlovesOn())
+        {
+            
+            transform.parent.parent.gameObject.GetComponent<Player>().EquipGun(collision.gameObject.GetComponent<Player>().getGun());
+            transform.parent.parent.gameObject.GetComponent<Player>().getGun().GetComponent<Gun>().UsedAmmo=collision.gameObject.GetComponent<Player>().getGun().GetComponent<Gun>().UsedAmmo;
+            collision.gameObject.GetComponent<Player>().DestroyGun();
+        }
+        
     }
 
     public void Shoot()

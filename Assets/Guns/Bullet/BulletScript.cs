@@ -36,7 +36,10 @@ public class BulletScript : MonoBehaviour
             collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
             if (collision.gameObject.GetComponent<EnemyAI>().Hp <= 0)
             {
-                ply.GetComponent<Player>().addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                if(!collision.gameObject.GetComponent<EnemyAI>().dead){
+                    ply.GetComponent<Player>().addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                    collision.gameObject.GetComponent<EnemyAI>().dead = true;
+                }
             }
             
             Destroy(gameObject);
