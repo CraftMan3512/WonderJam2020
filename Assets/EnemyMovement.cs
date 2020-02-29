@@ -113,23 +113,28 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-    private void TargetClosestPlayer()
+    public void TargetClosestPlayer()
     {
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if (Target == null)
+            if (obj != null)
             {
-                Target = obj.transform;
-            }
-            else
-            {
-
-                if (Vector2.Distance(this.transform.position, obj.transform.position) < Vector2.Distance(this.transform.position, Target.position))
+                if (Target == null)
                 {
                     Target = obj.transform;
+                    AI.Target = obj;
                 }
-            }
+                else
+                {
 
+                    if (Vector2.Distance(this.transform.position, obj.transform.position) < Vector2.Distance(this.transform.position, Target.position))
+                    {
+                        Target = obj.transform;
+                        AI.Target = obj;
+                    }
+                }
+
+            }
         }
     }
     
