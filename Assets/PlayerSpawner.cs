@@ -31,7 +31,8 @@ public class PlayerSpawner : MonoBehaviour
             GameObject player = Instantiate(playerPrefab,transform.position + (Vector3.right*3*i),Quaternion.identity);
             player.GetComponent<Player>().SetPlayerNumber(i);
             targetGroup.m_Targets[i-1] = new CinemachineTargetGroup.Target();
-            targetGroup.m_Targets[i-1].target = player.transform;
+            targetGroup.m_Targets[i - 1].target = player.transform;
+            targetGroup.m_Targets[i - 1].weight = 1f;
 
 
         }
