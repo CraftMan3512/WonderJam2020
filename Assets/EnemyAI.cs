@@ -19,13 +19,24 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        maxHp = 20;
+        hp = maxHp;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+        if(hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
 

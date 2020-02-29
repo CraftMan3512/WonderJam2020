@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
     public bool fist = false;
     public bool spread = false; //TODO 
     public float rpm = 120;
-    public float dmgPerBullet = 1;
+    public int dmgPerBullet = 1;
 
     public string name;
     public GameObject bullet;
@@ -22,5 +22,6 @@ public class Gun : MonoBehaviour
         GameObject tempBullet = Instantiate(bullet,
             new Vector3(transform.position.x+barrelLenght*Mathf.Cos((angle+90)*Mathf.Deg2Rad), transform.position.y+barrelLenght*Mathf.Sin((angle+90)*Mathf.Deg2Rad), transform.position.z),
             transform.rotation);
+        tempBullet.GetComponent<BulletScript>().damage = dmgPerBullet;
     }
 }

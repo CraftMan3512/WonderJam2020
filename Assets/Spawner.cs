@@ -10,6 +10,8 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         difficulty = 1;
+        float angle = Random.Range(0, 360);
+        GameObject enemy = Instantiate((GameObject)Resources.Load("Enemy"), new Vector3(10 * Mathf.Cos(angle * Mathf.Deg2Rad), 10 * Mathf.Sin(angle * Mathf.Deg2Rad), transform.position.z), Quaternion.identity);
     }
 
     // Update is called once per frame
