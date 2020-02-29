@@ -133,12 +133,19 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-
-                    if (Vector2.Distance(this.transform.position, obj.transform.position) < Vector2.Distance(this.transform.position, Target.position))
+                    try //parce que wtf obj yer null
                     {
-                        Target = obj.transform;
-                        AI.Target = obj;
+
+                        if (Vector2.Distance(this.transform.position, obj.transform.position) <
+                            Vector2.Distance(this.transform.position, Target.position))
+                        {
+                            Target = obj.transform;
+                            AI.Target = obj;
+                        }
+
                     }
+                    catch (System.Exception e) { }
+
                 }
 
             }
