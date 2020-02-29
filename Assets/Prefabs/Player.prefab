@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2727095382323355896}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.153, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0.283, y: 0.267, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2727095382557001447}
@@ -101,8 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  gunPrefab: {fileID: 1437974027839898447, guid: ac853430d991f2c41a0e71dfbf4b6f2c,
-    type: 3}
+  gunPrefab: {fileID: 0}
   player: 0
 --- !u!212 &2727095382557001445
 SpriteRenderer:

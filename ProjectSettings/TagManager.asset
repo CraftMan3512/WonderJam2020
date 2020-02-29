@@ -16,6 +16,7 @@ TagManager:
   - UI
   - 
   - 
+  - UI2
   - buttons
   - 
   - 
@@ -44,6 +45,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: NB Players
-    uniqueID: 2883658483
+  - name: UI
+    uniqueID: 3159605035
     locked: 0

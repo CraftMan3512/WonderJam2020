@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShotgunShell : MonoBehaviour
 {
     public float speed=1;
+    public float angleRdm=10;
 
     public int damagePerBullet=1;
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class ShotgunShell : MonoBehaviour
         {
             transform.GetChild(i).gameObject.GetComponent<BulletScript>().damage = this.damagePerBullet;
             transform.GetChild(i).gameObject.GetComponent<BulletScript>().speed = this.speed;
+            transform.GetChild(i).gameObject.GetComponent<BulletScript>().angleRdm = this.angleRdm;
         }
     }
 

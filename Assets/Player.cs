@@ -5,13 +5,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
+    public int maxHealth=100;
+    public int maxFrenezie = 100;
+    
+    private int health;
+
+    public int Health
+    {
+        get => health;
+    }
+
+    public int Frenezie
+    {
+        get => frenezie;
+    }
+
+
+    private int frenezie;
+    private float crateLevel = 0;
+
     public float movementSpeed;
     private Rigidbody2D rb;
     private Vector2 direction;
     private Vector2 direction2;
     public Gun gunPrefab;
     private Vector2 hands;
-    private Gun gunModel;
+    private GameObject gunModel;
     private bool glovesOn;
     
     //TURNING 
@@ -29,17 +49,17 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth;
+        frenezie = 0;
+        crateLevel = 0;
+
         gloves = transform.GetChild(0).gameObject.GetComponent<Gun>();
         target = this.transform;
-        hands=transform.Find("Hands").GetComponent<Transform>().position;
+        hands=transform.Find("Hands").GetComponent<Transform>().localPosition;
         rb = GetComponent<Rigidbody2D>();
         if (gunPrefab)
         {
-            glovesOn = false;
-            gunModel=Instantiate(gunPrefab,Vector3.zero,Quaternion.identity,transform);
-            gunModel.transform.localPosition = new Vector3(0.2f,
-                hands.y +
-                gunPrefab.gunLenght * Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.Deg2Rad), transform.position.z);
+            EquipGun(gunPrefab.gameObject);
         }
         else
         {
@@ -74,7 +94,7 @@ public class Player : MonoBehaviour
         if (shooting.Equals(true))
         {
             if(!glovesOn)
-            gunModel.Shoot(angle);
+            gunModel.GetComponent<Gun>().Shoot(angle);
             else
             gloves.Shoot(angle);
         }
@@ -85,6 +105,11 @@ public class Player : MonoBehaviour
     {
         this.direction = direction;
     }
+
+    public bool GlovesOn()
+    {
+        return glovesOn;
+    } 
 
     // Update is called once per frame
     void FixedUpdate()
@@ -105,5 +130,33 @@ public class Player : MonoBehaviour
         this.player = nb;
 
     }
-    
+
+    public void DestroyGun(GameObject gun)
+    {
+        Destroy(gun);
+        glovesOn = true;
+        gloves.gameObject.SetActive(true);
+    }
+
+    public void EquipGun(GameObject gun)
+    {
+        gloves.gameObject.SetActive(false);
+        glovesOn = false;
+        gunModel=Instantiate(gun,Vector3.zero,transform.rotation,transform);
+        gunModel.transform.localPosition = new Vector3(hands.x,
+            hands.y +
+            gun.GetComponent<Gun>().gunLenght, transform.position.z);
+    }
+
+    public void DropGun(GameObject gun)
+    {
+        gloves.gameObject.SetActive(true);
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        health -= dmg;
+        if (health < 0)
+            health = 0;
+    }
 }
