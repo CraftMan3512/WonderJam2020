@@ -91,6 +91,9 @@ public class EnemyAI : MonoBehaviour
             {
                 Instantiate(Resources.Load<GameObject>("Weapon Crate"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             }
+            //gore
+            GameObject blood = Instantiate(Resources.Load<GameObject>("Gore"),transform.position,Quaternion.identity);
+            blood.transform.localScale = new Vector3(1,1,0) * 0.1f;
             Destroy(gameObject);
         }
     }
