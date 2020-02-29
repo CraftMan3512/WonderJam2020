@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     private Vector3 object_pos;
     private float angle;
     private Gun gloves;
+    
+    //Player ID
+    public int player;
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +33,10 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (gunPrefab)
         {
-            gunModel=Instantiate(gunPrefab,
-                new Vector3(transform.position.x + hands.x + gunPrefab.gunLenght*Mathf.Cos((transform.eulerAngles.z+90)*Mathf.Deg2Rad), transform.position.y + hands.y+ gunPrefab.gunLenght*Mathf.Sin((transform.eulerAngles.z+90)*Mathf.Deg2Rad), transform.position.z),
-                Quaternion.identity);
-            gunModel.transform.parent = gameObject.transform;
+            gunModel=Instantiate(gunPrefab,Vector3.zero,Quaternion.identity,transform);
+            gunModel.transform.localPosition = new Vector3(0.2f,
+                hands.y +
+                gunPrefab.gunLenght * Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.Deg2Rad), transform.position.z);
         }
         else
         {
@@ -46,9 +49,9 @@ public class Player : MonoBehaviour
     {
         
         //get new inputs
-        //Debug.Log(Input.GetAxisRaw("x1"));
-        direction=new Vector2(Input.GetAxisRaw("x1"),Input.GetAxisRaw("y1"));
-        if (Input.GetButtonDown("submit1"))
+        //Debug.Log(Input.GetAxisRaw("x" + player));
+        direction=new Vector2(Input.GetAxisRaw("x" + player),Input.GetAxisRaw("y" + player));
+        if (Input.GetButtonDown("submit" + player))
         {
             if (glovesOn)
                 gloves.Shoot(angle);
@@ -56,10 +59,10 @@ public class Player : MonoBehaviour
                 gunModel.Shoot(angle);
         }
         
-        if (Input.GetAxisRaw("rightx1") != 0 || Input.GetAxisRaw("righty1") != 0)
+        if (Input.GetAxisRaw("rightx" + player) != 0 || Input.GetAxisRaw("righty" + player) != 0)
         {
             
-            angle = Mathf.Atan2(Input.GetAxisRaw("rightx1"), Input.GetAxisRaw("righty1")) * Mathf.Rad2Deg;
+            angle = Mathf.Atan2(Input.GetAxisRaw("rightx" + player), Input.GetAxisRaw("righty" + player)) * Mathf.Rad2Deg;
             angle -= 90;   
             
         }
@@ -83,4 +86,12 @@ public class Player : MonoBehaviour
         mouse_pos.y = mouse_pos.y - object_pos.y;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle-90));
     }
+
+    public void SetPlayerNumber(int nb)
+    {
+
+        this.player = nb;
+
+    }
+    
 }
