@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
     private Transform target;
     private EnemyAI AI;
     private bool dodgingWall;
-    private Vector2 dodgeTarget;
+    public Vector2 dodgeTarget;
 
     public Transform Target { get => target; set => target = value; }
 
@@ -53,25 +53,20 @@ public class EnemyMovement : MonoBehaviour
     private void Move()
     { if (dodgingWall)
         {  //si le playeur atteint le "niveau " de l'enemy, il se remet à aller vers lui.
-           if(Vector2.Distance(dodgeTarget, Target.position) > Vector2.Distance(transform.position, Target.position))
-            {
-                dodgingWall = false;              
-            }
-            else
-            {
+          
+            
                 transform.position = Vector2.MoveTowards(transform.position, dodgeTarget, speed * Time.fixedDeltaTime);
                 float angle = Mathf.Atan2(dodgeTarget.y - transform.position.y, dodgeTarget.x - transform.position.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90 ));
-            }
+                if(Vector2.Distance(transform.position,dodgeTarget) <= 0.1f)
+               {
+                dodgingWall = false;
+               }
 
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, Target.position, speed * Time.fixedDeltaTime);
-           
-           
-
-            
+            transform.position = Vector2.MoveTowards(transform.position, Target.position, speed * Time.fixedDeltaTime);                               
             float  angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90 ));
         }
@@ -91,22 +86,37 @@ public class EnemyMovement : MonoBehaviour
             }
             else if(collision.tag.Equals("Box"))
             {
-                if(Random.Range(0,100) < 30f)
-                {
+                
                     Target = collision.transform;
                     AI.Target = collision.gameObject;
-                } else
-                {    //si y agro pas la boite, il bouge d'une certain distance vers le playeur en essayant de contourner la boite.
-                    if (Mathf.Abs(transform.position.y - Target.position.y) > Mathf.Abs(transform.position.x - Target.position.x))
+                           
+                   
+            }else if (collision.tag.Equals("Wall"))
+            {
+                
+                if (Vector2.Distance(collision.transform.position, transform.position) < Vector2.Distance(target.position, transform.position))
+                {               
+                    dodgingWall = true;
+                    dodgeTarget = collision.gameObject.GetComponent<Wall>().Dodge(transform);
+                }
+                else
+                {
+                    if (collision.GetComponent<Wall>().XSide(transform))
                     {
-                        dodgeTarget = new Vector2(transform.position.x + 5*Mathf.Sign(Target.position.x - transform.position.x), transform.position.y);
-                        
+                        if(Mathf.Sign(collision.transform.position.y - transform.position.y) != Mathf.Sign(collision.transform.position.y - target.position.y))
+                        {
+                            dodgingWall = true;
+                            dodgeTarget = collision.gameObject.GetComponent<Wall>().Dodge(transform);
+                        }
                     }
                     else
                     {
-                        dodgeTarget = new Vector2(transform.position.x, transform.position.y + 5 * Mathf.Sign(Target.position.y - transform.position.y));
+                        if (Mathf.Sign(collision.transform.position.x - transform.position.x) != Mathf.Sign(collision.transform.position.x - target.position.x))
+                        {
+                            dodgingWall = true;
+                            dodgeTarget = collision.gameObject.GetComponent<Wall>().Dodge(transform);
+                        }
                     }
-                    dodgingWall = true;
                 }
             }
         }
