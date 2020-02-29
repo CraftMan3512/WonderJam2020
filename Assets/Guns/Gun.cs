@@ -42,6 +42,7 @@ public class Gun : MonoBehaviour
                     new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
                         transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad), transform.position.z),
                     transform.rotation);
+                tempBullet.GetComponent<BulletScript>().Ply = transform.parent.gameObject;
                 usedAmmo++;
                 checkAmmo();
                 isShooting = true;

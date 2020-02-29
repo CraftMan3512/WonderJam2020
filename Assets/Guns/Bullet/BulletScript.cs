@@ -9,6 +9,13 @@ public class BulletScript : MonoBehaviour
     public float speed;
     public int damage;
     public float angleRdm=3;
+    private GameObject ply;
+
+    public GameObject Ply
+    {
+        set => ply = value;
+    }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
@@ -27,6 +34,10 @@ public class BulletScript : MonoBehaviour
         {
            
             collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
+            if (collision.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+            {
+                ply.GetComponent<Player>().addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
+            }
             
             Destroy(gameObject);
         }else if (collision.gameObject.tag.Equals("Box"))

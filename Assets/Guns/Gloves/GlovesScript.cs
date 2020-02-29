@@ -51,8 +51,11 @@ public class GlovesScript : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            Debug.Log("gloves hit the enemie");
             collision.gameObject.GetComponent<EnemyAI>().TakeDamage(dmg);
+            if (collision.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+            {
+                transform.parent.parent.gameObject.GetComponent<Player>().addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
+            }
         }
     }
 

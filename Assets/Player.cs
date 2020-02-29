@@ -167,6 +167,10 @@ public class Player : MonoBehaviour
     public int Score
     {
         get => score;
-        set => score = value;
+    }
+
+    public void addScore(int nb)
+    {
+        score += nb;
     }
 }
