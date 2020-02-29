@@ -25,19 +25,19 @@ public class CubeDropping : MonoBehaviour
                 boxChan = Instantiate((GameObject)Resources.Load("Box"), new Vector3((int)transform.position.x, (int)transform.position.y, transform.position.z), Quaternion.identity);
                 boxChan.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
                 boxChan.GetComponent<BoxCollider2D>().enabled = false;         
-                if (timeSinceLastDrop >= 6)
+                if (timeSinceLastDrop >= 3)
                 {
                     boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Metal");
                     boxChan.GetComponent<Cube>().Hp = 30;
                     StartCoroutine(HoldingBox());
                 }
-                else if(timeSinceLastDrop >= 4)
+                else if(timeSinceLastDrop >= 2)
                 {
                     boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Pierre");
                     boxChan.GetComponent<Cube>().Hp = 20;
                     StartCoroutine(HoldingBox());
                 }
-                else if(timeSinceLastDrop >= 2)
+                else if(timeSinceLastDrop >= 1)
                 {
                     boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Bois");
                     boxChan.GetComponent<Cube>().Hp = 10;
