@@ -1,31 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CanvasHider : MonoBehaviour
 {
 
-    public GameObject canvasp1;
+    public int nbPlayers;
     public GameObject canvasp2;
     public GameObject canvasp3;
     public GameObject canvasp4;
 
-    private bool isShowing;
     
     // Start is called before the first frame update
     void Start()
     {
-        isShowing = false;
-        //canvasp1.SetActive(isShowing);
-        canvasp2.SetActive(isShowing);
-        canvasp3.SetActive(isShowing);
-        canvasp4.SetActive(isShowing);
-
+        changeNbPlayers(nbPlayers);
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    void changeNbPlayers(int nb)
     {
-        
+        if (nb == 1)
+        {
+            canvasp2.SetActive(false);
+            canvasp3.SetActive(false);
+            canvasp4.SetActive(false);
+        }
+        else if (nb == 2)
+        {
+            canvasp2.SetActive(true);
+            canvasp3.SetActive(false);
+            canvasp4.SetActive(false);
+        }
+        else if (nb == 3)
+        {
+            canvasp2.SetActive(true);
+            canvasp3.SetActive(true);
+            canvasp4.SetActive(false);
+        }
+        else if (nb == 4)
+        {
+            canvasp2.SetActive(true);
+            canvasp3.SetActive(true);
+            canvasp4.SetActive(true);
+        }
     }
 }
