@@ -880,8 +880,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 222872101}
-  - component: {fileID: 222872102}
-  - component: {fileID: 222872103}
   m_Layer: 5
   m_Name: StatusBarsP2
   m_TagString: Untagged
@@ -914,30 +912,6 @@ RectTransform:
   m_AnchoredPosition: {x: -102, y: -160}
   m_SizeDelta: {x: 190, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &222872102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222872100}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd21ae79fd728994284c87bee04c90e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &222872103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222872100}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c363195818ec547b1de6b06e4e1fbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &237838643
 GameObject:
   m_ObjectHideFlags: 0
@@ -5144,10 +5118,6 @@ GameObject:
   - component: {fileID: 1373711101}
   - component: {fileID: 1373711104}
   - component: {fileID: 1373711103}
-  - component: {fileID: 1373711108}
-  - component: {fileID: 1373711107}
-  - component: {fileID: 1373711106}
-  - component: {fileID: 1373711105}
   - component: {fileID: 1373711102}
   - component: {fileID: 1373711109}
   m_Layer: 5
@@ -5240,54 +5210,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1373711105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373711100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd21ae79fd728994284c87bee04c90e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1373711106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373711100}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 961e0ac2f5422d9499bcd670d5f7d33f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1373711107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373711100}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18599b9d041ee8048adfdf02f093073d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1373711108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373711100}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c363195818ec547b1de6b06e4e1fbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1373711109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6353,7 +6275,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1650892070}
-  - component: {fileID: 1650892071}
   m_Layer: 5
   m_Name: StatusBarsP1
   m_TagString: Untagged
@@ -6386,18 +6307,6 @@ RectTransform:
   m_AnchoredPosition: {x: -300, y: -160}
   m_SizeDelta: {x: 190, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1650892071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650892069}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd21ae79fd728994284c87bee04c90e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1715240428
 GameObject:
   m_ObjectHideFlags: 0

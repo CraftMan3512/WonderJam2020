@@ -25,9 +25,13 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            Debug.Log("hey");
+           
             collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
             
+            Destroy(gameObject);
+        }else if (collision.gameObject.tag.Equals("Box"))
+        {
+            collision.gameObject.GetComponent<Cube>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }
