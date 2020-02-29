@@ -60,12 +60,20 @@ public class EnemyMovement : MonoBehaviour
             else
             {
                 transform.position = Vector2.MoveTowards(transform.position, dodgeTarget, speed * Time.fixedDeltaTime);
+                float angle = Mathf.Atan2(dodgeTarget.y - transform.position.y, dodgeTarget.x - transform.position.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90 ));
             }
 
         }
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, Target.position, speed * Time.fixedDeltaTime);
+           
+           
+
+            
+            float  angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90 ));
         }
     }
 
