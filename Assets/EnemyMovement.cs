@@ -111,7 +111,6 @@ public class EnemyMovement : MonoBehaviour
         {
             if (Target == null)
             {
-                Debug.Log("joueur found");
                 Target = obj.transform;
             }
             else

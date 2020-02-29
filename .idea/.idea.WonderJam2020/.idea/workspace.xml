@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f32ba7f8-52b0-4c62-bb15-03c282e9aac8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EnemyMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EnemyMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Guntest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Guntest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/images/zoombie.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/zoombie.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +22,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/images/perso de dessus avec gun.png.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EnemyMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InputTester.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EnemyAI.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -31,6 +36,7 @@
         <option value="$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" />
+        <option value="$PROJECT_DIR$/Assets/EnemyMovement.cs" />
       </list>
     </option>
   </component>
@@ -86,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582852386224</updated>
       <workItem from="1582852396245" duration="351000" />
-      <workItem from="1582929266818" duration="12308000" />
+      <workItem from="1582929266818" duration="12828000" />
     </task>
     <servers />
   </component>
