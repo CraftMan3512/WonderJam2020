@@ -9,6 +9,13 @@ public class BulletScript : MonoBehaviour
     public float speed;
     public int damage;
     public float angleRdm=3;
+    private GameObject ply;
+
+    public GameObject Ply
+    {
+        set => ply = value;
+    }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
@@ -27,12 +34,21 @@ public class BulletScript : MonoBehaviour
         {
            
             collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
+            if (collision.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+            {
+                if(!collision.gameObject.GetComponent<EnemyAI>().dead){
+                    ply.GetComponent<Player>().addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                    collision.gameObject.GetComponent<EnemyAI>().dead = true;
+                }
+            }
             
             Destroy(gameObject);
+            if (transform.childCount >0) transform.GetChild(0).SetParent(null);
         }else if (collision.gameObject.tag.Equals("Box"))
         {
             collision.gameObject.GetComponent<Cube>().TakeDamage(damage);
             Destroy(gameObject);
+            if (transform.childCount >0) transform.GetChild(0).SetParent(null);
         }
     }
 }

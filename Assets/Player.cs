@@ -24,7 +24,9 @@ public class Player : MonoBehaviour
 
     private int frenezie;
     private float crateLevel = 0;
-
+    private int score;
+    
+    
     public float movementSpeed;
     private Rigidbody2D rb;
     private Vector2 direction;
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
         health = maxHealth;
         frenezie = 0;
         crateLevel = 0;
@@ -67,7 +70,7 @@ public class Player : MonoBehaviour
             glovesOn = true;
         }
     }
-    
+
     private void Update()
     {
         
@@ -77,10 +80,12 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("submit"+player))
         {
             shooting = true;
+            if(gunModel) gunModel.GetComponent<Gun>().Shooting();
         }
         if (Input.GetButtonUp("submit"+player))
         {
             shooting = false;
+            if(gunModel) gunModel.GetComponent<Gun>().Stopped();
         }
         
         if (Input.GetAxisRaw("rightx" + player) != 0 || Input.GetAxisRaw("righty" + player) != 0)
@@ -131,9 +136,9 @@ public class Player : MonoBehaviour
 
     }
 
-    public void DestroyGun(GameObject gun)
+    public void DestroyGun()
     {
-        Destroy(gun);
+        Destroy(gunModel.gameObject);
         glovesOn = true;
         gloves.gameObject.SetActive(true);
     }
@@ -148,9 +153,9 @@ public class Player : MonoBehaviour
             gun.GetComponent<Gun>().gunLenght, transform.position.z);
     }
 
-    public void DropGun(GameObject gun)
+    public GameObject getGun()
     {
-        gloves.gameObject.SetActive(true);
+        return gunModel.gameObject;
     }
 
     public void TakeDamage(int dmg)
@@ -158,5 +163,14 @@ public class Player : MonoBehaviour
         health -= dmg;
         if (health < 0)
             health = 0;
+    }
+    public int Score
+    {
+        get => score;
+    }
+
+    public void addScore(int nb)
+    {
+        score += nb;
     }
 }

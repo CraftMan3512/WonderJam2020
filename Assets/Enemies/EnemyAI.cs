@@ -11,6 +11,13 @@ public class EnemyAI : MonoBehaviour
     private int damage;
     private GameObject target;
     private float attackCooldown;
+    private int scorePoints;
+    public bool dead;
+
+    public int ScorePoints
+    {
+        get => scorePoints;
+    }
 
     public int Hp { get => hp; set => hp = value; }
     public int MaxHp { get => maxHp; set => maxHp = value; }
@@ -23,6 +30,7 @@ public class EnemyAI : MonoBehaviour
         damage = 2;
         maxHp = 10;
         hp = maxHp;
+        scorePoints = 10;
     }
 
     // Update is called once per frame
@@ -84,9 +92,8 @@ public class EnemyAI : MonoBehaviour
     {
         StartCoroutine(DamageEffect());
         hp -= damage;
-        if(hp <= 0)
+        if(hp <= 0)//DEATH
         {
-            //death
             if((int)Random.Range(0,15) == 1)
             {
                 Instantiate(Resources.Load<GameObject>("Weapon Crate"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
@@ -94,6 +101,8 @@ public class EnemyAI : MonoBehaviour
             //gore
             GameObject blood = Instantiate(Resources.Load<GameObject>("Gore"),transform.position,Quaternion.identity);
             blood.transform.localScale = new Vector3(1,1,0) * 0.1f;
+            
+            
             Destroy(gameObject);
         }
     }

@@ -6,6 +6,13 @@ public class ShotgunShell : MonoBehaviour
 {
     public float speed=1;
     public float angleRdm=10;
+    public GameObject ply;
+
+    public GameObject Ply
+    {
+        get => ply;
+        set => ply = value;
+    }
 
     public int damagePerBullet=1;
     // Start is called before the first frame update
@@ -16,6 +23,7 @@ public class ShotgunShell : MonoBehaviour
             transform.GetChild(i).gameObject.GetComponent<BulletScript>().damage = this.damagePerBullet;
             transform.GetChild(i).gameObject.GetComponent<BulletScript>().speed = this.speed;
             transform.GetChild(i).gameObject.GetComponent<BulletScript>().angleRdm = this.angleRdm;
+            transform.GetChild(i).gameObject.GetComponent<BulletScript>().Ply = ply;
         }
     }
 

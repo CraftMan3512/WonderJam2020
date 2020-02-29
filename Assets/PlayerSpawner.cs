@@ -35,6 +35,7 @@ public class PlayerSpawner : MonoBehaviour
             GameObject.Find("HealthBar" + i).GetComponent<HealthBar>().setPlayer(player);
             GameObject.Find("FrenzyBar" + i).GetComponent<FrenzyBar>().setPlayer(player);
             GameObject.Find("BoxesBar" + i).GetComponent<BoxesBar>().setPlayer(player);
+            GameObject.Find("FinalCanvas").GetComponent<ScoreBoard>().addPlayer(player,i);
             targetGroup.m_Targets[i - 1].weight = 1f;
 
 
@@ -42,7 +43,5 @@ public class PlayerSpawner : MonoBehaviour
         
         
     }
-    
-
 
 }
