@@ -15,8 +15,8 @@ public class CanvasHider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nbPlayers = PlayerSpawner.playerCount;
         changeNbPlayers(nbPlayers);
-        
     }
 
     void changeNbPlayers(int nb)

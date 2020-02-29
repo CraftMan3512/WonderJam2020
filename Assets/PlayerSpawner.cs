@@ -30,11 +30,13 @@ public class PlayerSpawner : MonoBehaviour
             Debug.Log("Spawning player " + i);
             GameObject player = Instantiate(playerPrefab,transform.position + (Vector3.right*3*i),Quaternion.identity);
             player.GetComponent<Player>().SetPlayerNumber(i);
+            player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/P" + i + "/SpriteP" + i);
             targetGroup.m_Targets[i-1] = new CinemachineTargetGroup.Target();
             targetGroup.m_Targets[i-1].target = player.transform;
             GameObject.Find("HealthBar" + i).GetComponent<HealthBar>().setPlayer(player);
             GameObject.Find("FrenzyBar" + i).GetComponent<FrenzyBar>().setPlayer(player);
             GameObject.Find("BoxesBar" + i).GetComponent<BoxesBar>().setPlayer(player);
+            GameObject.Find("FinalCanvas").GetComponent<ScoreBoard>().addPlayer(player,i);
             targetGroup.m_Targets[i - 1].weight = 1f;
 
 
@@ -42,7 +44,5 @@ public class PlayerSpawner : MonoBehaviour
         
         
     }
-    
-
 
 }

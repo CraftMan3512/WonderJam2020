@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,51 +7,36 @@ using UnityEngine.UI;
 
 public class ScoreBoard : MonoBehaviour
 {
-
+    public List<GameObject> players;
     public TextMeshProUGUI scoreP1;
     public TextMeshProUGUI scoreP2;
     public TextMeshProUGUI scoreP3;
     public TextMeshProUGUI scoreP4;
-
-    private int[] scorePlayer;
+    public int playersThisRound;
 
     // Start is called before the first frame update
     void Start()
     {
-        scorePlayer = new int[4];
-        for (int i = 0; i < 4; i++)
-        {
-            scorePlayer[i] = 0;
-        }
-        scoreP1.SetText(scorePlayer[0].ToString());
-        scoreP2.SetText(scorePlayer[1].ToString());
-        scoreP3.SetText(scorePlayer[2].ToString());
-        scoreP4.SetText(scorePlayer[3].ToString());
-        
-        updateScore1(457);
+        players = new List<GameObject>();
+        playersThisRound = 0;
     }
 
-    void updateScore1(int scoreSuppl)
+    public void addPlayer(GameObject ply,int i)
     {
-        scorePlayer[0] += scoreSuppl;
-        scoreP1.SetText(scorePlayer[0].ToString());
+        players.Add(ply);
+        playersThisRound++;
     }
-    void updateScore2(int scoreSuppl)
-    {
-        scorePlayer[1] += scoreSuppl;
-        scoreP2.SetText(scorePlayer[1].ToString());
 
-    }
-    void updateScore3(int scoreSuppl)
+    public void Update()
     {
-        scorePlayer[2] += scoreSuppl;
-        scoreP3.SetText(scorePlayer[2].ToString());
-
+        if(playersThisRound>0)
+            if(players[0]) scoreP1.SetText(players[0].GetComponent<Player>().Score.ToString());
+        if(playersThisRound>1)
+            if(players[1]) scoreP2.SetText(players[1].GetComponent<Player>().Score.ToString());
+        if(playersThisRound>2)
+            if(players[2]) scoreP3.SetText(players[2].GetComponent<Player>().Score.ToString());
+        if(playersThisRound>3)
+            if(players[3]) scoreP4.SetText(players[3].GetComponent<Player>().Score.ToString());
     }
-    void updateScore4(int scoreSuppl)
-    {
-        scorePlayer[3] += scoreSuppl;
-        scoreP4.SetText(scorePlayer[3].ToString());
-
-    }
+    
 }

@@ -7,13 +7,16 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: 
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 3b500b171ce16ca489d39bb65490d715
   - enabled: 1
-    path: Assets/Scenes/Guntest.unity
-    guid: 9151247d5e2bbef409f461bfdeaf1701
+    path: Assets/Scenes/EndScreen.unity
+    guid: 3768f42db6aabdc458429e8613409436
+  - enabled: 1
+    path: Assets/Scenes/CopyMenu.unity
+    guid: d3ec56ce331a9d4458481b06fea62c15
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d187682081d1689488cec70433ae94e5,
       type: 2}

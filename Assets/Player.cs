@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class Player : MonoBehaviour
 {
     
     public int maxHealth=100;
-    public int maxFrenezie = 100;
+    public float maxFrenezie = 100;
     
     private int health;
 
@@ -16,20 +17,25 @@ public class Player : MonoBehaviour
         get => health;
     }
 
-    public int Frenezie
+    public float Frenezie
     {
         get => frenezie;
     }
 
-
-    private int frenezie;
+    private bool inFrenezie;
+    private float frenezie;
     private float crateLevel = 0;
+    private int score;
 
+    public GameObject frenezieGun;
+    private GameObject backGun;
+    
+    
     public float movementSpeed;
     private Rigidbody2D rb;
     private Vector2 direction;
     private Vector2 direction2;
-    public Gun gunPrefab;
+    public GameObject gunPrefab;
     private Vector2 hands;
     private GameObject gunModel;
     private bool glovesOn;
@@ -49,8 +55,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
         health = maxHealth;
-        frenezie = 0;
+        frenezie = 90;
         crateLevel = 0;
 
         gloves = transform.GetChild(0).gameObject.GetComponent<Gun>();
@@ -67,20 +74,28 @@ public class Player : MonoBehaviour
             glovesOn = true;
         }
     }
-    
+
     private void Update()
     {
-        
+        //Check si on tire si oui quel arme ou gloves
+        if (shooting.Equals(true))
+        {
+            if(!glovesOn)
+                gunModel.GetComponent<Gun>().Shoot(angle);
+            else
+                gloves.Shoot(angle);
+        }
         //get new inputs
-        //Debug.Log(Input.GetAxisRaw("x1"));
         direction=new Vector2(Input.GetAxisRaw("x"+player),Input.GetAxisRaw("y"+player));
         if (Input.GetButtonDown("submit"+player))
         {
             shooting = true;
+            if(gunModel) gunModel.GetComponent<Gun>().Shooting();
         }
         if (Input.GetButtonUp("submit"+player))
         {
             shooting = false;
+            if(gunModel) gunModel.GetComponent<Gun>().Stopped();
         }
         
         if (Input.GetAxisRaw("rightx" + player) != 0 || Input.GetAxisRaw("righty" + player) != 0)
@@ -90,15 +105,53 @@ public class Player : MonoBehaviour
             angle -= 90;   
             
         }
-
-        if (shooting.Equals(true))
+        //Frenzy
+        if (Input.GetButtonDown("cancel" + player)&&maxFrenezie<=frenezie)
         {
-            if(!glovesOn)
-            gunModel.GetComponent<Gun>().Shoot(angle);
-            else
-            gloves.Shoot(angle);
+            inFrenezie = true;
+            if (!glovesOn)
+            {
+                Debug.Log("Je stocke larme");
+                backGun = Instantiate(gunModel);
+                backGun.GetComponent<Gun>().UsedAmmo = getGun().GetComponent<Gun>().UsedAmmo;
+                backGun.SetActive(false);
+                DestroyGun();
+            }
+            EquipGun(frenezieGun.gameObject);
         }
 
+        if (!inFrenezie)
+        {
+            if (frenezie < maxFrenezie)
+            {
+                frenezie += 10f * Time.deltaTime;
+            }
+            else
+                frenezie = maxFrenezie;
+        }
+        else
+        {
+            if (frenezie > 0)
+            {
+                frenezie -= 10f * Time.deltaTime;
+            }
+            else
+            {
+                frenezie = 0;
+                DestroyGun();
+                if (backGun)
+                {
+                    backGun.SetActive(true);
+                    Debug.Log("Je rajoute larme");
+                    EquipGun(backGun);
+                    getGun().GetComponent<Gun>().UsedAmmo = backGun.GetComponent<Gun>().UsedAmmo;
+                }
+                Destroy(backGun);
+                backGun = null;
+                inFrenezie = false;
+            }
+        }
+            
     }
 
     private void Move(Vector2 direction)
@@ -131,9 +184,9 @@ public class Player : MonoBehaviour
 
     }
 
-    public void DestroyGun(GameObject gun)
+    public void DestroyGun()
     {
-        Destroy(gun);
+        Destroy(gunModel.gameObject);
         glovesOn = true;
         gloves.gameObject.SetActive(true);
     }
@@ -148,15 +201,41 @@ public class Player : MonoBehaviour
             gun.GetComponent<Gun>().gunLenght, transform.position.z);
     }
 
-    public void DropGun(GameObject gun)
+    public GameObject getGun()
     {
-        gloves.gameObject.SetActive(true);
+        return gunModel;
     }
 
     public void TakeDamage(int dmg)
     {
+        //Debug.Log("PLPAYER TAKE DAMANGEE!!!! : " + dmg);
         health -= dmg;
         if (health < 0)
+        {
+            
             health = 0;
+            //death
+            DeathCounter.PlayerDied(player,score);
+            Destroy(gameObject);
+            
+        }
+    }
+    public int Score
+    {
+        get => score;
+    }
+
+    public void addScore(int nb)
+    {
+        score += nb;
+    }
+
+    public void Heal(int healAmount)
+    {
+        health += healAmount;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 }

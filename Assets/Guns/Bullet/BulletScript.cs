@@ -9,6 +9,17 @@ public class BulletScript : MonoBehaviour
     public float speed;
     public int damage;
     public float angleRdm=3;
+    private GameObject ply;
+    public bool fire;
+    public bool rocket;
+    public GameObject nextBullet;
+
+    public GameObject Ply
+    {
+        get => ply;
+        set => ply = value;
+    }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
@@ -23,16 +34,61 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("Enemy"))
+        if (!fire)
         {
-           
-            collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
-            
-            Destroy(gameObject);
-        }else if (collision.gameObject.tag.Equals("Box"))
+            if (collision.gameObject.tag.Equals("Enemy"))
+            {
+                collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
+                if (collision.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+                {
+                    if (!collision.gameObject.GetComponent<EnemyAI>().dead)
+                    {
+                        ply.GetComponent<Player>().addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                        collision.gameObject.GetComponent<EnemyAI>().dead = true;
+                    }
+                }
+                
+            }
+            else if (collision.gameObject.tag.Equals("Box"))
+            {
+                collision.gameObject.GetComponent<Cube>().TakeDamage(damage);
+                
+            }
+            if (rocket)
+            {
+                GameObject rocket = Instantiate(nextBullet,transform.position,Quaternion.identity);
+                rocket.GetComponent<RocketScript>().Ply = ply;
+                Destroy(gameObject);
+            }else
+            if (collision.gameObject.tag.Equals("Box") || collision.gameObject.tag.Equals("Enemy"))
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (fire)
         {
-            collision.gameObject.GetComponent<Cube>().TakeDamage(damage);
-            Destroy(gameObject);
+            Collider2D collision = other;
+            if (collision.gameObject.tag.Equals("Enemy"))
+            {
+
+                collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
+                if (collision.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+                {
+                    if (!collision.gameObject.GetComponent<EnemyAI>().dead)
+                    {
+                        ply.GetComponent<Player>().addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                        collision.gameObject.GetComponent<EnemyAI>().dead = true;
+                    }
+                }
+            }
+            else if (collision.gameObject.tag.Equals("Box"))
+            {
+                collision.gameObject.GetComponent<Cube>().TakeDamage(damage);
+            }
         }
     }
 }

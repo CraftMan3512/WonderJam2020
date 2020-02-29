@@ -8,9 +8,16 @@ public class EnemyAI : MonoBehaviour
   
     private int hp;
     private int maxHp;
-    private int damage;
+    public int damage;
     private GameObject target;
     private float attackCooldown;
+    private int scorePoints;
+    public bool dead;
+
+    public int ScorePoints
+    {
+        get => scorePoints;
+    }
 
     public int Hp { get => hp; set => hp = value; }
     public int MaxHp { get => maxHp; set => maxHp = value; }
@@ -19,10 +26,11 @@ public class EnemyAI : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        damage = 2;
-        maxHp = 10;
-        hp = maxHp;
+    { 
+        //damage = 2;
+       // maxHp = 10;
+       // hp = maxHp;
+        scorePoints = 10;
     }
 
     // Update is called once per frame
@@ -35,7 +43,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (target != null)
         {
-            if (attackCooldown >= 1.5f)
+            if (attackCooldown >= 1.8f)
             {
                 if (Vector2.Distance(transform.position, target.transform.position) <= 1f)
                 {
@@ -60,14 +68,14 @@ public class EnemyAI : MonoBehaviour
                 }
                 else
                 {
-                    attackCooldown = 1.5f;
+                    attackCooldown = 1.8f;
                 }
 
 
             }
             else
             {
-                if (attackCooldown < 1.5f)
+                if (attackCooldown < 1.8f)
                 {
                     attackCooldown += Time.fixedDeltaTime;
                 }
@@ -84,16 +92,21 @@ public class EnemyAI : MonoBehaviour
     {
         StartCoroutine(DamageEffect());
         hp -= damage;
-        if(hp <= 0)
+        if(hp <= 0)//DEATH
         {
-            //death
             if((int)Random.Range(0,15) == 1)
             {
                 Instantiate(Resources.Load<GameObject>("Weapon Crate"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            }else if((int)Random.Range(0, 30) == 1)
+            {
+                Instantiate(Resources.Load<GameObject>("MedKit"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             }
+
             //gore
             GameObject blood = Instantiate(Resources.Load<GameObject>("Gore"),transform.position,Quaternion.identity);
             blood.transform.localScale = new Vector3(1,1,0) * 0.1f;
+            
+            
             Destroy(gameObject);
         }
     }

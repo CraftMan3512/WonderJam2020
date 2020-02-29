@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Players : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     public void startGame(int nbJoueurs)
@@ -18,7 +13,7 @@ public class Players : MonoBehaviour
         
         //changer de scene et set les joueurs
         PlayerSpawner.playerCount = nbJoueurs;
-        SceneManager.LoadScene("Guntest");
+        SceneManager.LoadScene("CopyMenu");
 
     }
 }
