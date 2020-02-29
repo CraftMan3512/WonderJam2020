@@ -173,4 +173,13 @@ public class Player : MonoBehaviour
     {
         score += nb;
     }
+
+    public void Heal(int healAmount)
+    {
+        health += healAmount;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
+    }
 }
