@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     private int maxHp;
     private int damage;
     private GameObject target;
+    private float attackCooldown;
 
     public int Hp { get => hp; set => hp = value; }
     public int MaxHp { get => maxHp; set => maxHp = value; }
@@ -19,6 +20,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        damage = 2;
         maxHp = 20;
         hp = maxHp;
     }
@@ -27,6 +29,32 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void FixedUpdate()
+    {
+        if (target != null)
+        {
+            if (attackCooldown >= 2f)
+            {
+                if (Vector2.Distance(transform.position, target.transform.position) <= 1f)
+                {
+                    if (target.tag.Equals("Box"))
+                    {
+                        target.GetComponent<Cube>().TakeDamage(damage);
+                        attackCooldown = 0;
+                    }
+                }
+            }
+            else
+            {
+                attackCooldown += Time.fixedDeltaTime;
+            }
+        }
+        else
+        {
+            GetComponent<EnemyMovement>().TargetClosestPlayer();
+        }
     }
 
 
