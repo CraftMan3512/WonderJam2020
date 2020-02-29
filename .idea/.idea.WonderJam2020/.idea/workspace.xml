@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f32ba7f8-52b0-4c62-bb15-03c282e9aac8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/images/perso 2 avec arme.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/perso 2 avec arme.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/images/perso 3 dessus avec arme .png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/perso 3 dessus avec arme .png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/images/perso 4 avecgun.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/perso 4 avecgun.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/images/perso de dessus avec gun.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/perso de dessus avec gun.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/images/perso de dessus.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/perso de dessus.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/images/zombiw 2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/zombiw 2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/images/zoombie.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/images/zoombie.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WonderJam2020/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,17 +18,19 @@
     <setting file="file://$PROJECT_DIR$/Assets/images/perso de dessus.png.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/images/perso de dessus avec gun.png.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/InputTester.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spawner.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/InputTester.cs" />
         <option value="$PROJECT_DIR$/Assets/Player/Scripts/Movement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" />
-        <option value="$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" />
       </list>
     </option>
   </component>
@@ -92,7 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582852386224</updated>
       <workItem from="1582852396245" duration="351000" />
-      <workItem from="1582929266818" duration="11072000" />
+      <workItem from="1582929266818" duration="12308000" />
     </task>
     <servers />
   </component>
