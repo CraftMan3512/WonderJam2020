@@ -7,8 +7,7 @@ public class PlayerSpawner : MonoBehaviour
 {
 
     public GameObject playerPrefab;
-    public int playerNb;
-    public static int playerCount;
+    public static int playerCount = 2;
 
     public CinemachineTargetGroup targetGroup;
     
@@ -16,14 +15,13 @@ public class PlayerSpawner : MonoBehaviour
     void Start()
     {
         
-        SpawnPlayers(playerNb);
+        SpawnPlayers(playerCount);
 
     }
 
     public void SpawnPlayers (int playerNb)
     {
         
-        playerCount = playerNb;
         targetGroup.m_Targets = new CinemachineTargetGroup.Target[playerNb];
 
         for (int i = 1; i <= playerNb; i++)

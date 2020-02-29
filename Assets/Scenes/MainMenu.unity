@@ -1217,7 +1217,6 @@ GameObject:
   - component: {fileID: 1034888292}
   - component: {fileID: 1034888291}
   - component: {fileID: 1034888290}
-  - component: {fileID: 1034888289}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -1246,18 +1245,6 @@ RectTransform:
   m_AnchoredPosition: {x: 147.5, y: -65.1}
   m_SizeDelta: {x: 125.93, y: 194.05}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1034888289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034888287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: decc7581100c7c1438d771d98340ab40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1034888290
 MonoBehaviour:
   m_ObjectHideFlags: 0
