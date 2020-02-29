@@ -14,9 +14,9 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0
-    sensitivity: 0
-    snap: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 2
     axis: 0
@@ -30,7 +30,7 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0
+    dead: 0.2
     sensitivity: 0
     snap: 0
     invert: 0
@@ -46,7 +46,7 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0
+    dead: 0.2
     sensitivity: 0
     snap: 0
     invert: 0
@@ -62,7 +62,7 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0
+    dead: 0.2
     sensitivity: 0
     snap: 0
     invert: 0
@@ -78,10 +78,10 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0
-    sensitivity: 0
-    snap: 0
-    invert: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 1
     type: 2
     axis: 1
     joyNum: 1
@@ -94,10 +94,10 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0
-    sensitivity: 0
-    snap: 0
-    invert: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 1
     type: 2
     axis: 1
     joyNum: 2
@@ -110,10 +110,10 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0
-    sensitivity: 0
-    snap: 0
-    invert: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 1
     type: 2
     axis: 1
     joyNum: 3
@@ -126,10 +126,10 @@ InputManager:
     altNegativeButton: 
     altPositiveButton: 
     gravity: 0
-    dead: 0
-    sensitivity: 0
-    snap: 0
-    invert: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 1
     type: 2
     axis: 1
     joyNum: 4
@@ -140,11 +140,11 @@ InputManager:
     negativeButton: 
     positiveButton: joystick 1 button 0
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: return
     gravity: 0
     dead: 0
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 0
     axis: 0
@@ -159,8 +159,8 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 0
     axis: 0
@@ -175,8 +175,8 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 0
     axis: 0
@@ -191,8 +191,8 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 0
     axis: 0
@@ -204,11 +204,11 @@ InputManager:
     negativeButton: 
     positiveButton: joystick 1 button 1
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: backspace
     gravity: 0
     dead: 0
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 0
     axis: 0
@@ -223,8 +223,8 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 0
     axis: 0
@@ -239,8 +239,8 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 0
     axis: 0
@@ -255,9 +255,137 @@ InputManager:
     altPositiveButton: 
     gravity: 0
     dead: 0
-    sensitivity: 0
-    snap: 0
+    sensitivity: 1
+    snap: 1
     invert: 0
     type: 0
     axis: 0
+    joyNum: 4
+  - serializedVersion: 3
+    m_Name: rightx1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: rightx2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: rightx3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: rightx4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 4
+  - serializedVersion: 3
+    m_Name: righty1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: righty2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: righty3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 3
+  - serializedVersion: 3
+    m_Name: righty4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
     joyNum: 4
