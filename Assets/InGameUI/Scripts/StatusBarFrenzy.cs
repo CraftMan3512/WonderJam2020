@@ -14,7 +14,6 @@ public class StatusBarFrenzy : MonoBehaviour
         try
         {
             bar = transform.Find("Bar");
-            bar.localScale = new Vector3(0.4f, 1f);
         }
         catch (Exception e)
         {
@@ -24,7 +23,7 @@ public class StatusBarFrenzy : MonoBehaviour
         
     }
 
-    public void update(float newSize)
+    public void updateSize(float newSize)
     {
         bar.localScale = new Vector3(newSize, 1f);
     }
