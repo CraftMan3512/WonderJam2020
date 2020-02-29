@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         damage = 2;
-        maxHp = 20;
+        maxHp = 10;
         hp = maxHp;
     }
 
@@ -47,11 +47,10 @@ public class EnemyAI : MonoBehaviour
                             attackCooldown = 0;
                         }else if (target.tag.Equals("Player"))
                         {
-                            if(Vector2.Distance(transform.position, target.transform.position) <= 0.5f)
-                            {
-                                // target.GetComponent<Player>(); faire prendre des degats au player
+                            
+                                target.GetComponent<Player>().TakeDamage(damage); 
                                 attackCooldown = 0;
-                            }
+                            
                         }
                     }
                     else
@@ -88,10 +87,13 @@ public class EnemyAI : MonoBehaviour
         if(hp <= 0)
         {
             //death
-            if((int)Random.Range(0,30) == 1)
+            if((int)Random.Range(0,15) == 1)
             {
                 Instantiate(Resources.Load<GameObject>("Weapon Crate"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             }
+            //gore
+            GameObject blood = Instantiate(Resources.Load<GameObject>("Gore"),transform.position,Quaternion.identity);
+            blood.transform.localScale = new Vector3(1,1,0) * 0.1f;
             Destroy(gameObject);
         }
     }

@@ -7,8 +7,7 @@ public class PlayerSpawner : MonoBehaviour
 {
 
     public GameObject playerPrefab;
-    public int playerNb;
-    public static int playerCount;
+    public static int playerCount = 2;
 
     public CinemachineTargetGroup targetGroup;
     
@@ -16,14 +15,13 @@ public class PlayerSpawner : MonoBehaviour
     void Start()
     {
         
-        SpawnPlayers(playerNb);
+        SpawnPlayers(playerCount);
 
     }
 
     public void SpawnPlayers (int playerNb)
     {
         
-        playerCount = playerNb;
         targetGroup.m_Targets = new CinemachineTargetGroup.Target[playerNb];
 
         for (int i = 1; i <= playerNb; i++)
@@ -34,6 +32,10 @@ public class PlayerSpawner : MonoBehaviour
             player.GetComponent<Player>().SetPlayerNumber(i);
             targetGroup.m_Targets[i-1] = new CinemachineTargetGroup.Target();
             targetGroup.m_Targets[i-1].target = player.transform;
+            GameObject.Find("HealthBar" + i).GetComponent<HealthBar>().setPlayer(player);
+            GameObject.Find("FrenzyBar" + i).GetComponent<FrenzyBar>().setPlayer(player);
+            GameObject.Find("BoxesBar" + i).GetComponent<BoxesBar>().setPlayer(player);
+            targetGroup.m_Targets[i - 1].weight = 1f;
 
 
         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2697233030949555258}
   - component: {fileID: 2697233030949555257}
   - component: {fileID: -5362939030135842072}
-  - component: {fileID: 5766396689999279371}
+  - component: {fileID: 4791335966984657192}
   m_Layer: 0
   m_Name: Weapon Crate
   m_TagString: Untagged
@@ -109,7 +109,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.53333336, y: 0.53333336}
   m_EdgeRadius: 0
---- !u!114 &5766396689999279371
+--- !u!114 &4791335966984657192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
