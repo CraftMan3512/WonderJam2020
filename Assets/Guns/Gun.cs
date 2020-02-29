@@ -75,10 +75,6 @@ public class Gun : MonoBehaviour
 
     private void checkAmmo()
     {
-
-        if (usedAmmo >= ammoMax)
-        {
-            Destroy(gameObject);
-        }
+        if(usedAmmo>=ammoMax) ((Player) transform.parent.gameObject.GetComponent<Player>()).DestroyGun(gameObject);
     }
 }
