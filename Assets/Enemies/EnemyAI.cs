@@ -100,7 +100,7 @@ public class EnemyAI : MonoBehaviour
         hp -= damage;
         if(hp <= 0&&!dead)//DEATH
         {
-            if((int)Random.Range(0,30) == 1)
+            if((int)Random.Range(0,20) == 1)
             {
                 Instantiate(Resources.Load<GameObject>("Weapon Crate"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             }else if((int)Random.Range(0, 40) == 1)
