@@ -9,6 +9,7 @@ public class Lightning : MonoBehaviour
     private LineRenderer lr;
     public Vector3 lastEnemy;
     bool firstStrike;
+    private List<GameObject> zappedEnemies;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,43 +34,56 @@ public class Lightning : MonoBehaviour
         GameObject closestEnemy = null;
         foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            float distance = 0;
-            if (!firstStrike)
+            bool alreadyZapped = false;
+            foreach(GameObject zapped in zappedEnemies)
             {
-                distance = Vector2.Distance(lastEnemy, enemy.transform.position);
-            }
-            else
-            {               
-                distance = Vector2.Distance(transform.position, enemy.transform.position);
-            }
-            if (distance < range)
-            {
-                if(closestEnemy == null)
-                {
-                    closestEnemy = enemy;
-                }
-                else 
-                {
-                    if (!firstStrike)
+                if (zapped) {
+                    if (enemy == zapped)
                     {
-                        if(Vector2.Distance(lastEnemy, enemy.transform.position) < Vector2.Distance(lastEnemy, closestEnemy.transform.position))
-                        {
-                            closestEnemy = enemy;
-                        }
+                        alreadyZapped = true;
+                    }
+                }
+            }
+            if (!alreadyZapped)
+            {
+                float distance = 0;
+                if (!firstStrike)
+                {
+                    distance = Vector2.Distance(lastEnemy, enemy.transform.position);
+                }
+                else
+                {
+                    distance = Vector2.Distance(transform.position, enemy.transform.position);
+                }
+                if (distance < range)
+                {
+                    if (closestEnemy == null)
+                    {
+                        closestEnemy = enemy;
                     }
                     else
                     {
-                        if (Vector2.Distance(transform.position, enemy.transform.position) < Vector2.Distance(transform.position, closestEnemy.transform.position))
+                        if (!firstStrike)
                         {
-                            closestEnemy = enemy;
+                            if (Vector2.Distance(lastEnemy, enemy.transform.position) < Vector2.Distance(lastEnemy, closestEnemy.transform.position))
+                            {
+                                closestEnemy = enemy;
+                            }
                         }
-                    }
-                    
-                }
-                         
-                iterations++;
-               
+                        else
+                        {
+                            if (Vector2.Distance(transform.position, enemy.transform.position) < Vector2.Distance(transform.position, closestEnemy.transform.position))
+                            {
+                                closestEnemy = enemy;
+                            }
+                        }
 
+                    }
+
+                    iterations++;
+
+
+                }
             }
 
           
@@ -107,9 +121,10 @@ public class Lightning : MonoBehaviour
 
             lastEnemy = closestEnemy.transform.position;
             closestEnemy.GetComponent<EnemyAI>().TakeDamage(damagePerStrike);
+            zappedEnemies.Add(closestEnemy);
         }catch(System.Exception e) { }
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         if (iterations == 0)
         {
             Destroy(gameObject);

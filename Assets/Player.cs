@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     {
         score = 0;
         health = maxHealth;
-        frenezie = 90;
+        frenezie = 50;
 
         gloves = transform.GetChild(0).gameObject.GetComponent<Gun>();
         target = transform;
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         {
             if (frenezie < maxFrenezie)
             {
-                frenezie += 10f * Time.deltaTime;
+                frenezie += 1f * Time.deltaTime;
             }
             else
                 frenezie = maxFrenezie;
@@ -245,6 +245,16 @@ public class Player : MonoBehaviour
     public void addScore(int nb)
     {
         score += nb;
+        if(!inFrenezie)
+            frenezie += 0.2f * nb;
+        else
+        {
+            if (frenezie < maxFrenezie)
+                frenezie += 0.06f * nb;
+            else
+                frenezie = maxFrenezie;
+
+        }
     }
 
     public void Heal(int healAmount)

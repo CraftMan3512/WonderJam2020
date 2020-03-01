@@ -14,6 +14,9 @@ public class Spawner : MonoBehaviour
     TextMeshProUGUI incoming;
     private bool lastAlive;
 
+    public int hpScaling=1;
+    public int dmgScaling=1;
+
     private int maxEnemies = 150*PlayerSpawner.playerCount;
     private int enemiesSpawned = 0;
     
@@ -40,13 +43,29 @@ public class Spawner : MonoBehaviour
             {
                 if (timeSinceLastSpawn >= 5f / difficulty && enemiesSpawned < maxEnemies)
                 {
-                        enemiesSpawned++;
-                        int spawnNumber = Random.Range(0, spawnPoints.Count);
-                        GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy"+(int)Random.Range(1,3)), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
-                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
-                        enemy.GetComponent<EnemyAI>().damage += difficulty / 5 + 1;
-                        enemy.GetComponent<EnemyAI>().Hp = 10*( difficulty / 5 + 1);
-                        timeSinceLastSpawn = 0f;
+                    int spawnNumber = Random.Range(0, spawnPoints.Count);
+                    timeSinceLastSpawn = 0;
+                    enemiesSpawned++;
+                    if (Random.Range(0, 60) == 1)
+                    {
+
+                        GameObject enemy = Instantiate(Resources.Load<GameObject>("Giant"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
+                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 30 + 1;
+                        enemy.GetComponent<EnemyAI>().Hp = (int)(10 * ((float)difficulty / 3 + 1) * hpScaling);
+                        enemy.GetComponent<EnemyAI>().damage = (int)(((float)difficulty / 3 + 1) * dmgScaling);
+
+                    }
+                    else
+                    {
+                        
+                        
+                        GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy" + (int)Random.Range(1, 3)), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
+                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 10 + 1;
+                        enemy.GetComponent<EnemyAI>().Hp = (int)(3 * ((float)difficulty / 3 + 1) * hpScaling);
+                        enemy.GetComponent<EnemyAI>().damage = (int)(((float)difficulty / 8 + 1) * dmgScaling);
+                        
+                    }
+
                 }
                 else
                 {
@@ -108,8 +127,8 @@ public class Spawner : MonoBehaviour
                     enemiesSpawned++;
                     GameObject enemy = Instantiate(Resources.Load<GameObject>("Ninja"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
                     enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
-                    enemy.GetComponent<EnemyAI>().Hp = 10*( difficulty / 3 + 1);
-                    enemy.GetComponent<EnemyAI>().damage += difficulty / 3 + 1;
+                    enemy.GetComponent<EnemyAI>().Hp = (int)(3*((float)difficulty / 3 + 1)*hpScaling);
+                    enemy.GetComponent<EnemyAI>().damage = (int)((float)difficulty / 5 + 1)*dmgScaling;
                     timeSinceLastSpawn = 0f;
                     if(enemiesSpawned == maxEnemies)
                     {

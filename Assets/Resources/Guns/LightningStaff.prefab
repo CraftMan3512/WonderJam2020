@@ -99,8 +99,11 @@ MonoBehaviour:
   rpm: 20
   bullet: {fileID: 0}
   barrelLenght: 0
-  gunLenght: 0
+  gunLenght: 0.5
   ammoMax: 3
   recoilSpeed: 1
   maxRecoilDistance: 0.2
   recoilSpeedBack: 1
+  damagePerBullet: 0
+  speedPerBullet: 0
+  anglePerBullet: 0
