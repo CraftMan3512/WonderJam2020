@@ -56,7 +56,6 @@ public class JarThrow : MonoBehaviour
 
                     GameObject ghost = Instantiate(Resources.Load<GameObject>("Ghost"), new Vector3(15 * Mathf.Cos(360f / amount * i * Mathf.Deg2Rad), 10 * Mathf.Sin(360f / amount * i * Mathf.Deg2Rad), transform.position.z), Quaternion.identity);                   
                     ghost.GetComponent<Ghost>().target = collision.gameObject;
-                    Debug.Log(ghost.transform.position);
                 }
                 spawnedGhosts = true;
             }

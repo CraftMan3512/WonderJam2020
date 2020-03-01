@@ -60,7 +60,8 @@ public class Gun : MonoBehaviour
                     rightP = true;
             }else if (lightning)
             {
-                Instantiate(Resources.Load<GameObject>("Lightning"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                GameObject temp =Instantiate(Resources.Load<GameObject>("Lightning"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                temp.GetComponent<Lightning>().Ply=transform.parent.gameObject;
                 usedAmmo++;
                 checkAmmo();
             }
