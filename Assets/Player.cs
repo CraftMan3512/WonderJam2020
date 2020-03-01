@@ -2,16 +2,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class Player : MonoBehaviour
 {
+    
+    public int maxHealth=100;
+    public float maxFrenezie = 100;
+    
+    private int health;
+
+    public int Health
+    {
+        get => health;
+    }
+
+    public float Frenezie
+    {
+        get => frenezie;
+    }
+
+    private bool inFrenezie;
+    private float frenezie;
+    private float crateLevel = 0;
+    private int score;
+
+    public GameObject frenezieGun;
+    private GameObject backGun;
+    
+    
     public float movementSpeed;
     private Rigidbody2D rb;
     private Vector2 direction;
     private Vector2 direction2;
-    public Gun gunPrefab;
+    public GameObject gunPrefab;
     private Vector2 hands;
-    private Gun gunModel;
+    private GameObject gunModel;
     private bool glovesOn;
     
     //TURNING 
@@ -29,17 +55,18 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
+        health = maxHealth;
+        frenezie = 90;
+        crateLevel = 0;
+
         gloves = transform.GetChild(0).gameObject.GetComponent<Gun>();
         target = this.transform;
-        hands=transform.Find("Hands").GetComponent<Transform>().position;
+        hands=transform.Find("Hands").GetComponent<Transform>().localPosition;
         rb = GetComponent<Rigidbody2D>();
         if (gunPrefab)
         {
-            glovesOn = false;
-            gunModel=Instantiate(gunPrefab,Vector3.zero,Quaternion.identity,transform);
-            gunModel.transform.localPosition = new Vector3(0.2f,
-                hands.y +
-                gunPrefab.gunLenght * Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.Deg2Rad), transform.position.z);
+            EquipGun(gunPrefab.gameObject);
         }
         else
         {
@@ -47,20 +74,28 @@ public class Player : MonoBehaviour
             glovesOn = true;
         }
     }
-    
+
     private void Update()
     {
-        
+        //Check si on tire si oui quel arme ou gloves
+        if (shooting.Equals(true))
+        {
+            if(!glovesOn)
+                gunModel.GetComponent<Gun>().Shoot(angle);
+            else
+                gloves.Shoot(angle);
+        }
         //get new inputs
-        //Debug.Log(Input.GetAxisRaw("x1"));
         direction=new Vector2(Input.GetAxisRaw("x"+player),Input.GetAxisRaw("y"+player));
         if (Input.GetButtonDown("submit"+player))
         {
             shooting = true;
+            if(gunModel) gunModel.GetComponent<Gun>().Shooting();
         }
         if (Input.GetButtonUp("submit"+player))
         {
             shooting = false;
+            if(gunModel) gunModel.GetComponent<Gun>().Stopped();
         }
         
         if (Input.GetAxisRaw("rightx" + player) != 0 || Input.GetAxisRaw("righty" + player) != 0)
@@ -70,21 +105,64 @@ public class Player : MonoBehaviour
             angle -= 90;   
             
         }
-
-        if (shooting.Equals(true))
+        //Frenzy
+        if (Input.GetButtonDown("cancel" + player)&&maxFrenezie<=frenezie)
         {
-            if(!glovesOn)
-            gunModel.Shoot(angle);
-            else
-            gloves.Shoot(angle);
+            inFrenezie = true;
+            if (!glovesOn)
+            {
+                Debug.Log("Je stocke larme");
+                backGun = Instantiate(gunModel);
+                backGun.GetComponent<Gun>().UsedAmmo = getGun().GetComponent<Gun>().UsedAmmo;
+                backGun.SetActive(false);
+                DestroyGun();
+            }
+            EquipGun(frenezieGun.gameObject);
         }
 
+        if (!inFrenezie)
+        {
+            if (frenezie < maxFrenezie)
+            {
+                frenezie += 10f * Time.deltaTime;
+            }
+            else
+                frenezie = maxFrenezie;
+        }
+        else
+        {
+            if (frenezie > 0)
+            {
+                frenezie -= 10f * Time.deltaTime;
+            }
+            else
+            {
+                frenezie = 0;
+                DestroyGun();
+                if (backGun)
+                {
+                    backGun.SetActive(true);
+                    Debug.Log("Je rajoute larme");
+                    EquipGun(backGun);
+                    getGun().GetComponent<Gun>().UsedAmmo = backGun.GetComponent<Gun>().UsedAmmo;
+                }
+                Destroy(backGun);
+                backGun = null;
+                inFrenezie = false;
+            }
+        }
+            
     }
 
     private void Move(Vector2 direction)
     {
         this.direction = direction;
     }
+
+    public bool GlovesOn()
+    {
+        return glovesOn;
+    } 
 
     // Update is called once per frame
     void FixedUpdate()
@@ -105,5 +183,59 @@ public class Player : MonoBehaviour
         this.player = nb;
 
     }
-    
+
+    public void DestroyGun()
+    {
+        Destroy(gunModel.gameObject);
+        glovesOn = true;
+        gloves.gameObject.SetActive(true);
+    }
+
+    public void EquipGun(GameObject gun)
+    {
+        gloves.gameObject.SetActive(false);
+        glovesOn = false;
+        gunModel=Instantiate(gun,Vector3.zero,transform.rotation,transform);
+        gunModel.transform.localPosition = new Vector3(hands.x,
+            hands.y +
+            gun.GetComponent<Gun>().gunLenght, transform.position.z);
+    }
+
+    public GameObject getGun()
+    {
+        return gunModel;
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        //Debug.Log("PLPAYER TAKE DAMANGEE!!!! : " + dmg);
+        health -= dmg;
+        if (health < 0)
+        {
+            
+            health = 0;
+            //death
+            DeathCounter.PlayerDied(player,score);
+            Destroy(gameObject);
+            
+        }
+    }
+    public int Score
+    {
+        get => score;
+    }
+
+    public void addScore(int nb)
+    {
+        score += nb;
+    }
+
+    public void Heal(int healAmount)
+    {
+        health += healAmount;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
+    }
 }
