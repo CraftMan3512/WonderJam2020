@@ -93,40 +93,13 @@ public class Ghost : MonoBehaviour
 
     private void FindClosestTarget()
     {
-
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Enemy"))
+        try
         {
-            if (obj != null)
-            {
-                if (target == null)
-                {
-                    try //parce que wtf obj yer null
-                    {
-                        target = obj;                    
-                    }
-                    catch (System.Exception e)
-                    {
-                        Debug.Log(e.ToString());
-                    }
-                }
-                else
-                {
-                    try //parce que wtf obj yer null
-                    {
+            target=GameObject.FindGameObjectsWithTag("Enemy")[Random.Range(0, GameObject.FindGameObjectsWithTag("Enemy").Length)];
+        }catch(System.Exception e)
+        {
 
-                        if (Vector2.Distance(this.transform.position, obj.transform.position) <
-                            Vector2.Distance(this.transform.position, target.transform.position))
-                        {
-                            target = obj;
-                         
-                        }
-
-                    }
-                    catch (System.Exception e) { Debug.Log(e.ToString()); }
-
-                }
-
-            }
         }
+       
     }
 }
