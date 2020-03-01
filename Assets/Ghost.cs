@@ -37,6 +37,7 @@ public class Ghost : MonoBehaviour
                     if (Vector2.Distance(transform.position, target.transform.position) < 0.4f)
                     {
                         target.GetComponent<EnemyAI>().TakeDamage(damage);
+                        attackCooldown = 0;
                     }
                 }
                 else
