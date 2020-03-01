@@ -32,6 +32,7 @@ public class Gun : MonoBehaviour
     public float recoilSpeed=1f;
     public float maxRecoilDistance = 1f;
     public float recoilSpeedBack = 1f;
+    public int damagePerBullet = 0;
 
     public void Shoot(float angle)
     { 
@@ -63,10 +64,20 @@ public class Gun : MonoBehaviour
                     new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
                         transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad), transform.position.z),
                     transform.rotation);
-                if(tempBullet.GetComponent<BulletScript>()) 
+                if (tempBullet.GetComponent<BulletScript>())
+                {
                     tempBullet.GetComponent<BulletScript>().Ply = transform.parent.gameObject;
+                    if(damagePerBullet!=0) 
+                        tempBullet.GetComponent<BulletScript>().damage = damagePerBullet;
+                }
+
                 if (tempBullet.GetComponent<ShotgunShell>())
+                {
                     tempBullet.GetComponent<ShotgunShell>().Ply = transform.parent.gameObject;
+                    if(damagePerBullet!=0) 
+                        tempBullet.GetComponent<ShotgunShell>().damagePerBullet = damagePerBullet;
+                }
+
                 usedAmmo++;
                 checkAmmo();
                 isShooting = true;
