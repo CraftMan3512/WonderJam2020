@@ -109,10 +109,13 @@ public class Spawner : MonoBehaviour
                     int spawnNumber = Random.Range(0, spawnPoints.Count);
                     enemiesSpawned++;
                     GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
-                    //GameObject enemy = Instantiate((GameObject)Resources.Load("Enemy"), new Vector3(35 * Mathf.Cos(angle * Mathf.Deg2Rad), 25 * Mathf.Sin(angle * Mathf.Deg2Rad), transform.position.z), Quaternion.identity);
                     enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
-                    enemy.GetComponent<EnemyAI>().Hp *= difficulty / 5 + 1;
+                    enemy.GetComponent<EnemyAI>().Hp *= difficulty / 3 + 1;
                     timeSinceLastSpawn = 0f;
+                    if(enemiesSpawned == maxEnemies)
+                    {
+                    lastAlive = false;
+                    }
             }
             else
             {
@@ -130,7 +133,7 @@ public class Spawner : MonoBehaviour
         enemiesSpawned = 0;
         maxEnemies = 20;
         lastAlive = true;
-        incoming.SetText("With only one player remaining, the zombies are going all out! Brace yourself!");
+        incoming.SetText("With only one player remaining, the zombies are sending their specialized assassination group! Brace yourself!");
         difficulty = 50;
     }
 }
