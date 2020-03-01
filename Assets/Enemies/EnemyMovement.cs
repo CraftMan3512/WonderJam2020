@@ -145,7 +145,7 @@ public class EnemyMovement : MonoBehaviour
                     }
                     catch (System.Exception e)
                     {
-                        
+                        Debug.Log(e.ToString());
                     }
                 }
                 else
@@ -161,7 +161,7 @@ public class EnemyMovement : MonoBehaviour
                         }
 
                     }
-                    catch (System.Exception e) { }
+                    catch (System.Exception e) { Debug.Log(e.ToString());}
 
                 }
 

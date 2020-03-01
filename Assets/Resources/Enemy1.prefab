@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 5954461371595294474}
   - component: {fileID: 2475498457607256649}
   - component: {fileID: 6029635426200932196}
-  m_Layer: 0
-  m_Name: Enemy
+  m_Layer: 12
+  m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,6 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7ebbf044aa3614c8d6dfe3ef93e241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  dead: 0
 --- !u!114 &6029635426200932196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  dodgeTarget: {x: 0, y: 0}
 --- !u!1 &8491775889178508076
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +189,7 @@ GameObject:
   - component: {fileID: 5453181421179259060}
   - component: {fileID: 8215964401284465184}
   - component: {fileID: 7991283434250447729}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FeetCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

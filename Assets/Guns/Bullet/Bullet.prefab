@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7137154864050703221}
   - component: {fileID: -6626990487640834461}
   - component: {fileID: 8416976306506921107}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,10 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70458070757126041a9fc340beda9efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 0.7
   damage: 4
   angleRdm: 3
   fire: 0
+  rocket: 0
+  nextBullet: {fileID: 0}
 --- !u!50 &-7137154864050703221
 Rigidbody2D:
   serializedVersion: 4
@@ -114,7 +116,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -151,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c913fbbc3dc68144e9fb66541951eaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTillDestroy: 10
+  timeTillDestroy: 1.8
 --- !u!1001 &3309314775172172508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,6 +220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Guntrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436926365808139151, guid: 23f379542ae7d694283a089e6694d969,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23f379542ae7d694283a089e6694d969, type: 3}

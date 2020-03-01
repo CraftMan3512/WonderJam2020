@@ -12,6 +12,7 @@ public class LootBox : MonoBehaviour
         if (other.tag.Equals("Player")&&other.gameObject.GetComponent<Player>().GlovesOn())
         {
             other.gameObject.GetComponent<Player>().EquipGun(gun);
+            GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/Shoot"));
             Destroy(gameObject);
         }
     }

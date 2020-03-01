@@ -34,19 +34,22 @@ public class CubeDropping : MonoBehaviour
                 if (timeSinceLastDrop >= 3)
                 {
                     boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Metal");
-                    boxChan.GetComponent<Cube>().Hp = 30;
+                    boxChan.GetComponent<Cube>().Hp = 90;
+                    boxChan.GetComponent<Cube>().MaxHp = 90;
                     StartCoroutine(HoldingBox());
                 }
                 else if(timeSinceLastDrop >= 2)
                 {
                     boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Pierre");
-                    boxChan.GetComponent<Cube>().Hp = 20;
+                    boxChan.GetComponent<Cube>().Hp = 60;
+                    boxChan.GetComponent<Cube>().MaxHp = 60;
                     StartCoroutine(HoldingBox());
                 }
                 else if(timeSinceLastDrop >= 1)
                 {
                     boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Bois");
-                    boxChan.GetComponent<Cube>().Hp = 10;
+                    boxChan.GetComponent<Cube>().Hp = 30;
+                    boxChan.GetComponent<Cube>().MaxHp = 30;
                     StartCoroutine(HoldingBox());
                 }
                 else
@@ -81,11 +84,10 @@ public class CubeDropping : MonoBehaviour
             boxChan.transform.position = new Vector3(Mathf.Round(transform.position.x + 1 * Mathf.Cos((transform.eulerAngles.z+90 ) * Mathf.Deg2Rad)), Mathf.Round(transform.position.y + 1 * Mathf.Sin((transform.eulerAngles.z+90) * Mathf.Deg2Rad)), transform.position.z);
             yield return new WaitForSeconds(0.1f);
         }
-        
-        boxChan.transform.position = new Vector3(Mathf.Round(transform.position.x + 1 * Mathf.Cos((transform.eulerAngles.z+90) * Mathf.Deg2Rad)), Mathf.Round(transform.position.y + 1 * Mathf.Sin((transform.eulerAngles.z +90) * Mathf.Deg2Rad)), transform.position.z);
+        if(boxChan != null) boxChan.transform.position = new Vector3(Mathf.Round(transform.position.x + 1 * Mathf.Cos((transform.eulerAngles.z+90) * Mathf.Deg2Rad)), Mathf.Round(transform.position.y + 1 * Mathf.Sin((transform.eulerAngles.z +90) * Mathf.Deg2Rad)), transform.position.z);
         foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Box"))
         {
-            if(obj != boxChan)
+            if(obj != boxChan && boxChan != null)
             {
                 if(obj.transform.position == boxChan.transform.position)
                 {
@@ -98,6 +100,9 @@ public class CubeDropping : MonoBehaviour
             boxChan.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
             boxChan.GetComponent<BoxCollider2D>().enabled = true;
             timeSinceLastDrop = 0;
+            
+            GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/PlaceBox"),5f);
+            
         }
 
     }

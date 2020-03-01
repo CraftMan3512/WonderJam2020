@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2180812748055546714}
   - component: {fileID: 6991362809210259041}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shotgun Shell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,8 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39082e6f8cfab704d8876c8764876e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 1.4
   angleRdm: 5
+  ply: {fileID: 0}
   damagePerBullet: 5
 --- !u!1001 &1896338900018989290
 PrefabInstance:
