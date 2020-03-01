@@ -87,8 +87,15 @@ public class WaterGenerator : MonoBehaviour
         if (other.tag.Equals("Enemy"))
         {
             
-            other.GetComponent<EnemyAI>().TakeDamage(5);
-            
+            other.GetComponent<EnemyAI>().TakeDamage(3);
+            if (other.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+            {
+                if (!other.gameObject.GetComponent<EnemyAI>().dead)
+                {
+                    player.transform.parent.GetComponent<Player>().addScore(other.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                    other.gameObject.GetComponent<EnemyAI>().dead = true;
+                }
+            }
         }
         
     }
