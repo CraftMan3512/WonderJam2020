@@ -162,7 +162,14 @@ public class Player : MonoBehaviour
     {
         health -= dmg;
         if (health < 0)
+        {
+            
             health = 0;
+            //death
+            DeathCounter.PlayerDied(player,score);
+            Destroy(gameObject);
+            
+        }
     }
     public int Score
     {
