@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
     TextMeshProUGUI incoming;
     private bool lastAlive;
 
-    private int maxEnemies = 150;
+    private int maxEnemies = 150*PlayerSpawner.playerCount;
     private int enemiesSpawned = 0;
     
     // Start is called before the first frame update
@@ -114,7 +114,7 @@ public class Spawner : MonoBehaviour
                     if(enemiesSpawned == maxEnemies)
                     {
                     lastAlive = false;
-                    maxEnemies = 150;
+                    maxEnemies = 150*PlayerSpawner.playerCount;
                     enemiesSpawned = 0;
                     difficulty = 10;
                     }
@@ -134,7 +134,7 @@ public class Spawner : MonoBehaviour
     public void LastAlive()
     {
         enemiesSpawned = 0;
-        maxEnemies = 20;
+        maxEnemies = 20*PlayerSpawner.playerCount;
         lastAlive = true;
         incoming.SetText("With only one player remaining, the zombies are sending their specialized assassination group! Brace yourself!");
         difficulty = 50;
