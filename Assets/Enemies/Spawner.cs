@@ -45,7 +45,7 @@ public class Spawner : MonoBehaviour
                         GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy"+(int)Random.Range(1,3)), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
                         enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
                         enemy.GetComponent<EnemyAI>().damage += difficulty / 5 + 1;
-                        enemy.GetComponent<EnemyAI>().Hp *= difficulty / 3 + 1;
+                        enemy.GetComponent<EnemyAI>().Hp = 10*( difficulty / 5 + 1);
                         timeSinceLastSpawn = 0f;
                 }
                 else
@@ -108,7 +108,7 @@ public class Spawner : MonoBehaviour
                     enemiesSpawned++;
                     GameObject enemy = Instantiate(Resources.Load<GameObject>("Ninja"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
                     enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
-                    enemy.GetComponent<EnemyAI>().Hp *= difficulty / 3 + 1;
+                    enemy.GetComponent<EnemyAI>().Hp = 10*( difficulty / 3 + 1);
                     enemy.GetComponent<EnemyAI>().damage += difficulty / 3 + 1;
                     timeSinceLastSpawn = 0f;
                     if(enemiesSpawned == maxEnemies)
