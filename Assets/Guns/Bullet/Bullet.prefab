@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7137154864050703221}
   - component: {fileID: -6626990487640834461}
   - component: {fileID: 8416976306506921107}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,6 +220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Guntrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436926365808139151, guid: 23f379542ae7d694283a089e6694d969,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23f379542ae7d694283a089e6694d969, type: 3}
