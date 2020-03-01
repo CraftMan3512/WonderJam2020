@@ -200,6 +200,7 @@ public class Gun : MonoBehaviour
     }
     public void Start()
     {
+        coolDown = 60f/rpm;
         isShooting = false;
         if (fist)
         {
