@@ -102,9 +102,9 @@ MonoBehaviour:
   barrelLenght: 0
   gunLenght: 0
   ammoMax: 5
-  recoilSpeed: 1
-  maxRecoilDistance: 1
-  recoilSpeedBack: 1
+  recoilSpeed: 0.1
+  maxRecoilDistance: 0.1
+  recoilSpeedBack: 0.1
   damagePerBullet: 0
   speedPerBullet: 0
   anglePerBullet: 0
