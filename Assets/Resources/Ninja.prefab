@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &7005501137064410179
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6181543747346222113}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 949002f1420f1324b81b48a6fcd786b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4638425992416563951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11,7 +30,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cddacb6a9d9c8a1419d015bf83f60ea5,
+      objectReference: {fileID: 21300000, guid: 476c09c9a3ede2343917be41bcb32a68,
         type: 3}
     - target: {fileID: 1555921739730804430, guid: be1f2f90e5e08eb4db1186d8c9787d6b,
         type: 3}
@@ -76,12 +95,18 @@ PrefabInstance:
     - target: {fileID: 8983956149800420129, guid: be1f2f90e5e08eb4db1186d8c9787d6b,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8983956149800420129, guid: be1f2f90e5e08eb4db1186d8c9787d6b,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be1f2f90e5e08eb4db1186d8c9787d6b, type: 3}
+--- !u!1 &6181543747346222113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1555921739730804430, guid: be1f2f90e5e08eb4db1186d8c9787d6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4638425992416563951}
+  m_PrefabAsset: {fileID: 0}
