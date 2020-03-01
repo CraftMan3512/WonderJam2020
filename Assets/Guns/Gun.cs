@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [Header("Type d'arme")]
+    public bool lightning;
+    public bool water;
+
     public bool fist = false;
     public float rpm = 120;
 
@@ -29,16 +33,24 @@ public class Gun : MonoBehaviour
 
     private bool isShooting;
     private Vector3 posWeaponOriginal;
-    public float recoilSpeed=1f;
-    public float maxRecoilDistance = 1f;
-    public float recoilSpeedBack = 1f;
+    [Header("Recoil Values")]
+    public float recoilSpeed=0.03f;
+    public float maxRecoilDistance = 0.18f;
+    public float recoilSpeedBack = 0.15f;
+    [Header("Bullet Override")]
+    public int damagePerBullet = 0;
+    public float speedPerBullet = 0f;
+    public float anglePerBullet = 0f;
+    //water vars
+    private GameObject waterBullet;
+    private bool justShot;
 
     public void Shoot(float angle)
-    { 
-        isShooting = false;
+    {
+        
         if (coolDown >= 60 / rpm)
         {
-            
+            justShot = true;
             coolDown = 0;
             if(fist)
             {
@@ -52,6 +64,37 @@ public class Gun : MonoBehaviour
                     rightP = false;
                 else
                     rightP = true;
+            }else if (lightning)
+            {
+                GameObject temp =Instantiate(Resources.Load<GameObject>("Lightning"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                temp.GetComponent<Lightning>().Ply=transform.parent.gameObject;
+                usedAmmo++;
+                checkAmmo();
+            }else if (water)
+            {
+                
+                if (waterBullet) {
+                    
+                    waterBullet.GetComponent<WaterGenerator>().AddPoint(
+                    new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
+                    transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad), 0),
+                    angle
+                    );
+
+                    usedAmmo++;
+                    checkAmmo();
+                }
+                else
+                {
+                    Debug.Log("SPAWN NEW WATER");
+                    waterBullet = Instantiate(bullet,transform.position,Quaternion.identity);
+                    waterBullet.GetComponent<WaterGenerator>().SpawnWater(                
+                        new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
+                        transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad),0),
+                        angle,
+                        gameObject);
+                }
+                
             }
             else
             {
@@ -63,31 +106,60 @@ public class Gun : MonoBehaviour
                     new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
                         transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad), transform.position.z),
                     transform.rotation);
-                if(tempBullet.GetComponent<BulletScript>()) 
+                if (tempBullet.GetComponent<BulletScript>())
+                {
                     tempBullet.GetComponent<BulletScript>().Ply = transform.parent.gameObject;
+                    if(damagePerBullet!=0) 
+                        tempBullet.GetComponent<BulletScript>().damage = damagePerBullet;
+                    if(speedPerBullet!=0) 
+                        tempBullet.GetComponent<BulletScript>().speed = speedPerBullet;
+                    if(anglePerBullet!=0) 
+                        tempBullet.GetComponent<BulletScript>().angleRdm = anglePerBullet;
+                }
+
+                if (tempBullet.GetComponent<JarThrow>())
+                {
+                    tempBullet.GetComponent<JarThrow>().Ply = transform.parent.gameObject;
+                }
                 if (tempBullet.GetComponent<ShotgunShell>())
+                {
                     tempBullet.GetComponent<ShotgunShell>().Ply = transform.parent.gameObject;
+                    if(damagePerBullet!=0) 
+                        tempBullet.GetComponent<ShotgunShell>().damagePerBullet = damagePerBullet;
+                }
+
                 usedAmmo++;
                 checkAmmo();
-                isShooting = true;
+                
             }
         }
+            
     }
 
     public void Update()
     {
-        if (isShooting&&!fist)
+        if (justShot && !fist)
         {
-            if (transform.localPosition.y > posWeaponOriginal.y - maxRecoilDistance)
+            float distanceLeft = (maxRecoilDistance - (posWeaponOriginal.y - transform.localPosition.y));
+            if (distanceLeft >= recoilSpeed)
             {
-                transform.localPosition -= new Vector3(0, Time.deltaTime * recoilSpeed*50f);
-            }else transform.localPosition=new Vector3(posWeaponOriginal.x,posWeaponOriginal.y-maxRecoilDistance);
+                //Debug.Log("Recule de recoilSpeed");
+                transform.localPosition -= new Vector3(0, recoilSpeed);
+            }
+            else 
+            if(distanceLeft >0)
+            {
+                //Debug.Log("Stay de recoilSpeed");
+                transform.localPosition -= new Vector3(0, distanceLeft);
+            }
+
+            justShot = false;
         }
         else
         {
             if (transform.localPosition.y < posWeaponOriginal.y)
             {
-                transform.localPosition += new Vector3(0, Time.deltaTime * recoilSpeedBack*0.5f);
+                transform.localPosition += new Vector3(0,  recoilSpeedBack*0.01f);
             }
             else
                 transform.localPosition = posWeaponOriginal;
@@ -103,6 +175,18 @@ public class Gun : MonoBehaviour
                  GetComponent<Animator>().SetFloat("shooting", 0f);
             
              }
+             
+             if (water)
+             {
+                 if (waterBullet)
+                 {
+                     Debug.Log("DECOUPLE WATER");
+                     waterBullet.GetComponent<WaterGenerator>().shooting = false;
+                     waterBullet = null;   
+                     
+                 }
+             }
+
          }
     public void Shooting()
     {
@@ -112,10 +196,11 @@ public class Gun : MonoBehaviour
         {
             GetComponent<Animator>().SetFloat("shooting", 1.0f);
         }
-        
+
     }
     public void Start()
     {
+        coolDown = 60f/rpm;
         isShooting = false;
         if (fist)
         {

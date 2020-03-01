@@ -17,13 +17,6 @@ public class Cube : MonoBehaviour
         Hp = MaxHp;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void TakeDamage(int damage)
     {
         
@@ -34,6 +27,15 @@ public class Cube : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        float pourcent = ((float) Hp / (float) MaxHp)*100f;
+        if (pourcent >= 67f)
+        {
+            
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/" + GetComponent<SpriteRenderer>().sprite.name.Substring(0, GetComponent<SpriteRenderer>().sprite.name.Length - 1) + "1");   
+            
+        }else if (pourcent >= 33f) GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/" + GetComponent<SpriteRenderer>().sprite.name.Substring(0, GetComponent<SpriteRenderer>().sprite.name.Length - 1) + "2");
+
         StartCoroutine(Shaking());
     }
 

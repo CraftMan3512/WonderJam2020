@@ -11,11 +11,13 @@ public class EnemyAI : MonoBehaviour
     public int damage;
     private GameObject target;
     private float attackCooldown;
+    public float timeBeforeAttack = 0.4f;
     private int scorePoints;
     public bool dead;
 
     public int ScorePoints
     {
+        set => scorePoints = value;
         get => scorePoints;
     }
 
@@ -23,6 +25,7 @@ public class EnemyAI : MonoBehaviour
     public int MaxHp { get => maxHp; set => maxHp = value; }
     public int Damage { get => damage; set => damage = value; }
     public GameObject Target { get => target; set => target = value; }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +49,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (target != null)
         {
-            if (attackCooldown >= 1.8f)
+            if (attackCooldown >= 2f-timeBeforeAttack)
             {
                 if (Vector2.Distance(transform.position, target.transform.position) <= 1f)
                 {
@@ -71,14 +74,14 @@ public class EnemyAI : MonoBehaviour
                 }
                 else
                 {
-                    attackCooldown = 1.8f;
+                    attackCooldown = 2f-timeBeforeAttack;
                 }
 
 
             }
             else
             {
-                if (attackCooldown < 1.8f)
+                if (attackCooldown < 2f-timeBeforeAttack)
                 {
                     attackCooldown += Time.fixedDeltaTime;
                 }
@@ -95,12 +98,12 @@ public class EnemyAI : MonoBehaviour
     {
         StartCoroutine(DamageEffect());
         hp -= damage;
-        if(hp <= 0)//DEATH
+        if(hp <= 0&&!dead)//DEATH
         {
-            if((int)Random.Range(0,15) == 1)
+            if((int)Random.Range(0,30) == 1)
             {
                 Instantiate(Resources.Load<GameObject>("Weapon Crate"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-            }else if((int)Random.Range(0, 30) == 1)
+            }else if((int)Random.Range(0, 40) == 1)
             {
                 Instantiate(Resources.Load<GameObject>("MedKit"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             }
