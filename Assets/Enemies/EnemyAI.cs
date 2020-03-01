@@ -31,6 +31,9 @@ public class EnemyAI : MonoBehaviour
        // maxHp = 10;
        // hp = maxHp;
         scorePoints = 10;
+        
+        //coroutine for zombie noises
+        StartCoroutine(ZombieNoise());
     }
 
     // Update is called once per frame
@@ -103,10 +106,15 @@ public class EnemyAI : MonoBehaviour
             }
 
             //gore
-            GameObject blood = Instantiate(Resources.Load<GameObject>("Gore"),transform.position,Quaternion.identity);
-            blood.transform.localScale = new Vector3(1,1,0) * 0.1f;
-            
-            
+            if (!dead)
+            {
+                GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/ZombieDeath"));
+                GameObject blood = Instantiate(Resources.Load<GameObject>("Gore"), transform.position,
+                    Quaternion.identity);
+                blood.transform.localScale = new Vector3(1, 1, 0) * 0.1f;
+            }
+
+
             Destroy(gameObject);
         }
     }
@@ -116,6 +124,18 @@ public class EnemyAI : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0, 0, 1);
         yield return new WaitForSeconds(0.1f);
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        
+    }
+
+    IEnumerator ZombieNoise()
+    {
+
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(3f,20f));
+            GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/Zombie"));
+
+        }
         
     }
 

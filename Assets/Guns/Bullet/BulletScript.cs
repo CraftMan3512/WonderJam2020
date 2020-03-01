@@ -11,9 +11,12 @@ public class BulletScript : MonoBehaviour
     public float angleRdm=3;
     private GameObject ply;
     public bool fire;
+    public bool rocket;
+    public GameObject nextBullet;
 
     public GameObject Ply
     {
+        get => ply;
         set => ply = value;
     }
 
@@ -44,12 +47,21 @@ public class BulletScript : MonoBehaviour
                         collision.gameObject.GetComponent<EnemyAI>().dead = true;
                     }
                 }
-
-                Destroy(gameObject);
+                
             }
             else if (collision.gameObject.tag.Equals("Box"))
             {
                 collision.gameObject.GetComponent<Cube>().TakeDamage(damage);
+                
+            }
+            if (rocket)
+            {
+                GameObject rocket = Instantiate(nextBullet,transform.position,Quaternion.identity);
+                rocket.GetComponent<RocketScript>().Ply = ply;
+                Destroy(gameObject);
+            }else
+            if (collision.gameObject.tag.Equals("Box") || collision.gameObject.tag.Equals("Enemy"))
+            {
                 Destroy(gameObject);
             }
         }
