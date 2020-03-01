@@ -101,10 +101,10 @@ MonoBehaviour:
   bullet: {fileID: 8326293947191301807, guid: 5bab1d9a9727caa4399d679c3e457e7a, type: 3}
   barrelLenght: 0.9
   gunLenght: 0.55
-  ammoMax: 10
+  ammoMax: 25
   recoilSpeed: 1
   maxRecoilDistance: 0.2
   recoilSpeedBack: 0.1
   damagePerBullet: 50
-  speedPerBullet: 1.6
+  speedPerBullet: 1.2
   anglePerBullet: 0.0001

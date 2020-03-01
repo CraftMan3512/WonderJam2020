@@ -95,14 +95,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightning: 0
+  water: 0
   fist: 0
   rpm: 1200
   bullet: {fileID: 8326293947191301807, guid: 5bab1d9a9727caa4399d679c3e457e7a, type: 3}
   barrelLenght: 0.84
   gunLenght: 0.3
   ammoMax: 200
-  recoilSpeed: 0.15
-  maxRecoilDistance: 0.25
+  recoilSpeed: 0.04
+  maxRecoilDistance: 0.18
   recoilSpeedBack: 0.15
   damagePerBullet: 4
   speedPerBullet: 0

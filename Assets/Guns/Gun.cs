@@ -47,10 +47,10 @@ public class Gun : MonoBehaviour
 
     public void Shoot(float angle)
     {
+        
         if (coolDown >= 60 / rpm)
         {
             justShot = true;
-            
             coolDown = 0;
             if(fist)
             {
@@ -71,7 +71,6 @@ public class Gun : MonoBehaviour
                 usedAmmo++;
                 checkAmmo();
             }else if (water)
-
             {
                 
                 if (waterBullet) {
@@ -87,8 +86,6 @@ public class Gun : MonoBehaviour
                 }
                 else
                 {
-
-                    
                     Debug.Log("SPAWN NEW WATER");
                     waterBullet = Instantiate(bullet,transform.position,Quaternion.identity);
                     waterBullet.GetComponent<WaterGenerator>().SpawnWater(                

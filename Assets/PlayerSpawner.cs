@@ -8,7 +8,7 @@ public class PlayerSpawner : MonoBehaviour
 {
 
     public GameObject playerPrefab;
-    public static int playerCount = 1;
+    public static int playerCount = 2;
     public GameObject playerNumber;
 
     public CinemachineTargetGroup targetGroup;
