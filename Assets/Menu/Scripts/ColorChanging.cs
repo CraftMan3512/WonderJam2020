@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class ColorChanging : MonoBehaviour
 {
     private float t;
-    private Color red = new Color(195 / 256f, 40 / 256f, 30 / 256f);
+    private float x = 0;
+    private Color red = new Color(80 / 256f, 160 / 256f, 34 / 256f);
 
     private bool reset = true;
 
