@@ -35,6 +35,7 @@ public class Gun : MonoBehaviour
     public float recoilSpeed=1f;
     public float maxRecoilDistance = 1f;
     public float recoilSpeedBack = 1f;
+    [Header("Bullet Override")]
     public int damagePerBullet = 0;
     public float speedPerBullet = 0f;
     public float anglePerBullet = 0f;

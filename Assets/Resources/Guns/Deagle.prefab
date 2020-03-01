@@ -94,8 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63dc8e94c189b84dad2ee0735b3c557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightning: 0
   fist: 0
-  rpm: 160
+  rpm: 100
   bullet: {fileID: 8326293947191301807, guid: 5bab1d9a9727caa4399d679c3e457e7a, type: 3}
   barrelLenght: 0.3
   gunLenght: 0.2
@@ -103,6 +104,6 @@ MonoBehaviour:
   recoilSpeed: 0.2
   maxRecoilDistance: 0.2
   recoilSpeedBack: 0.3
-  damagePerBullet: 10
-  speedPerBullet: 0.8
-  anglePerBullet: 0
+  damagePerBullet: 40
+  speedPerBullet: 1.2
+  anglePerBullet: 1

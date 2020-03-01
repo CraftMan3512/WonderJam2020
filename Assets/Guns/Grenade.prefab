@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2331266004886080261}
   - component: {fileID: 9033963190771920713}
-  - component: {fileID: 131195731527311118}
+  - component: {fileID: -7173064649282252703}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &131195731527311118
+--- !u!114 &-7173064649282252703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63dc8e94c189b84dad2ee0735b3c557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightning: 0
   fist: 0
   rpm: 120
   bullet: {fileID: 0}
