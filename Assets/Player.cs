@@ -208,6 +208,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
+        //Debug.Log("PLPAYER TAKE DAMANGEE!!!! : " + dmg);
         health -= dmg;
         if (health < 0)
         {

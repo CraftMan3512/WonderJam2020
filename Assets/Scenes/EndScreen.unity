@@ -179,7 +179,7 @@ MonoBehaviour:
   m_text: Back to Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 39ba35ce69454494fbbbc587cec3e1f1, type: 2}
-  m_sharedMaterial: {fileID: 1653959705352107498, guid: 39ba35ce69454494fbbbc587cec3e1f1,
+  m_sharedMaterial: {fileID: 3899019097295555217, guid: 39ba35ce69454494fbbbc587cec3e1f1,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_text: 9300 pts
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 39ba35ce69454494fbbbc587cec3e1f1, type: 2}
-  m_sharedMaterial: {fileID: 1653959705352107498, guid: 39ba35ce69454494fbbbc587cec3e1f1,
+  m_sharedMaterial: {fileID: 3899019097295555217, guid: 39ba35ce69454494fbbbc587cec3e1f1,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_text: GAME OVER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 39ba35ce69454494fbbbc587cec3e1f1, type: 2}
-  m_sharedMaterial: {fileID: 1653959705352107498, guid: 39ba35ce69454494fbbbc587cec3e1f1,
+  m_sharedMaterial: {fileID: 3899019097295555217, guid: 39ba35ce69454494fbbbc587cec3e1f1,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -972,7 +972,7 @@ MonoBehaviour:
   m_text: Player 1 won
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 39ba35ce69454494fbbbc587cec3e1f1, type: 2}
-  m_sharedMaterial: {fileID: 1653959705352107498, guid: 39ba35ce69454494fbbbc587cec3e1f1,
+  m_sharedMaterial: {fileID: 3899019097295555217, guid: 39ba35ce69454494fbbbc587cec3e1f1,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
