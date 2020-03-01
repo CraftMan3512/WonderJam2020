@@ -102,8 +102,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   maxFrenezie: 100
+  frenezieGun: {fileID: 1094259705054471043, guid: 0bd1dde7c0d2de340b2f64e1dc844241,
+    type: 3}
   movementSpeed: 5
-  gunPrefab: {fileID: 2300379359705844419, guid: 072c318391dac2d40968e3d332d13396,
+  gunPrefab: {fileID: 8673376385809660898, guid: 88a30b0a5b749364eaf5e29759e2991d,
     type: 3}
   player: 0
 --- !u!212 &2727095382557001445

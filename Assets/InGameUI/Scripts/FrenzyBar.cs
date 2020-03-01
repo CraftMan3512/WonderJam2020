@@ -12,7 +12,7 @@ public class FrenzyBar : MonoBehaviour
     void Update()
     {
         if(player!=null)
-            transform.localScale=new Vector3(player.GetComponent<CubeDropping>().TimeSinceLastDrop/3,1,1);
+            transform.localScale=new Vector3(player.GetComponent<Player>().Frenezie/100f,1,1);
     }
     public void setPlayer(GameObject ply)
     {
