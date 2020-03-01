@@ -33,21 +33,23 @@ public class Gun : MonoBehaviour
 
     private bool isShooting;
     private Vector3 posWeaponOriginal;
-    public float recoilSpeed=1f;
-    public float maxRecoilDistance = 1f;
-    public float recoilSpeedBack = 1f;
+    [Header("Recoil Values")]
+    public float recoilSpeed=0.03f;
+    public float maxRecoilDistance = 0.18f;
+    public float recoilSpeedBack = 0.15f;
     [Header("Bullet Override")]
     public int damagePerBullet = 0;
     public float speedPerBullet = 0f;
     public float anglePerBullet = 0f;
     //water vars
     private GameObject waterBullet;
+    private bool justShot;
 
     public void Shoot(float angle)
-    { 
-        isShooting = false;
+    {
         if (coolDown >= 60 / rpm)
         {
+            justShot = true;
             
             coolDown = 0;
             if(fist)
@@ -82,7 +84,6 @@ public class Gun : MonoBehaviour
 
                     usedAmmo++;
                     checkAmmo();
-
                 }
                 else
                 {
@@ -95,7 +96,6 @@ public class Gun : MonoBehaviour
                         transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad),0),
                         angle,
                         gameObject);
-
                 }
                 
             }
@@ -133,25 +133,36 @@ public class Gun : MonoBehaviour
 
                 usedAmmo++;
                 checkAmmo();
-                isShooting = true;
+                
             }
         }
+            
     }
 
     public void Update()
     {
-        if (isShooting&&!fist)
+        if (justShot && !fist)
         {
-            if (transform.localPosition.y > posWeaponOriginal.y - maxRecoilDistance)
+            float distanceLeft = (maxRecoilDistance - (posWeaponOriginal.y - transform.localPosition.y));
+            if (distanceLeft >= recoilSpeed)
             {
-                transform.localPosition -= new Vector3(0, Time.deltaTime * recoilSpeed*50f);
-            }else transform.localPosition=new Vector3(posWeaponOriginal.x,posWeaponOriginal.y-maxRecoilDistance);
+                //Debug.Log("Recule de recoilSpeed");
+                transform.localPosition -= new Vector3(0, recoilSpeed);
+            }
+            else 
+            if(distanceLeft >0)
+            {
+                //Debug.Log("Stay de recoilSpeed");
+                transform.localPosition -= new Vector3(0, distanceLeft);
+            }
+
+            justShot = false;
         }
         else
         {
             if (transform.localPosition.y < posWeaponOriginal.y)
             {
-                transform.localPosition += new Vector3(0, Time.deltaTime * recoilSpeedBack*0.5f);
+                transform.localPosition += new Vector3(0,  recoilSpeedBack*0.01f);
             }
             else
                 transform.localPosition = posWeaponOriginal;

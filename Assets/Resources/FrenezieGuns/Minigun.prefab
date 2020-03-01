@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 69b865d0706473640b73a99ffe748dad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,16 +95,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63dc8e94c189b84dad2ee0735b3c557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightning: 0
+  water: 0
   fist: 0
-  spread: 0
   rpm: 4000
   bullet: {fileID: 8326293947191301807, guid: 5bab1d9a9727caa4399d679c3e457e7a, type: 3}
   barrelLenght: 0.5
-  gunLenght: 0.6
+  gunLenght: 0.45
   ammoMax: 9999
-  recoilSpeed: 0.2
-  maxRecoilDistance: 0.08
-  recoilSpeedBack: 0.5
+  recoilSpeed: 0.01
+  maxRecoilDistance: 0.05
+  recoilSpeedBack: 0.2
+  damagePerBullet: 0
+  speedPerBullet: 0
+  anglePerBullet: 0
 --- !u!95 &6940157031328853356
 Animator:
   serializedVersion: 3
