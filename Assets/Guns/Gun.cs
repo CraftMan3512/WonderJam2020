@@ -6,7 +6,6 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public bool fist = false;
-    public bool spread = false; //TODO 
     public float rpm = 120;
 
     public GameObject bullet;
@@ -41,21 +40,7 @@ public class Gun : MonoBehaviour
         {
             
             coolDown = 0;
-            if (!fist)
-            {
-                GameObject tempBullet = Instantiate(bullet,
-                    new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
-                        transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad), transform.position.z),
-                    transform.rotation);
-                if(tempBullet.GetComponent<BulletScript>()) 
-                    tempBullet.GetComponent<BulletScript>().Ply = transform.parent.gameObject;
-                if (tempBullet.GetComponent<ShotgunShell>())
-                    tempBullet.GetComponent<ShotgunShell>().Ply = transform.parent.gameObject;
-                usedAmmo++;
-                checkAmmo();
-                isShooting = true;
-            }
-            else
+            if(fist)
             {
                 GameObject currHand;
                 if (rightP)
@@ -68,12 +53,30 @@ public class Gun : MonoBehaviour
                 else
                     rightP = true;
             }
+            else
+            {
+                //BASIC WEAPON
+                
+                GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/Pickup"),0.5f);
+                
+                GameObject tempBullet = Instantiate(bullet,
+                    new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
+                        transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad), transform.position.z),
+                    transform.rotation);
+                if(tempBullet.GetComponent<BulletScript>()) 
+                    tempBullet.GetComponent<BulletScript>().Ply = transform.parent.gameObject;
+                if (tempBullet.GetComponent<ShotgunShell>())
+                    tempBullet.GetComponent<ShotgunShell>().Ply = transform.parent.gameObject;
+                usedAmmo++;
+                checkAmmo();
+                isShooting = true;
+            }
         }
     }
 
     public void Update()
     {
-        if (isShooting)
+        if (isShooting&&!fist)
         {
             if (transform.localPosition.y > posWeaponOriginal.y - maxRecoilDistance)
             {
@@ -89,9 +92,6 @@ public class Gun : MonoBehaviour
             else
                 transform.localPosition = posWeaponOriginal;
         }
-        
-        
-        
         coolDown += Time.deltaTime;
     }
 
@@ -111,7 +111,6 @@ public class Gun : MonoBehaviour
         if (GetComponent<Animator>())
         {
             GetComponent<Animator>().SetFloat("shooting", 1.0f);
-            
         }
         
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using TMPro;
 using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerSpawner : MonoBehaviour
 
     public GameObject playerPrefab;
     public static int playerCount = 2;
+    public GameObject playerNumber;
 
     public CinemachineTargetGroup targetGroup;
     
@@ -38,8 +40,9 @@ public class PlayerSpawner : MonoBehaviour
             GameObject.Find("BoxesBar" + i).GetComponent<BoxesBar>().setPlayer(player);
             GameObject.Find("FinalCanvas").GetComponent<ScoreBoard>().addPlayer(player,i);
             targetGroup.m_Targets[i - 1].weight = 1f;
-
-
+            GameObject temp = Instantiate(playerNumber);
+            temp.GetComponent<PlayerNumber>().Ply=player;
+            temp.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ("P" + i);
         }
         
         
