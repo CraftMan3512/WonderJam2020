@@ -104,7 +104,8 @@ MonoBehaviour:
   maxFrenezie: 100
   movementSpeed: 5
   mvmtSpdModWithWp: 0.87
-  gunPrefab: {fileID: 0}
+  gunPrefab: {fileID: 5584105220748075129, guid: 2fd50ed9cb1e24d42b926a4acc00b850,
+    type: 3}
   player: 0
 --- !u!212 &2727095382557001445
 SpriteRenderer:
