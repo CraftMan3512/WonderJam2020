@@ -39,11 +39,10 @@ public class Gun : MonoBehaviour
         isShooting = false;
         if (coolDown >= 60 / rpm)
         {
-           
+            
             coolDown = 0;
             if (!fist)
             {
-                
                 GameObject tempBullet = Instantiate(bullet,
                     new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
                         transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad), transform.position.z),
@@ -58,7 +57,6 @@ public class Gun : MonoBehaviour
             }
             else
             {
-
                 GameObject currHand;
                 if (rightP)
                     currHand = RightPunch;

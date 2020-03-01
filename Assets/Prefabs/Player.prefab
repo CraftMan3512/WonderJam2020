@@ -105,7 +105,7 @@ MonoBehaviour:
   frenezieGun: {fileID: 1094259705054471043, guid: 0bd1dde7c0d2de340b2f64e1dc844241,
     type: 3}
   movementSpeed: 5
-  gunPrefab: {fileID: 8673376385809660898, guid: 88a30b0a5b749364eaf5e29759e2991d,
+  gunPrefab: {fileID: 4229610730379003092, guid: b7e15d7eaf4d84743b62481f3594652f,
     type: 3}
   player: 0
 --- !u!212 &2727095382557001445
