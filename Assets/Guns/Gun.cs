@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
 {
     [Header("Type d'arme")]
     public bool lightning;
+    public bool water;
 
     public bool fist = false;
     public float rpm = 120;
@@ -38,6 +39,8 @@ public class Gun : MonoBehaviour
     public int damagePerBullet = 0;
     public float speedPerBullet = 0f;
     public float anglePerBullet = 0f;
+    //water vars
+    private GameObject waterBullet;
 
     public void Shoot(float angle)
     { 
@@ -63,6 +66,36 @@ public class Gun : MonoBehaviour
                 Instantiate(Resources.Load<GameObject>("Lightning"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                 usedAmmo++;
                 checkAmmo();
+            }else if (water)
+
+            {
+                
+                if (waterBullet) {
+                    
+                    waterBullet.GetComponent<WaterGenerator>().AddPoint(
+                    new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
+                    transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad), 0),
+                    angle
+                    );
+
+                    usedAmmo++;
+                    checkAmmo();
+
+                }
+                else
+                {
+
+                    
+                    Debug.Log("SPAWN NEW WATER");
+                    waterBullet = Instantiate(bullet,transform.position,Quaternion.identity);
+                    waterBullet.GetComponent<WaterGenerator>().SpawnWater(                
+                        new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
+                        transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad),0),
+                        angle,
+                        gameObject);
+
+                }
+                
             }
             else
             {
@@ -132,6 +165,18 @@ public class Gun : MonoBehaviour
                  GetComponent<Animator>().SetFloat("shooting", 0f);
             
              }
+             
+             if (water)
+             {
+                 if (waterBullet)
+                 {
+                     Debug.Log("DECOUPLE WATER");
+                     waterBullet.GetComponent<WaterGenerator>().shooting = false;
+                     waterBullet = null;   
+                     
+                 }
+             }
+
          }
     public void Shooting()
     {
@@ -141,7 +186,7 @@ public class Gun : MonoBehaviour
         {
             GetComponent<Animator>().SetFloat("shooting", 1.0f);
         }
-        
+
     }
     public void Start()
     {

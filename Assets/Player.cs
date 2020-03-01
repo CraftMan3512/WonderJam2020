@@ -90,12 +90,12 @@ public class Player : MonoBehaviour
         }
         //get new inputs
         direction=new Vector2(Input.GetAxisRaw("x"+player),Input.GetAxisRaw("y"+player));
-        if (Input.GetButtonDown("submit"+player))
+        if (Input.GetButtonDown("submit"+player)|| Input.GetAxisRaw("submit"+player) != 0f)
         {
             shooting = true;
             if(gunModel) gunModel.GetComponent<Gun>().Shooting();
         }
-        if (Input.GetButtonUp("submit"+player))
+        if (Input.GetButtonUp("submit"+player)|| Input.GetAxisRaw("submit"+player) == 0f)
         {
             shooting = false;
             if(gunModel) gunModel.GetComponent<Gun>().Stopped();
