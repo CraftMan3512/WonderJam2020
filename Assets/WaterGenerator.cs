@@ -92,7 +92,7 @@ public class WaterGenerator : MonoBehaviour
             {
                 if (!other.gameObject.GetComponent<EnemyAI>().dead)
                 {
-                    player.transform.parent.GetComponent<Player>().addScore(other.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                    if (player) player.transform.parent.GetComponent<Player>().addScore(other.gameObject.GetComponent<EnemyAI>().ScorePoints);
                     other.gameObject.GetComponent<EnemyAI>().dead = true;
                 }
             }

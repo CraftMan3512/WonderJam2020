@@ -14,10 +14,11 @@ public class Spawner : MonoBehaviour
     TextMeshProUGUI incoming;
     private bool lastAlive;
 
-    public int hpScaling=1;
-    public int dmgScaling=1;
+    public int hpScaling=2;
+    public int dmgScaling=2;
 
-    private int maxEnemies = 150*PlayerSpawner.playerCount;
+    private int maxEnemies = 150;
+    public static int enemies;
     private int enemiesSpawned = 0;
     
     // Start is called before the first frame update
@@ -41,16 +42,17 @@ public class Spawner : MonoBehaviour
         {
             if (timeSinceWaveStarted < 60f)
             {
-                if (timeSinceLastSpawn >= 5f / difficulty && enemiesSpawned < maxEnemies)
+                if (timeSinceLastSpawn >= 5f / (difficulty*PlayerSpawner.playerCount) && enemies < maxEnemies)
                 {
                     int spawnNumber = Random.Range(0, spawnPoints.Count);
                     timeSinceLastSpawn = 0;
                     enemiesSpawned++;
+                    enemies++;
                     if (Random.Range(0, 60) == 1)
                     {
 
                         GameObject enemy = Instantiate(Resources.Load<GameObject>("Giant"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
-                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 30 + 1;
+                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 45 + 1;
                         enemy.GetComponent<EnemyAI>().Hp = (int)(10 * ((float)difficulty / 3 + 3) * hpScaling);
                         enemy.GetComponent<EnemyAI>().damage = (int)(((float)difficulty / 3 + 1) * dmgScaling);
 
@@ -60,7 +62,7 @@ public class Spawner : MonoBehaviour
                         
                         
                         GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy" + (int)Random.Range(1, 3)), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
-                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 10 + 1;
+                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 20 + 1;
                         enemy.GetComponent<EnemyAI>().Hp = (int)(3 * ((float)difficulty / 3 + 1) * hpScaling);
                         enemy.GetComponent<EnemyAI>().damage = (int)(((float)difficulty / 8 + 1) * dmgScaling);
                         
@@ -81,7 +83,8 @@ public class Spawner : MonoBehaviour
 
                 if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && waveTimer <= 0f)
                 {
-                    waveTimer = 30f;//TIMER DE DEPART
+                    if (timeSinceWaveStarted == 61) waveTimer = 60f;
+                    else waveTimer = 30f;//TIMER DE DEPART
                     incoming.enabled = true;
                 }
                 else
@@ -107,7 +110,7 @@ public class Spawner : MonoBehaviour
 
 
             }
-            if (timeSinceLastDifUp > difficulty * 1.5f/PlayerSpawner.playerCount)
+            if (timeSinceLastDifUp > difficulty * 1.5f)
             {
                 difficulty++;
                 timeSinceLastDifUp = 0f;
