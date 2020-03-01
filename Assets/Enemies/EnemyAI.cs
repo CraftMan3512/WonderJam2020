@@ -103,10 +103,14 @@ public class EnemyAI : MonoBehaviour
             }
 
             //gore
-            GameObject blood = Instantiate(Resources.Load<GameObject>("Gore"),transform.position,Quaternion.identity);
-            blood.transform.localScale = new Vector3(1,1,0) * 0.1f;
-            
-            
+            if (!dead)
+            {
+                GameObject blood = Instantiate(Resources.Load<GameObject>("Gore"), transform.position,
+                    Quaternion.identity);
+                blood.transform.localScale = new Vector3(1, 1, 0) * 0.1f;
+            }
+
+
             Destroy(gameObject);
         }
     }

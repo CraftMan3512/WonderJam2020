@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
@@ -24,14 +26,12 @@ public class Player : MonoBehaviour
 
     private bool inFrenezie;
     private float frenezie;
-    private float crateLevel = 0;
     private int score;
-
-    public GameObject frenezieGun;
     private GameObject backGun;
     
     
-    public float movementSpeed;
+    public float movementSpeed=5f;
+    public float mvmtSpdModWithWp=0.8f;
     private Rigidbody2D rb;
     private Vector2 direction;
     private Vector2 direction2;
@@ -52,16 +52,17 @@ public class Player : MonoBehaviour
 
     private bool shooting;
 
+    private List<GameObject> allFrenezieGuns;
+
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
         health = maxHealth;
         frenezie = 90;
-        crateLevel = 0;
 
         gloves = transform.GetChild(0).gameObject.GetComponent<Gun>();
-        target = this.transform;
+        target = transform;
         hands=transform.Find("Hands").GetComponent<Transform>().localPosition;
         rb = GetComponent<Rigidbody2D>();
         if (gunPrefab)
@@ -73,6 +74,8 @@ public class Player : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(true);
             glovesOn = true;
         }
+
+        allFrenezieGuns=Resources.LoadAll<GameObject>("FrenezieGuns").ToList();
     }
 
     private void Update()
@@ -111,13 +114,12 @@ public class Player : MonoBehaviour
             inFrenezie = true;
             if (!glovesOn)
             {
-                Debug.Log("Je stocke larme");
                 backGun = Instantiate(gunModel);
                 backGun.GetComponent<Gun>().UsedAmmo = getGun().GetComponent<Gun>().UsedAmmo;
                 backGun.SetActive(false);
                 DestroyGun();
             }
-            EquipGun(frenezieGun.gameObject);
+            EquipGun(FrenezieGunRandom());
         }
 
         if (!inFrenezie)
@@ -142,7 +144,6 @@ public class Player : MonoBehaviour
                 if (backGun)
                 {
                     backGun.SetActive(true);
-                    Debug.Log("Je rajoute larme");
                     EquipGun(backGun);
                     getGun().GetComponent<Gun>().UsedAmmo = backGun.GetComponent<Gun>().UsedAmmo;
                 }
@@ -152,6 +153,13 @@ public class Player : MonoBehaviour
             }
         }
             
+    }
+
+    private GameObject FrenezieGunRandom()
+    {
+        int i = Random.Range(0, allFrenezieGuns.Count);
+        GameObject temp = allFrenezieGuns[i];
+        return temp;
     }
 
     private void Move(Vector2 direction)
@@ -167,7 +175,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.position += direction * (movementSpeed * Time.fixedDeltaTime);
+        float modifier;
+        if (!glovesOn)
+            modifier = mvmtSpdModWithWp;
+        else
+            modifier = 1;
+
+        rb.position += direction * (modifier * (movementSpeed * Time.fixedDeltaTime));
         
         mouse_pos = Input.mousePosition;
         mouse_pos.z = 5.23f; //The distance between the camera and object
@@ -237,5 +251,9 @@ public class Player : MonoBehaviour
         {
             health = maxHealth;
         }
+    }
+    public bool InFrenezie
+    {
+        get => inFrenezie;
     }
 }
