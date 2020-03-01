@@ -104,3 +104,5 @@ MonoBehaviour:
   maxRecoilDistance: 0.25
   recoilSpeedBack: 0.15
   damagePerBullet: 2
+  speedPerBullet: 0
+  anglePerBullet: 0
