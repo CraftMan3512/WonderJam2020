@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4678458872005398503}
   - component: {fileID: 4480624909950154649}
   - component: {fileID: -3011759535525503643}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Feu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +101,8 @@ MonoBehaviour:
   damage: 1
   angleRdm: 30
   fire: 1
+  rocket: 0
+  nextBullet: {fileID: 0}
 --- !u!50 &-4678458872005398503
 Rigidbody2D:
   serializedVersion: 4

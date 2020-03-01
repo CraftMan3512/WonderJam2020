@@ -21,6 +21,11 @@ public class PlayerNumber : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(ply)
         transform.position=ply.transform.position;
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
