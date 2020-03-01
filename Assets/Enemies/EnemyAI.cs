@@ -28,7 +28,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
        // damage = 2;
-       // maxHp = 10;
+       //maxHp = 10;
        // hp = maxHp;
         scorePoints = 10;
     }
