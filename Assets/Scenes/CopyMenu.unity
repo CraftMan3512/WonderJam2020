@@ -8515,6 +8515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 2727095382557001448, guid: 90e50e59306b39446ad0cc1f870366aa,
     type: 3}
+  playerNumber: {fileID: 357005268308631667, guid: f4dea46d51dc0034eaa6005e652bf011,
+    type: 3}
   targetGroup: {fileID: 1535946349}
 --- !u!4 &1389468061
 Transform:
