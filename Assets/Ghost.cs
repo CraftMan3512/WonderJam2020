@@ -9,6 +9,12 @@ public class Ghost : MonoBehaviour
     public float lifeTime;
     public float speed;
     private float attackCooldown;
+    private GameObject ply;
+    
+    public GameObject Ply
+    {
+        set => ply = value;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +44,18 @@ public class Ghost : MonoBehaviour
                     {
                         target.GetComponent<EnemyAI>().TakeDamage(damage);
                         attackCooldown = 0;
+                        if (target.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+                        {
+                            if (!target.gameObject.GetComponent<EnemyAI>().dead)
+                            {
+                                if (ply)
+                                {
+                                    ply.GetComponent<Player>()
+                                        .addScore(target.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                                    target.gameObject.GetComponent<EnemyAI>().dead = true;
+                                }
+                            }
+                        }
                     }
                 }
                 else
@@ -75,40 +93,13 @@ public class Ghost : MonoBehaviour
 
     private void FindClosestTarget()
     {
-
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Enemy"))
+        try
         {
-            if (obj != null)
-            {
-                if (target == null)
-                {
-                    try //parce que wtf obj yer null
-                    {
-                        target = obj;                    
-                    }
-                    catch (System.Exception e)
-                    {
-                        Debug.Log(e.ToString());
-                    }
-                }
-                else
-                {
-                    try //parce que wtf obj yer null
-                    {
+            target=GameObject.FindGameObjectsWithTag("Enemy")[Random.Range(0, GameObject.FindGameObjectsWithTag("Enemy").Length)];
+        }catch(System.Exception e)
+        {
 
-                        if (Vector2.Distance(this.transform.position, obj.transform.position) <
-                            Vector2.Distance(this.transform.position, target.transform.position))
-                        {
-                            target = obj;
-                         
-                        }
-
-                    }
-                    catch (System.Exception e) { Debug.Log(e.ToString()); }
-
-                }
-
-            }
         }
+       
     }
 }

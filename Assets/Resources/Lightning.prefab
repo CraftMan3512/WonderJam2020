@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de9d32d80c45f045912e6f2e6cf8759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 4
-  damagePerStrike: 5
+  range: 3
+  damagePerStrike: 25
   lastEnemy: {x: 0, y: 0, z: 0}
 --- !u!120 &1823754743190154668
 LineRenderer:

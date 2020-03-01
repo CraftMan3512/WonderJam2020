@@ -9,6 +9,13 @@ public class JarThrow : MonoBehaviour
     public float speed;
     private bool spawnedGhosts;
     private float timer;
+    private GameObject ply;
+
+    public GameObject Ply
+    {
+        set => ply = value;
+    }
+
     void Start()
     {     
         GetComponent<Rigidbody2D>().AddForce(new Vector2(100 * speed * Mathf.Cos((transform.eulerAngles.z + 90 ) * Mathf.Deg2Rad), 100 * speed * Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.Deg2Rad)));
@@ -26,6 +33,7 @@ public class JarThrow : MonoBehaviour
                 {
                     GameObject ghost = Instantiate(Resources.Load<GameObject>("Ghost"), new Vector3(15 * Mathf.Cos(360f / amount * i * Mathf.Deg2Rad), 10 * Mathf.Sin(360f / amount * i * Mathf.Deg2Rad), transform.position.z), Quaternion.identity);
                     spawnedGhosts = true;
+                    ghost.GetComponent<Ghost>().Ply = ply;
                     Destroy(gameObject);
                 }
             }
