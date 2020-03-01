@@ -8470,6 +8470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveTimer: 0
   timeSinceWaveStarted: 0
+  hpScaling: 1
+  dmgScaling: 1
 --- !u!4 &1305779569
 Transform:
   m_ObjectHideFlags: 0
