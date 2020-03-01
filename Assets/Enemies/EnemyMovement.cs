@@ -51,25 +51,32 @@ public class EnemyMovement : MonoBehaviour
 
 
     private void Move()
-    { if (dodgingWall)
-        {  //si le playeur atteint le "niveau " de l'enemy, il se remet à aller vers lui.
+    {
+        if (target != null)
+        {
+            
+            if (dodgingWall)
+            {  //si le playeur atteint le "niveau " de l'enemy, il se remet à aller vers lui.
           
             
                 transform.position = Vector2.MoveTowards(transform.position, dodgeTarget, speed * Time.fixedDeltaTime);
                 float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
-            if (Vector2.Distance(transform.position,dodgeTarget) <= 0.1f)
-               {
-                dodgingWall = false;
-               }
+                if (Vector2.Distance(transform.position,dodgeTarget) <= 0.1f)
+                {
+                    dodgingWall = false;
+                }
 
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, Target.position, speed * Time.fixedDeltaTime);                               
+                float  angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90 ));
+            }    
+            
         }
-        else
-        {
-            transform.position = Vector2.MoveTowards(transform.position, Target.position, speed * Time.fixedDeltaTime);                               
-            float  angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90 ));
-        }
+        
     }
 
 

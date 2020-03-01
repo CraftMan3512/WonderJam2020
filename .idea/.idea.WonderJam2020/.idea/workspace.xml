@@ -40,19 +40,19 @@
         <option value="$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" />
         <option value="$PROJECT_DIR$/Assets/EnemyMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Enemies/EnemyMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/ButtonTesting.cs" />
         <option value="$PROJECT_DIR$/Assets/CubeDropping.cs" />
         <option value="$PROJECT_DIR$/Assets/NewMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/PlayerSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/QuitGame.cs" />
         <option value="$PROJECT_DIR$/Assets/Enemies/EnemyAI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" />
-        <option value="$PROJECT_DIR$/Assets/Enemies/Spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Guns/Gloves/GlovesScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Menu/Scripts/Players.cs" />
         <option value="$PROJECT_DIR$/Assets/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/ScoreBoard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Enemies/EnemyMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Enemies/Spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/DeathCounter.cs" />
       </list>
     </option>

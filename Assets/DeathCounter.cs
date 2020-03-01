@@ -9,12 +9,12 @@ public class DeathCounter : MonoBehaviour
 
     public static void PlayerDied(int playerNb, int score)
     {
+        playersDead++;
         if (playersDead < PlayerSpawner.playerCount)
         {
-            playersDead++;
             if (playersDead == PlayerSpawner.playerCount - 1)
             {
-                Debug.Log("VAGUE SPECIALE DERNIER JOUEUR!");
+                GameObject.Find("WaveSpawner").GetComponent<Spawner>().LastAlive();
             }
 
         } else ToGameOver(playerNb, score);
