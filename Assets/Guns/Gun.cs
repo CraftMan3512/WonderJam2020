@@ -33,6 +33,8 @@ public class Gun : MonoBehaviour
     public float maxRecoilDistance = 1f;
     public float recoilSpeedBack = 1f;
     public int damagePerBullet = 0;
+    public float speedPerBullet = 0f;
+    public float anglePerBullet = 0f;
 
     public void Shoot(float angle)
     { 
@@ -69,6 +71,10 @@ public class Gun : MonoBehaviour
                     tempBullet.GetComponent<BulletScript>().Ply = transform.parent.gameObject;
                     if(damagePerBullet!=0) 
                         tempBullet.GetComponent<BulletScript>().damage = damagePerBullet;
+                    if(speedPerBullet!=0) 
+                        tempBullet.GetComponent<BulletScript>().speed = speedPerBullet;
+                    if(anglePerBullet!=0) 
+                        tempBullet.GetComponent<BulletScript>().angleRdm = anglePerBullet;
                 }
 
                 if (tempBullet.GetComponent<ShotgunShell>())
