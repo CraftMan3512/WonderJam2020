@@ -7,6 +7,8 @@ TagManager:
   - Joueur
   - Enemy
   - Box
+  - Wall
+  - CameraCollision
   layers:
   - Default
   - TransparentFX
@@ -16,12 +18,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - UI2
+  - buttons
+  - Particles
+  - CameraCollision
+  - Zombies
+  - Gates
   - 
   - 
   - 
@@ -41,6 +43,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: bg
+    uniqueID: 3794269019
+    locked: 0
+  - name: Particles
+    uniqueID: 1930012987
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3159605035
     locked: 0

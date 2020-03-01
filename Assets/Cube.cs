@@ -6,11 +6,15 @@ public class Cube : MonoBehaviour
 {
     private int hp;
     private int maxHp;
+
+    public int MaxHp { get => maxHp; set => maxHp = value; }
+    public int Hp { get => hp; set => hp = value; }
+
     // Start is called before the first frame update
     void Start()
     {
-        maxHp = 10;
-        hp = maxHp;
+        MaxHp = 10;
+        Hp = MaxHp;
     }
 
     // Update is called once per frame
@@ -22,9 +26,11 @@ public class Cube : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        
+        GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/BoxDmg"));
 
-        hp -= damage;
-        if(hp <= 0)
+        Hp -= damage;
+        if(Hp <= 0)
         {
             Destroy(gameObject);
         }
