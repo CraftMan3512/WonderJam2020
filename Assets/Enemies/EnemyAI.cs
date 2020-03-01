@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
   
     private int hp;
     private int maxHp;
-    private int damage;
+    public int damage;
     private GameObject target;
     private float attackCooldown;
     private int scorePoints;
@@ -26,9 +26,9 @@ public class EnemyAI : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-       // damage = 2;
-       //maxHp = 10;
+    { 
+        //damage = 2;
+       // maxHp = 10;
        // hp = maxHp;
         scorePoints = 10;
     }

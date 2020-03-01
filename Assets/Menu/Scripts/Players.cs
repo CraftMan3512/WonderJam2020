@@ -13,7 +13,7 @@ public class Players : MonoBehaviour
         
         //changer de scene et set les joueurs
         PlayerSpawner.playerCount = nbJoueurs;
-        SceneManager.LoadScene("MattysTest");
+        SceneManager.LoadScene("CopyMenu");
 
     }
 }

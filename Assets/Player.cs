@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class Player : MonoBehaviour
 {
     
     public int maxHealth=100;
-    public int maxFrenezie = 100;
+    public float maxFrenezie = 100;
     
     private int health;
 
@@ -16,22 +17,25 @@ public class Player : MonoBehaviour
         get => health;
     }
 
-    public int Frenezie
+    public float Frenezie
     {
         get => frenezie;
     }
 
-
-    private int frenezie;
+    private bool inFrenezie;
+    private float frenezie;
     private float crateLevel = 0;
     private int score;
+
+    public GameObject frenezieGun;
+    private GameObject backGun;
     
     
     public float movementSpeed;
     private Rigidbody2D rb;
     private Vector2 direction;
     private Vector2 direction2;
-    public Gun gunPrefab;
+    public GameObject gunPrefab;
     private Vector2 hands;
     private GameObject gunModel;
     private bool glovesOn;
@@ -53,7 +57,7 @@ public class Player : MonoBehaviour
     {
         score = 0;
         health = maxHealth;
-        frenezie = 0;
+        frenezie = 90;
         crateLevel = 0;
 
         gloves = transform.GetChild(0).gameObject.GetComponent<Gun>();
@@ -73,9 +77,15 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        
+        //Check si on tire si oui quel arme ou gloves
+        if (shooting.Equals(true))
+        {
+            if(!glovesOn)
+                gunModel.GetComponent<Gun>().Shoot(angle);
+            else
+                gloves.Shoot(angle);
+        }
         //get new inputs
-        //Debug.Log(Input.GetAxisRaw("x1"));
         direction=new Vector2(Input.GetAxisRaw("x"+player),Input.GetAxisRaw("y"+player));
         if (Input.GetButtonDown("submit"+player))
         {
@@ -95,15 +105,53 @@ public class Player : MonoBehaviour
             angle -= 90;   
             
         }
-
-        if (shooting.Equals(true))
+        //Frenzy
+        if (Input.GetButtonDown("cancel" + player)&&maxFrenezie<=frenezie)
         {
-            if(!glovesOn)
-            gunModel.GetComponent<Gun>().Shoot(angle);
-            else
-            gloves.Shoot(angle);
+            inFrenezie = true;
+            if (!glovesOn)
+            {
+                Debug.Log("Je stocke larme");
+                backGun = Instantiate(gunModel);
+                backGun.GetComponent<Gun>().UsedAmmo = getGun().GetComponent<Gun>().UsedAmmo;
+                backGun.SetActive(false);
+                DestroyGun();
+            }
+            EquipGun(frenezieGun.gameObject);
         }
 
+        if (!inFrenezie)
+        {
+            if (frenezie < maxFrenezie)
+            {
+                frenezie += 10f * Time.deltaTime;
+            }
+            else
+                frenezie = maxFrenezie;
+        }
+        else
+        {
+            if (frenezie > 0)
+            {
+                frenezie -= 10f * Time.deltaTime;
+            }
+            else
+            {
+                frenezie = 0;
+                DestroyGun();
+                if (backGun)
+                {
+                    backGun.SetActive(true);
+                    Debug.Log("Je rajoute larme");
+                    EquipGun(backGun);
+                    getGun().GetComponent<Gun>().UsedAmmo = backGun.GetComponent<Gun>().UsedAmmo;
+                }
+                Destroy(backGun);
+                backGun = null;
+                inFrenezie = false;
+            }
+        }
+            
     }
 
     private void Move(Vector2 direction)
@@ -155,11 +203,12 @@ public class Player : MonoBehaviour
 
     public GameObject getGun()
     {
-        return gunModel.gameObject;
+        return gunModel;
     }
 
     public void TakeDamage(int dmg)
     {
+        //Debug.Log("PLPAYER TAKE DAMANGEE!!!! : " + dmg);
         health -= dmg;
         if (health < 0)
         {

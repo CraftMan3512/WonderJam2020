@@ -47,6 +47,7 @@ public class Spawner : MonoBehaviour
                         GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy"+(int)Random.Range(1,3)), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
                         //GameObject enemy = Instantiate((GameObject)Resources.Load("Enemy"), new Vector3(35 * Mathf.Cos(angle * Mathf.Deg2Rad), 25 * Mathf.Sin(angle * Mathf.Deg2Rad), transform.position.z), Quaternion.identity);
                         enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
+                        enemy.GetComponent<EnemyAI>().damage += difficulty / 5 + 1;
                         enemy.GetComponent<EnemyAI>().Hp *= difficulty / 5 + 1;
                         timeSinceLastSpawn = 0f;
                 }
@@ -54,16 +55,7 @@ public class Spawner : MonoBehaviour
                 {
                     timeSinceLastSpawn += Time.deltaTime;
                 }
-
-                if (timeSinceLastDifUp > difficulty * 2)
-                {
-                    difficulty++;
-                    timeSinceLastDifUp = 0f;
-                }
-                else
-                {
-                    timeSinceLastDifUp += Time.deltaTime;
-                }
+                
                 timeSinceWaveStarted += Time.deltaTime;
                 incoming.SetText("Zombies incoming! Hold for " + (60 - (int)timeSinceWaveStarted) + " more seconds!");
 
@@ -99,6 +91,15 @@ public class Spawner : MonoBehaviour
 
 
             }
+            if (timeSinceLastDifUp > difficulty * 2)
+            {
+                difficulty++;
+                timeSinceLastDifUp = 0f;
+            }
+            else
+            {
+                timeSinceLastDifUp += Time.deltaTime;
+            }
         }
         else
         {
@@ -111,10 +112,13 @@ public class Spawner : MonoBehaviour
                     GameObject enemy = Instantiate(Resources.Load<GameObject>("Ninja"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
                     enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
                     enemy.GetComponent<EnemyAI>().Hp *= difficulty / 3 + 1;
+                    enemy.GetComponent<EnemyAI>().damage += difficulty / 3 + 1;
                     timeSinceLastSpawn = 0f;
                     if(enemiesSpawned == maxEnemies)
                     {
                     lastAlive = false;
+                    maxEnemies = 150;
+                    enemiesSpawned = 0;
                     }
             }
             else
@@ -122,6 +126,7 @@ public class Spawner : MonoBehaviour
                 timeSinceLastSpawn += Time.deltaTime;
             }
         }
+        
 
 
 
