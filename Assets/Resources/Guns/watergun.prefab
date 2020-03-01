@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3976275091151932166}
   - component: {fileID: 3976275091151932165}
   - component: {fileID: 3976275091151932167}
+  - component: {fileID: -9164344848668150261}
   m_Layer: 0
   m_Name: watergun
   m_TagString: Untagged

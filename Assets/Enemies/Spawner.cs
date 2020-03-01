@@ -43,13 +43,29 @@ public class Spawner : MonoBehaviour
             {
                 if (timeSinceLastSpawn >= 5f / difficulty && enemiesSpawned < maxEnemies)
                 {
-                        enemiesSpawned++;
-                        int spawnNumber = Random.Range(0, spawnPoints.Count);
-                        GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy"+(int)Random.Range(1,3)), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
+                    int spawnNumber = Random.Range(0, spawnPoints.Count);
+                    timeSinceLastSpawn = 0;
+                    enemiesSpawned++;
+                    if (Random.Range(0, 60) == 1)
+                    {
+
+                        GameObject enemy = Instantiate(Resources.Load<GameObject>("Giant"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
+                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 30 + 1;
+                        enemy.GetComponent<EnemyAI>().Hp = (int)(10 * ((float)difficulty / 3 + 1) * hpScaling);
+                        enemy.GetComponent<EnemyAI>().damage = (int)(((float)difficulty / 3 + 1) * dmgScaling);
+
+                    }
+                    else
+                    {
+                        
+                        
+                        GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy" + (int)Random.Range(1, 3)), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
                         enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 10 + 1;
-                        enemy.GetComponent<EnemyAI>().Hp =(int)(3*((float)difficulty / 3 + 1)*hpScaling);
-                        enemy.GetComponent<EnemyAI>().damage = (int)(((float)difficulty / 8 + 1)*dmgScaling);
-                        timeSinceLastSpawn = 0f;
+                        enemy.GetComponent<EnemyAI>().Hp = (int)(3 * ((float)difficulty / 3 + 1) * hpScaling);
+                        enemy.GetComponent<EnemyAI>().damage = (int)(((float)difficulty / 8 + 1) * dmgScaling);
+                        
+                    }
+
                 }
                 else
                 {

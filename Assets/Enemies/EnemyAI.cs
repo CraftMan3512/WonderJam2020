@@ -16,6 +16,7 @@ public class EnemyAI : MonoBehaviour
 
     public int ScorePoints
     {
+        set => scorePoints = value;
         get => scorePoints;
     }
 
