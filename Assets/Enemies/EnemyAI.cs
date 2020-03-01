@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public int damage;
     private GameObject target;
     private float attackCooldown;
+    public float timeBeforeAttack = 0.4f;
     private int scorePoints;
     public bool dead;
 
@@ -24,6 +25,7 @@ public class EnemyAI : MonoBehaviour
     public int MaxHp { get => maxHp; set => maxHp = value; }
     public int Damage { get => damage; set => damage = value; }
     public GameObject Target { get => target; set => target = value; }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +49,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (target != null)
         {
-            if (attackCooldown >= 1.8f)
+            if (attackCooldown >= 2f-timeBeforeAttack)
             {
                 if (Vector2.Distance(transform.position, target.transform.position) <= 1f)
                 {
@@ -72,14 +74,14 @@ public class EnemyAI : MonoBehaviour
                 }
                 else
                 {
-                    attackCooldown = 1.8f;
+                    attackCooldown = 2f-timeBeforeAttack;
                 }
 
 
             }
             else
             {
-                if (attackCooldown < 1.8f)
+                if (attackCooldown < 2f-timeBeforeAttack)
                 {
                     attackCooldown += Time.fixedDeltaTime;
                 }

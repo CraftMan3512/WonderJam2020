@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     {
         score = 0;
         health = maxHealth;
-        frenezie = 50;
+        frenezie = 0;
 
         gloves = transform.GetChild(0).gameObject.GetComponent<Gun>();
         target = transform;

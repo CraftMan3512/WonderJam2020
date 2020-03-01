@@ -51,7 +51,7 @@ public class Spawner : MonoBehaviour
 
                         GameObject enemy = Instantiate(Resources.Load<GameObject>("Giant"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
                         enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 30 + 1;
-                        enemy.GetComponent<EnemyAI>().Hp = (int)(10 * ((float)difficulty / 3 + 1) * hpScaling);
+                        enemy.GetComponent<EnemyAI>().Hp = (int)(10 * ((float)difficulty / 3 + 3) * hpScaling);
                         enemy.GetComponent<EnemyAI>().damage = (int)(((float)difficulty / 3 + 1) * dmgScaling);
 
                     }
