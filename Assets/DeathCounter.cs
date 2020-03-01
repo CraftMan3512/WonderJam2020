@@ -19,10 +19,13 @@ public class DeathCounter : MonoBehaviour
 
         } else ToGameOver(playerNb, score);
         
+        
     }
 
     private static void ToGameOver(int playerNb, int score)
         {
+            Debug.Log("GAMEOVER! WINNER = " + playerNb + ". SCORE = " + score);
+            EndValues.GetGameValues(playerNb,score);
             SceneManager.LoadScene("EndScreen");
         }
     }

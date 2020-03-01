@@ -98,10 +98,22 @@ public class Gun : MonoBehaviour
     public void Stopped()
          {
              isShooting = false;
+             if (GetComponent<Animator>())
+             {
+                 GetComponent<Animator>().SetFloat("shooting", 0f);
+            
+             }
          }
     public void Shooting()
     {
         isShooting = true;
+
+        if (GetComponent<Animator>())
+        {
+            GetComponent<Animator>().SetFloat("shooting", 1.0f);
+            
+        }
+        
     }
     public void Start()
     {
