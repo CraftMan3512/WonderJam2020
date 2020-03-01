@@ -100,6 +100,6 @@ MonoBehaviour:
   barrelLenght: 0.63
   gunLenght: 0.22
   ammoMax: 10
-  recoilSpeed: 1
+  recoilSpeed: 0.9
   maxRecoilDistance: 0.1
   recoilSpeedBack: 1
