@@ -30,13 +30,13 @@ public class ScoreBoard : MonoBehaviour
     public void Update()
     {
         if(playersThisRound>0)
-            scoreP1.SetText(players[0].GetComponent<Player>().Score.ToString());
+            if(players[0]) scoreP1.SetText(players[0].GetComponent<Player>().Score.ToString());
         if(playersThisRound>1)
-            scoreP2.SetText(players[1].GetComponent<Player>().Score.ToString());
+            if(players[1]) scoreP2.SetText(players[1].GetComponent<Player>().Score.ToString());
         if(playersThisRound>2)
-            scoreP3.SetText(players[2].GetComponent<Player>().Score.ToString());
+            if(players[2]) scoreP3.SetText(players[2].GetComponent<Player>().Score.ToString());
         if(playersThisRound>3)
-            scoreP4.SetText(players[3].GetComponent<Player>().Score.ToString());
+            if(players[3]) scoreP4.SetText(players[3].GetComponent<Player>().Score.ToString());
     }
     
 }

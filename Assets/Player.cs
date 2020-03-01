@@ -210,7 +210,14 @@ public class Player : MonoBehaviour
     {
         health -= dmg;
         if (health < 0)
+        {
+            
             health = 0;
+            //death
+            DeathCounter.PlayerDied(player,score);
+            Destroy(gameObject);
+            
+        }
     }
     public int Score
     {
@@ -220,5 +227,14 @@ public class Player : MonoBehaviour
     public void addScore(int nb)
     {
         score += nb;
+    }
+
+    public void Heal(int healAmount)
+    {
+        health += healAmount;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 }
