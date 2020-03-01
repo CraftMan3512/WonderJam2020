@@ -65,7 +65,6 @@ public class Gun : MonoBehaviour
                 else
                     currHand = LeftPunch;
                 currHand.GetComponent<GlovesScript>().Shoot();
-                Debug.Log("hand : "+currHand.name);
                 if (rightP)
                     rightP = false;
                 else
