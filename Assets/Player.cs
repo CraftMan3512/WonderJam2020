@@ -112,6 +112,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("cancel" + player)&&maxFrenezie<=frenezie)
         {
             inFrenezie = true;
+            GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/Frenzy"));
             if (!glovesOn)
             {
                 backGun = Instantiate(gunModel);
@@ -223,6 +224,8 @@ public class Player : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         //Debug.Log("PLPAYER TAKE DAMANGEE!!!! : " + dmg);
+        GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/PlayerHit"),1.5f);
+        
         health -= dmg;
         if (health < 0)
         {

@@ -56,6 +56,9 @@ public class Gun : MonoBehaviour
             else
             {
                 //BASIC WEAPON
+                
+                GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/Pickup"),0.5f);
+                
                 GameObject tempBullet = Instantiate(bullet,
                     new Vector3(transform.position.x + barrelLenght * Mathf.Cos((angle) * Mathf.Deg2Rad),
                         transform.position.y + barrelLenght * Mathf.Sin((angle) * Mathf.Deg2Rad), transform.position.z),
