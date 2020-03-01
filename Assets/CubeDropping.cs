@@ -34,22 +34,22 @@ public class CubeDropping : MonoBehaviour
                 if (timeSinceLastDrop >= 3)
                 {
                     boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Metal0");
-                    boxChan.GetComponent<Cube>().Hp = 90;
-                    boxChan.GetComponent<Cube>().MaxHp = 90;
+                    boxChan.GetComponent<Cube>().Hp = 200;
+                    boxChan.GetComponent<Cube>().MaxHp = 200;
                     StartCoroutine(HoldingBox());
                 }
                 else if(timeSinceLastDrop >= 2)
                 {
                     boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Pierre0");
-                    boxChan.GetComponent<Cube>().Hp = 60;
-                    boxChan.GetComponent<Cube>().MaxHp = 60;
+                    boxChan.GetComponent<Cube>().Hp = 120;
+                    boxChan.GetComponent<Cube>().MaxHp = 120;
                     StartCoroutine(HoldingBox());
                 }
                 else if(timeSinceLastDrop >= 1)
                 {
                     boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Bois0");
-                    boxChan.GetComponent<Cube>().Hp = 30;
-                    boxChan.GetComponent<Cube>().MaxHp = 30;
+                    boxChan.GetComponent<Cube>().Hp = 60;
+                    boxChan.GetComponent<Cube>().MaxHp = 60;
                     StartCoroutine(HoldingBox());
                 }
                 else
@@ -71,7 +71,7 @@ public class CubeDropping : MonoBehaviour
 
         if (timeSinceLastDrop < 3&&!held)
         {
-            timeSinceLastDrop += Time.deltaTime;
+            timeSinceLastDrop += Time.deltaTime*2f;
         }
         else if(!held)
             timeSinceLastDrop = 3;
