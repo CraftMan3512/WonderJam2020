@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de9d32d80c45f045912e6f2e6cf8759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 0
 --- !u!120 &1823754743190154668
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -83,12 +84,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
