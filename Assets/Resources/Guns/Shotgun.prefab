@@ -95,12 +95,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fist: 0
-  spread: 1
   rpm: 160
   bullet: {fileID: 3589292330285689494, guid: e946405b77305574cb194e39e77efc50, type: 3}
   barrelLenght: 0.63
   gunLenght: 0.22
   ammoMax: 10
   recoilSpeed: 1
-  maxRecoilDistance: 0.15
+  maxRecoilDistance: 0.1
   recoilSpeedBack: 1

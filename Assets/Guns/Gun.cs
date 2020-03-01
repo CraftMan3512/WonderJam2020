@@ -6,7 +6,6 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public bool fist = false;
-    public bool spread = false; //TODO 
     public float rpm = 120;
 
     public GameObject bullet;
@@ -39,10 +38,24 @@ public class Gun : MonoBehaviour
         isShooting = false;
         if (coolDown >= 60 / rpm)
         {
-           
+            
             coolDown = 0;
-            if (!fist)
+            if(fist)
             {
+                GameObject currHand;
+                if (rightP)
+                    currHand = RightPunch;
+                else
+                    currHand = LeftPunch;
+                currHand.GetComponent<GlovesScript>().Shoot();
+                if (rightP)
+                    rightP = false;
+                else
+                    rightP = true;
+            }
+            else
+            {
+                //BASIC WEAPON
                 
                 GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/Pickup"),0.5f);
                 
@@ -58,26 +71,12 @@ public class Gun : MonoBehaviour
                 checkAmmo();
                 isShooting = true;
             }
-            else
-            {
-
-                GameObject currHand;
-                if (rightP)
-                    currHand = RightPunch;
-                else
-                    currHand = LeftPunch;
-                currHand.GetComponent<GlovesScript>().Shoot();
-                if (rightP)
-                    rightP = false;
-                else
-                    rightP = true;
-            }
         }
     }
 
     public void Update()
     {
-        if (isShooting)
+        if (isShooting&&!fist)
         {
             if (transform.localPosition.y > posWeaponOriginal.y - maxRecoilDistance)
             {
@@ -93,9 +92,6 @@ public class Gun : MonoBehaviour
             else
                 transform.localPosition = posWeaponOriginal;
         }
-        
-        
-        
         coolDown += Time.deltaTime;
     }
 
@@ -115,7 +111,6 @@ public class Gun : MonoBehaviour
         if (GetComponent<Animator>())
         {
             GetComponent<Animator>().SetFloat("shooting", 1.0f);
-            
         }
         
     }

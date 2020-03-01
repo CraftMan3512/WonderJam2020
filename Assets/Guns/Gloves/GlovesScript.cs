@@ -58,7 +58,7 @@ public class GlovesScript : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag.Equals("Player")&&!collision.gameObject.GetComponent<Player>().GlovesOn())
+        if (collision.gameObject.tag.Equals("Player")&&!collision.gameObject.GetComponent<Player>().GlovesOn()&&!collision.gameObject.GetComponent<Player>().InFrenezie)
         {
             
             transform.parent.parent.gameObject.GetComponent<Player>().EquipGun(collision.gameObject.GetComponent<Player>().getGun());

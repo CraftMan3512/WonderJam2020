@@ -106,11 +106,15 @@ public class EnemyAI : MonoBehaviour
             }
 
             //gore
-            GameObject blood = Instantiate(Resources.Load<GameObject>("Gore"),transform.position,Quaternion.identity);
-            blood.transform.localScale = new Vector3(1,1,0) * 0.1f;
-            
-            GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/ZombieDeath"));
-            
+            if (!dead)
+            {
+                GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/ZombieDeath"));
+                GameObject blood = Instantiate(Resources.Load<GameObject>("Gore"), transform.position,
+                    Quaternion.identity);
+                blood.transform.localScale = new Vector3(1, 1, 0) * 0.1f;
+            }
+
+
             Destroy(gameObject);
         }
     }
