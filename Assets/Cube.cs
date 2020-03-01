@@ -26,6 +26,8 @@ public class Cube : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        
+        GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/BoxDmg"));
 
         Hp -= damage;
         if(Hp <= 0)

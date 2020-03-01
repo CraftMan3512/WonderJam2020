@@ -98,6 +98,9 @@ public class CubeDropping : MonoBehaviour
             boxChan.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
             boxChan.GetComponent<BoxCollider2D>().enabled = true;
             timeSinceLastDrop = 0;
+            
+            GameObject.Find("Main Camera").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("SFX/PlaceBox"),5f);
+            
         }
 
     }
