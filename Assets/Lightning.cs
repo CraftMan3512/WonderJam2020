@@ -10,9 +10,18 @@ public class Lightning : MonoBehaviour
     public Vector3 lastEnemy;
     bool firstStrike;
     private List<GameObject> zappedEnemies;
+
+    private GameObject ply;
+
+    public GameObject Ply
+    {
+        set => ply = value;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        zappedEnemies=new List<GameObject>();
         firstStrike = true;
         lastEnemy = Vector3.zero;
         lr = GetComponent<LineRenderer>();      
@@ -120,8 +129,20 @@ public class Lightning : MonoBehaviour
             lr.SetPositions(points);
 
             lastEnemy = closestEnemy.transform.position;
-            closestEnemy.GetComponent<EnemyAI>().TakeDamage(damagePerStrike);
             zappedEnemies.Add(closestEnemy);
+            closestEnemy.GetComponent<EnemyAI>().TakeDamage(damagePerStrike);
+            if (closestEnemy.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+            {
+                if (!closestEnemy.gameObject.GetComponent<EnemyAI>().dead)
+                {
+                    if (ply)
+                    {
+                        ply.GetComponent<Player>()
+                            .addScore(closestEnemy.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                        closestEnemy.gameObject.GetComponent<EnemyAI>().dead = true;
+                    }
+                }
+            }
         }catch(System.Exception e) { }
 
         yield return new WaitForSeconds(0.1f);

@@ -36,6 +36,7 @@ public class Gun : MonoBehaviour
     public float recoilSpeed=1f;
     public float maxRecoilDistance = 1f;
     public float recoilSpeedBack = 1f;
+    [Header("Bullet Override")]
     public int damagePerBullet = 0;
     public float speedPerBullet = 0f;
     public float anglePerBullet = 0f;
@@ -63,7 +64,8 @@ public class Gun : MonoBehaviour
                     rightP = true;
             }else if (lightning)
             {
-                Instantiate(Resources.Load<GameObject>("Lightning"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                GameObject temp =Instantiate(Resources.Load<GameObject>("Lightning"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                temp.GetComponent<Lightning>().Ply=transform.parent.gameObject;
                 usedAmmo++;
                 checkAmmo();
             }else if (water)
