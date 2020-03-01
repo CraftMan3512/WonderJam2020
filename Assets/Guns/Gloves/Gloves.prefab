@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 5
   distance: 0.2
-  speed: 0.6
+  speed: 1
 --- !u!1 &6482930177987576659
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 5
   distance: 0.2
-  speed: 0.6
+  speed: 1
 --- !u!1 &8757270229726797008
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,8 +274,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63dc8e94c189b84dad2ee0735b3c557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightning: 0
   fist: 1
-  spread: 0
   rpm: 150
   bullet: {fileID: 8326293947191301807, guid: 5bab1d9a9727caa4399d679c3e457e7a, type: 3}
   barrelLenght: 1
@@ -284,3 +284,6 @@ MonoBehaviour:
   recoilSpeed: 1
   maxRecoilDistance: 1
   recoilSpeedBack: 1
+  damagePerBullet: 0
+  speedPerBullet: 0
+  anglePerBullet: 0

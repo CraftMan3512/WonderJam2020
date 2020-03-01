@@ -85,6 +85,10 @@ public class Gun : MonoBehaviour
                         tempBullet.GetComponent<BulletScript>().angleRdm = anglePerBullet;
                 }
 
+                if (tempBullet.GetComponent<JarThrow>())
+                {
+                    tempBullet.GetComponent<JarThrow>().Ply = transform.parent.gameObject;
+                }
                 if (tempBullet.GetComponent<ShotgunShell>())
                 {
                     tempBullet.GetComponent<ShotgunShell>().Ply = transform.parent.gameObject;

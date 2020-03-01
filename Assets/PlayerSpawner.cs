@@ -8,7 +8,7 @@ public class PlayerSpawner : MonoBehaviour
 {
 
     public GameObject playerPrefab;
-    public static int playerCount = 2;
+    public static int playerCount = 1;
     public GameObject playerNumber;
 
     public CinemachineTargetGroup targetGroup;
@@ -28,8 +28,6 @@ public class PlayerSpawner : MonoBehaviour
 
         for (int i = 1; i <= playerNb; i++)
         {
-
-            Debug.Log("Spawning player " + i);
             GameObject player = Instantiate(playerPrefab,transform.position + (Vector3.right*3*i),Quaternion.identity);
             player.GetComponent<Player>().SetPlayerNumber(i);
             player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/P" + i + "/SpriteP" + i);

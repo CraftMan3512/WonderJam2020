@@ -9,6 +9,12 @@ public class Ghost : MonoBehaviour
     public float lifeTime;
     public float speed;
     private float attackCooldown;
+    private GameObject ply;
+    
+    public GameObject Ply
+    {
+        set => ply = value;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +43,19 @@ public class Ghost : MonoBehaviour
                     if (Vector2.Distance(transform.position, target.transform.position) < 0.4f)
                     {
                         target.GetComponent<EnemyAI>().TakeDamage(damage);
+                        attackCooldown = 0;
+                        if (target.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+                        {
+                            if (!target.gameObject.GetComponent<EnemyAI>().dead)
+                            {
+                                if (ply)
+                                {
+                                    ply.GetComponent<Player>()
+                                        .addScore(target.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                                    target.gameObject.GetComponent<EnemyAI>().dead = true;
+                                }
+                            }
+                        }
                     }
                 }
                 else
