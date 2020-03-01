@@ -13,6 +13,10 @@ public class Spawner : MonoBehaviour
     public float timeSinceWaveStarted;
     TextMeshProUGUI incoming;
     private bool lastAlive;
+
+    private int maxEnemies = 150;
+    private int enemiesSpawned = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -36,17 +40,15 @@ public class Spawner : MonoBehaviour
         {
             if (timeSinceWaveStarted < 60f)
             {
-                if (timeSinceLastSpawn >= 5f / difficulty)
+                if (timeSinceLastSpawn >= 5f / difficulty && enemiesSpawned < maxEnemies)
                 {
-                    for (int i = 0; i < 1; i++) //je garde la boucle si on veut changer comment le scaling marche :)
-                    {
+                        enemiesSpawned++;
                         int spawnNumber = Random.Range(0, spawnPoints.Count);
                         GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
                         //GameObject enemy = Instantiate((GameObject)Resources.Load("Enemy"), new Vector3(35 * Mathf.Cos(angle * Mathf.Deg2Rad), 25 * Mathf.Sin(angle * Mathf.Deg2Rad), transform.position.z), Quaternion.identity);
                         enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
                         enemy.GetComponent<EnemyAI>().Hp *= difficulty / 5 + 1;
-                    }
-                    timeSinceLastSpawn = 0f;
+                        timeSinceLastSpawn = 0f;
                 }
                 else
                 {
@@ -71,7 +73,7 @@ public class Spawner : MonoBehaviour
 
                 if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && waveTimer <= 0f)
                 {
-                    waveTimer = 30f;
+                    waveTimer = 2f;//TIMER DE DEPART
                     incoming.enabled = true;
                 }
                 else
@@ -86,6 +88,8 @@ public class Spawner : MonoBehaviour
                         {
                             waveTimer = -5f;
                             timeSinceWaveStarted = 0f;
+                            //next wave starts
+                            enemiesSpawned = 0;
                         }
                     }
 
@@ -98,17 +102,17 @@ public class Spawner : MonoBehaviour
         }
         else
         {
-            if (timeSinceLastSpawn >= 5f / difficulty)
+            
+            if (timeSinceLastSpawn >= 5f / difficulty && enemiesSpawned < maxEnemies)
             {
-                for (int i = 0; i < 1; i++) //je garde la boucle si on veut changer comment le scaling marche :)
-                {
+
                     int spawnNumber = Random.Range(0, spawnPoints.Count);
+                    enemiesSpawned++;
                     GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
                     //GameObject enemy = Instantiate((GameObject)Resources.Load("Enemy"), new Vector3(35 * Mathf.Cos(angle * Mathf.Deg2Rad), 25 * Mathf.Sin(angle * Mathf.Deg2Rad), transform.position.z), Quaternion.identity);
                     enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
                     enemy.GetComponent<EnemyAI>().Hp *= difficulty / 5 + 1;
-                }
-                timeSinceLastSpawn = 0f;
+                    timeSinceLastSpawn = 0f;
             }
             else
             {
@@ -123,6 +127,8 @@ public class Spawner : MonoBehaviour
 
     public void LastAlive()
     {
+        enemiesSpawned = 0;
+        maxEnemies = 20;
         lastAlive = true;
         incoming.SetText("With only one player remaining, the zombies are going all out! Brace yourself!");
         difficulty = 50;

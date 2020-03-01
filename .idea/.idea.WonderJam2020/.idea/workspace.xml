@@ -17,16 +17,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/QuitGame.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Enemies/EnemyMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Menu/Scripts/Players.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Enemies/EnemyAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/NewMenu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Guns/Gloves/GlovesScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Enemies/Spawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CubeDropping.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/PlayerSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/InGameUI/Scripts/ScoreBoard.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/QuitGame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Enemies/EnemyMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Enemies/EnemyAI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Guns/Gun.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/DeathCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PlayerSpawner.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -36,16 +40,20 @@
         <option value="$PROJECT_DIR$/Assets/Player/Scripts/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Player/Scripts/Gun.cs" />
         <option value="$PROJECT_DIR$/Assets/EnemyMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Enemies/EnemyMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/ButtonTesting.cs" />
         <option value="$PROJECT_DIR$/Assets/CubeDropping.cs" />
         <option value="$PROJECT_DIR$/Assets/NewMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/PlayerSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/QuitGame.cs" />
         <option value="$PROJECT_DIR$/Assets/Enemies/EnemyAI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Guns/Gloves/GlovesScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Menu/Scripts/Players.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/InGameUI/Scripts/ScoreBoard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Enemies/EnemyMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Guns/Bullet/BulletScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Enemies/Spawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/DeathCounter.cs" />
       </list>
     </option>
   </component>
@@ -71,10 +79,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="592">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="592" />
       <method v="2" />
     </configuration>
   </component>
@@ -122,5 +130,71 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="2517" height="492" key="GridCell.Tab.0.bottom" timestamp="1583019379968">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379968" />
+    <state width="2517" height="492" key="GridCell.Tab.0.center" timestamp="1583019379967">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379967" />
+    <state width="2517" height="492" key="GridCell.Tab.0.left" timestamp="1583019379967">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379967" />
+    <state width="2517" height="492" key="GridCell.Tab.0.right" timestamp="1583019379968">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379968" />
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1583019379968">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379968" />
+    <state width="2517" height="492" key="GridCell.Tab.1.center" timestamp="1583019379968">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379968" />
+    <state width="2517" height="492" key="GridCell.Tab.1.left" timestamp="1583019379968">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379968" />
+    <state width="2517" height="492" key="GridCell.Tab.1.right" timestamp="1583019379968">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379968" />
+    <state width="2517" height="492" key="GridCell.Tab.2.bottom" timestamp="1583019379969">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.2.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379969" />
+    <state width="2517" height="492" key="GridCell.Tab.2.center" timestamp="1583019379968">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.2.center/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379968" />
+    <state width="2517" height="492" key="GridCell.Tab.2.left" timestamp="1583019379968">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.2.left/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379968" />
+    <state width="2517" height="492" key="GridCell.Tab.2.right" timestamp="1583019379968">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.2.right/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379968" />
+    <state width="2517" height="492" key="GridCell.Tab.3.bottom" timestamp="1583019379969">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.3.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379969" />
+    <state width="2517" height="492" key="GridCell.Tab.3.center" timestamp="1583019379969">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.3.center/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379969" />
+    <state width="2517" height="492" key="GridCell.Tab.3.left" timestamp="1583019379969">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.3.left/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379969" />
+    <state width="2517" height="492" key="GridCell.Tab.3.right" timestamp="1583019379969">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.3.right/0.0.2560.1400@0.0.2560.1400" timestamp="1583019379969" />
   </component>
 </project>

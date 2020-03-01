@@ -103,3 +103,4 @@ MonoBehaviour:
   ammoMax: 10
   recoilSpeed: 1
   maxRecoilDistance: 0.15
+  recoilSpeedBack: 1

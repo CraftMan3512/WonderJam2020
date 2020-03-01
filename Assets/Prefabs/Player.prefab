@@ -79,7 +79,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 30
+  m_Mass: 100
   m_LinearDrag: 0.5
   m_AngularDrag: 0.5
   m_GravityScale: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   maxHealth: 100
   maxFrenezie: 100
   movementSpeed: 5
-  gunPrefab: {fileID: 2300379359705844419, guid: ed1ada6b0e8a1e748bffd490011d2c1f,
+  gunPrefab: {fileID: 2300379359705844419, guid: 072c318391dac2d40968e3d332d13396,
     type: 3}
   player: 0
 --- !u!212 &2727095382557001445
@@ -191,6 +191,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2727095382557001447}
     m_Modifications:
+    - target: {fileID: 4564967621150283340, guid: 6c140387f5936a642b124c534fd80cdd,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5609056657611581704, guid: 6c140387f5936a642b124c534fd80cdd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -199,7 +204,7 @@ PrefabInstance:
     - target: {fileID: 5609056657611581704, guid: 6c140387f5936a642b124c534fd80cdd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7086
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 5609056657611581704, guid: 6c140387f5936a642b124c534fd80cdd,
         type: 3}
@@ -245,6 +250,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892563991849818194, guid: 6c140387f5936a642b124c534fd80cdd,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8757270229726797008, guid: 6c140387f5936a642b124c534fd80cdd,
         type: 3}
