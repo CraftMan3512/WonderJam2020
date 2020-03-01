@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [Header("Type d'arme")]
+    public bool lightning;
+
     public bool fist = false;
     public float rpm = 120;
 
@@ -55,6 +58,11 @@ public class Gun : MonoBehaviour
                     rightP = false;
                 else
                     rightP = true;
+            }else if (lightning)
+            {
+                Instantiate(Resources.Load<GameObject>("Lightning"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                usedAmmo++;
+                checkAmmo();
             }
             else
             {
