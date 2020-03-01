@@ -65,7 +65,7 @@ public class Spawner : MonoBehaviour
 
                 if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && waveTimer <= 0f)
                 {
-                    waveTimer = 2f;//TIMER DE DEPART
+                    waveTimer = 30f;//TIMER DE DEPART
                     incoming.enabled = true;
                 }
                 else
