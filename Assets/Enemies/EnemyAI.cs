@@ -27,9 +27,9 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        damage = 2;
-        maxHp = 10;
-        hp = maxHp;
+       // damage = 2;
+       // maxHp = 10;
+       // hp = maxHp;
         scorePoints = 10;
     }
 
@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (target != null)
         {
-            if (attackCooldown >= 1.5f)
+            if (attackCooldown >= 1.8f)
             {
                 if (Vector2.Distance(transform.position, target.transform.position) <= 1f)
                 {
@@ -68,14 +68,14 @@ public class EnemyAI : MonoBehaviour
                 }
                 else
                 {
-                    attackCooldown = 1.5f;
+                    attackCooldown = 1.8f;
                 }
 
 
             }
             else
             {
-                if (attackCooldown < 1.5f)
+                if (attackCooldown < 1.8f)
                 {
                     attackCooldown += Time.fixedDeltaTime;
                 }
