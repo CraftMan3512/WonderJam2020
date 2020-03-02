@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     private float frenezie;
     private int score;
     private GameObject backGun;
-    
+    public static bool keyboard;
     
     public float movementSpeed=5f;
     public float mvmtSpdModWithWp=0.8f;
@@ -75,6 +75,10 @@ public class Player : MonoBehaviour
             glovesOn = true;
         }
 
+        if (player != 1)
+        {
+            keyboard = false;
+        }
         allFrenezieGuns=Resources.LoadAll<GameObject>("FrenezieGuns").ToList();
     }
 
@@ -90,24 +94,29 @@ public class Player : MonoBehaviour
         }
         //get new inputs
         direction=new Vector2(Input.GetAxisRaw("x"+player),Input.GetAxisRaw("y"+player));
-        if (Input.GetButtonDown("submit"+player)|| Input.GetAxisRaw("submit"+player) != 0f)
+        if ((!keyboard&&(Input.GetButtonDown("submit"+player)|| Input.GetAxisRaw("submit"+player) != 0f))||(Input.GetMouseButtonDown(0)&&keyboard))
         {
             shooting = true;
             if(gunModel) gunModel.GetComponent<Gun>().Shooting();
         }
-        if (Input.GetButtonUp("submit"+player)|| Input.GetAxisRaw("submit"+player) == 0f)
+        if ((!keyboard&&(Input.GetButtonUp("submit"+player)|| Input.GetAxisRaw("submit"+player) == 0f))||(Input.GetMouseButtonUp(0)&&keyboard))
         {
             shooting = false;
             if(gunModel) gunModel.GetComponent<Gun>().Stopped();
         }
-        
-        if (Input.GetAxisRaw("rightx" + player) != 0 || Input.GetAxisRaw("righty" + player) != 0)
+
+        if (player == 1&&!keyboard)
         {
-            
-            angle = Mathf.Atan2(Input.GetAxisRaw("rightx" + player), Input.GetAxisRaw("righty" + player)) * Mathf.Rad2Deg;
-            angle -= 90;   
-            
+            if (Input.GetAxisRaw("rightx" + player) != 0 || Input.GetAxisRaw("righty" + player) != 0)
+            {
+
+                angle = Mathf.Atan2(Input.GetAxisRaw("rightx" + player), Input.GetAxisRaw("righty" + player)) *
+                        Mathf.Rad2Deg;
+                angle -= 90;
+
+            }
         }
+
         //Frenzy
         if (Input.GetButtonDown("cancel" + player)&&maxFrenezie<=frenezie)
         {
@@ -185,10 +194,11 @@ public class Player : MonoBehaviour
         rb.position += direction * (modifier * (movementSpeed * Time.fixedDeltaTime));
         
         mouse_pos = Input.mousePosition;
-        mouse_pos.z = 5.23f; //The distance between the camera and object
+        mouse_pos.z = 1f; //The distance between the camera and object
         object_pos = Camera.main.WorldToScreenPoint(target.position);
         mouse_pos.x = mouse_pos.x - object_pos.x;
         mouse_pos.y = mouse_pos.y - object_pos.y;
+        if(keyboard)angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle-90));
     }
 
