@@ -5,13 +5,31 @@ using UnityEngine;
 public class Lightning : MonoBehaviour
 {
     public float range;
+    public int damagePerStrike;
+    private LineRenderer lr;
+    public Vector3 lastEnemy;
+    bool firstStrike;
+    private List<GameObject> zappedEnemies;
+
+    private GameObject ply;
+
+    public GameObject Ply
+    {
+        set => ply = value;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        zappedEnemies=new List<GameObject>();
+        firstStrike = true;
+        lastEnemy = Vector3.zero;
+        lr = GetComponent<LineRenderer>();      
      if(range == 0)
         {
             range = 1;
-        }   
+        }
+        StartCoroutine(Strike());
     }
 
     // Update is called once per frame
@@ -21,23 +39,121 @@ public class Lightning : MonoBehaviour
     }
     IEnumerator Strike()
     {
-     foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        int iterations = 0;
+        GameObject closestEnemy = null;
+        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            if(Vector2.Distance(transform.position,enemy.transform.position) < range)
+            bool alreadyZapped = false;
+            foreach(GameObject zapped in zappedEnemies)
             {
-                Vector3[] points = new Vector3[5];
-                points[0] = transform.position;              
-                for(int i = 1; i < points.Length; i++)
-                {
-                  
-                    if(i == 4)
+                if (zapped) {
+                    if (enemy == zapped)
                     {
-                        points[i] = enemy.transform.position;
+                        alreadyZapped = true;
                     }
                 }
             }
+            if (!alreadyZapped)
+            {
+                float distance = 0;
+                if (!firstStrike)
+                {
+                    distance = Vector2.Distance(lastEnemy, enemy.transform.position);
+                }
+                else
+                {
+                    distance = Vector2.Distance(transform.position, enemy.transform.position);
+                }
+                if (distance < range)
+                {
+                    if (closestEnemy == null)
+                    {
+                        closestEnemy = enemy;
+                    }
+                    else
+                    {
+                        if (!firstStrike)
+                        {
+                            if (Vector2.Distance(lastEnemy, enemy.transform.position) < Vector2.Distance(lastEnemy, closestEnemy.transform.position))
+                            {
+                                closestEnemy = enemy;
+                            }
+                        }
+                        else
+                        {
+                            if (Vector2.Distance(transform.position, enemy.transform.position) < Vector2.Distance(transform.position, closestEnemy.transform.position))
+                            {
+                                closestEnemy = enemy;
+                            }
+                        }
 
-            yield return new  WaitForSeconds(0f);
-        }   
+                    }
+
+                    iterations++;
+
+
+                }
+            }
+
+          
+
+
+
+        }
+        try
+        {
+            Vector3[] points = new Vector3[5];
+            if (!firstStrike)
+            {
+                points[0] = lastEnemy;
+            }
+            else
+            {
+                firstStrike = false;
+                points[0] = transform.position;
+            }
+            for (int i = 1; i < points.Length; i++)
+            {
+
+                if (i == 4)
+                {
+                    points[i] = closestEnemy.transform.position;
+                }
+                else
+                {
+                    //faire qui va dans la direction générale de l'enemy.
+                    points[i] = points[i - 1] + new Vector3(Random.Range(0f, 1f)*Mathf.Sign(closestEnemy.transform.position.x -points[i-1].x) * Vector2.Distance(points[i - 1],closestEnemy.transform.position)/4, Random.Range(0f, 1f) * Mathf.Sign(closestEnemy.transform.position.y - points[i - 1].y) * Vector2.Distance(points[i - 1], closestEnemy.transform.position) / 4, transform.position.z);
+                }
+            }
+            lr.positionCount = points.Length;
+            lr.SetPositions(points);
+
+            lastEnemy = closestEnemy.transform.position;
+            zappedEnemies.Add(closestEnemy);
+            closestEnemy.GetComponent<EnemyAI>().TakeDamage(damagePerStrike);
+            if (closestEnemy.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+            {
+                if (!closestEnemy.gameObject.GetComponent<EnemyAI>().dead)
+                {
+                    if (ply)
+                    {
+                        ply.GetComponent<Player>()
+                            .addScore(closestEnemy.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                        closestEnemy.gameObject.GetComponent<EnemyAI>().dead = true;
+                    }
+                }
+            }
+        }catch(System.Exception e) { }
+
+        yield return new WaitForSeconds(0.1f);
+        if (iterations == 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            StartCoroutine(Strike());
+        }
+
     }
 }

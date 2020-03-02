@@ -112,13 +112,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63dc8e94c189b84dad2ee0735b3c557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightning: 0
+  water: 0
   fist: 0
-  spread: 0
   rpm: 180
   bullet: {fileID: 8326293947191301807, guid: 5bab1d9a9727caa4399d679c3e457e7a, type: 3}
-  barrelLenght: 0.2
-  gunLenght: 0.2
-  ammoMax: 20
+  barrelLenght: 0.18
+  gunLenght: 0.16
+  ammoMax: 15
   recoilSpeed: 0.15
-  maxRecoilDistance: 0.2
+  maxRecoilDistance: 0.12
   recoilSpeedBack: 0.3
+  damagePerBullet: 20
+  speedPerBullet: 0
+  anglePerBullet: 0.1

@@ -33,20 +33,23 @@ public class CubeDropping : MonoBehaviour
                 boxChan.GetComponent<BoxCollider2D>().enabled = false;         
                 if (timeSinceLastDrop >= 3)
                 {
-                    boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Metal");
-                    boxChan.GetComponent<Cube>().Hp = 30;
+                    boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Metal0");
+                    boxChan.GetComponent<Cube>().Hp = 400;
+                    boxChan.GetComponent<Cube>().MaxHp = 400;
                     StartCoroutine(HoldingBox());
                 }
                 else if(timeSinceLastDrop >= 2)
                 {
-                    boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Pierre");
-                    boxChan.GetComponent<Cube>().Hp = 20;
+                    boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Pierre0");
+                    boxChan.GetComponent<Cube>().Hp = 240;
+                    boxChan.GetComponent<Cube>().MaxHp = 240;
                     StartCoroutine(HoldingBox());
                 }
                 else if(timeSinceLastDrop >= 1)
                 {
-                    boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Bois");
-                    boxChan.GetComponent<Cube>().Hp = 10;
+                    boxChan.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Boxes/Bois0");
+                    boxChan.GetComponent<Cube>().Hp = 120;
+                    boxChan.GetComponent<Cube>().MaxHp = 120;
                     StartCoroutine(HoldingBox());
                 }
                 else
@@ -54,9 +57,9 @@ public class CubeDropping : MonoBehaviour
                     Destroy(boxChan);
                     held = false;
                 }
-                
-                
-                
+
+
+
             }
 
         }
@@ -84,7 +87,7 @@ public class CubeDropping : MonoBehaviour
         if(boxChan != null) boxChan.transform.position = new Vector3(Mathf.Round(transform.position.x + 1 * Mathf.Cos((transform.eulerAngles.z+90) * Mathf.Deg2Rad)), Mathf.Round(transform.position.y + 1 * Mathf.Sin((transform.eulerAngles.z +90) * Mathf.Deg2Rad)), transform.position.z);
         foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Box"))
         {
-            if(obj != boxChan)
+            if(obj != boxChan && boxChan != null)
             {
                 if(obj.transform.position == boxChan.transform.position)
                 {

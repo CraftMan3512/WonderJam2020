@@ -14,7 +14,11 @@ public class Spawner : MonoBehaviour
     TextMeshProUGUI incoming;
     private bool lastAlive;
 
+    public int hpScaling=2;
+    public int dmgScaling=2;
+
     private int maxEnemies = 150;
+    public static int enemies;
     private int enemiesSpawned = 0;
     
     // Start is called before the first frame update
@@ -38,15 +42,32 @@ public class Spawner : MonoBehaviour
         {
             if (timeSinceWaveStarted < 60f)
             {
-                if (timeSinceLastSpawn >= 5f / difficulty && enemiesSpawned < maxEnemies)
+                if (timeSinceLastSpawn >= 5f / (difficulty*PlayerSpawner.playerCount) && enemies < maxEnemies)
                 {
-                        enemiesSpawned++;
-                        int spawnNumber = Random.Range(0, spawnPoints.Count);
-                        GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy"+(int)Random.Range(1,3)), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
-                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
-                        enemy.GetComponent<EnemyAI>().damage += difficulty / 5 + 1;
-                        enemy.GetComponent<EnemyAI>().Hp *= difficulty / 3 + 1;
-                        timeSinceLastSpawn = 0f;
+                    int spawnNumber = Random.Range(0, spawnPoints.Count);
+                    timeSinceLastSpawn = 0;
+                    enemiesSpawned++;
+                    enemies++;
+                    if (Random.Range(0, 60) == 1)
+                    {
+
+                        GameObject enemy = Instantiate(Resources.Load<GameObject>("Giant"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
+                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 45 + 1;
+                        enemy.GetComponent<EnemyAI>().Hp = (int)(10 * ((float)difficulty / 3 + 3) * hpScaling);
+                        enemy.GetComponent<EnemyAI>().damage = (int)(((float)difficulty / 3 + 1) * dmgScaling);
+
+                    }
+                    else
+                    {
+                        
+                        
+                        GameObject enemy = Instantiate(Resources.Load<GameObject>("Enemy" + (int)Random.Range(1, 3)), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
+                        enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 20 + 1;
+                        enemy.GetComponent<EnemyAI>().Hp = (int)(3 * ((float)difficulty / 3 + 1) * hpScaling);
+                        enemy.GetComponent<EnemyAI>().damage = (int)(((float)difficulty / 8 + 1) * dmgScaling);
+                        
+                    }
+
                 }
                 else
                 {
@@ -55,6 +76,15 @@ public class Spawner : MonoBehaviour
                 
                 timeSinceWaveStarted += Time.deltaTime;
                 incoming.SetText("Zombies incoming! Hold for " + (60 - (int)timeSinceWaveStarted) + " more seconds!");
+                if (timeSinceLastDifUp > difficulty * 1.5f)
+                {
+                    difficulty++;
+                    timeSinceLastDifUp = 0f;
+                }
+                else
+                {
+                    timeSinceLastDifUp += Time.deltaTime;
+                }
 
             }
             else
@@ -62,7 +92,8 @@ public class Spawner : MonoBehaviour
 
                 if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && waveTimer <= 0f)
                 {
-                    waveTimer = 2f;//TIMER DE DEPART
+                    if (timeSinceWaveStarted == 61) waveTimer = 60f;
+                    else waveTimer = 30f;//TIMER DE DEPART
                     incoming.enabled = true;
                 }
                 else
@@ -88,15 +119,7 @@ public class Spawner : MonoBehaviour
 
 
             }
-            if (timeSinceLastDifUp > difficulty * 1.5f/PlayerSpawner.playerCount)
-            {
-                difficulty++;
-                timeSinceLastDifUp = 0f;
-            }
-            else
-            {
-                timeSinceLastDifUp += Time.deltaTime;
-            }
+            
         }
         else
         {
@@ -108,13 +131,13 @@ public class Spawner : MonoBehaviour
                     enemiesSpawned++;
                     GameObject enemy = Instantiate(Resources.Load<GameObject>("Ninja"), new Vector3(spawnPoints[spawnNumber].position.x, spawnPoints[spawnNumber].position.y, spawnPoints[spawnNumber].position.z), Quaternion.identity);
                     enemy.GetComponent<EnemyMovement>().speed = (float)difficulty / 6 + 1;
-                    enemy.GetComponent<EnemyAI>().Hp *= difficulty / 3 + 1;
-                    enemy.GetComponent<EnemyAI>().damage += difficulty / 3 + 1;
+                    enemy.GetComponent<EnemyAI>().Hp = (int)(3*((float)difficulty / 3 + 1)*hpScaling);
+                    enemy.GetComponent<EnemyAI>().damage = (int)((float)difficulty / 5 + 1)*dmgScaling;
                     timeSinceLastSpawn = 0f;
                     if(enemiesSpawned == maxEnemies)
                     {
                     lastAlive = false;
-                    maxEnemies = 150;
+                    maxEnemies = 150*PlayerSpawner.playerCount;
                     enemiesSpawned = 0;
                     difficulty = 10;
                     }
@@ -134,7 +157,7 @@ public class Spawner : MonoBehaviour
     public void LastAlive()
     {
         enemiesSpawned = 0;
-        maxEnemies = 20;
+        maxEnemies = 20*PlayerSpawner.playerCount;
         lastAlive = true;
         incoming.SetText("With only one player remaining, the zombies are sending their specialized assassination group! Brace yourself!");
         difficulty = 50;
