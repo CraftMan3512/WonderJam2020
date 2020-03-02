@@ -76,6 +76,15 @@ public class Spawner : MonoBehaviour
                 
                 timeSinceWaveStarted += Time.deltaTime;
                 incoming.SetText("Zombies incoming! Hold for " + (60 - (int)timeSinceWaveStarted) + " more seconds!");
+                if (timeSinceLastDifUp > difficulty * 1.5f)
+                {
+                    difficulty++;
+                    timeSinceLastDifUp = 0f;
+                }
+                else
+                {
+                    timeSinceLastDifUp += Time.deltaTime;
+                }
 
             }
             else
@@ -110,15 +119,7 @@ public class Spawner : MonoBehaviour
 
 
             }
-            if (timeSinceLastDifUp > difficulty * 1.5f)
-            {
-                difficulty++;
-                timeSinceLastDifUp = 0f;
-            }
-            else
-            {
-                timeSinceLastDifUp += Time.deltaTime;
-            }
+            
         }
         else
         {

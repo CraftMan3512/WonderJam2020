@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3976275091151932166}
   - component: {fileID: 3976275091151932165}
   - component: {fileID: 3976275091151932167}
-  - component: {fileID: -9164344848668150261}
   m_Layer: 0
   m_Name: watergun
   m_TagString: Untagged
@@ -102,7 +101,7 @@ MonoBehaviour:
   bullet: {fileID: 4983254561117427711, guid: 47edb7bdffa64db4c996705efd8ec848, type: 3}
   barrelLenght: 0.1
   gunLenght: 0.5
-  ammoMax: 160
+  ammoMax: 80
   recoilSpeed: 0.02
   maxRecoilDistance: 0.05
   recoilSpeedBack: 0.1
