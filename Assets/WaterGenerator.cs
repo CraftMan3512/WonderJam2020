@@ -47,7 +47,6 @@ public class WaterGenerator : MonoBehaviour
         for (int i = 0; i < lr.positionCount; i++)
         {
             
-            //Debug.Log("MOVE WATER " + i + " WITH ANGLE " + angles[i]);
             positions[i] += new Vector3(speed*Mathf.Cos(angles[i]*Mathf.Deg2Rad),speed*Mathf.Sin(angles[i]*Mathf.Deg2Rad),0)*Time.deltaTime;
 
         }
@@ -63,9 +62,6 @@ public class WaterGenerator : MonoBehaviour
 
         if (shooting)
         {
-            
-            //water coming out of gun
-            //Debug.Log("PLAYER POS IS " + player.transform.position);
             lr.SetPosition(0,player.transform.position);
             GetComponent<EdgeCollider2D>().points[0] = player.transform.position;   
             

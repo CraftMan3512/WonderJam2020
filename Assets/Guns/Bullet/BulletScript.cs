@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,6 +14,8 @@ public class BulletScript : MonoBehaviour
     public bool fire;
     public bool rocket;
     public GameObject nextBullet;
+    public int maxNbOfPierce;
+    private int pierceNb;
 
     public GameObject Ply
     {
@@ -47,48 +50,58 @@ public class BulletScript : MonoBehaviour
                         collision.gameObject.GetComponent<EnemyAI>().dead = true;
                     }
                 }
-                
             }
             else if (collision.gameObject.tag.Equals("Box"))
             {
                 collision.gameObject.GetComponent<Cube>().TakeDamage(damage);
-                
             }
             if (rocket)
             {
                 GameObject rocket = Instantiate(nextBullet,transform.position,Quaternion.identity);
                 rocket.GetComponent<RocketScript>().Ply = ply;
                 Destroy(gameObject);
-            }else
-            if (collision.gameObject.tag.Equals("Box") || collision.gameObject.tag.Equals("Enemy"))
+            }
+
+            if (collision.gameObject.tag.Equals("Enemy") || collision.gameObject.tag.Equals("Box"))
             {
                 Destroy(gameObject);
             }
+            
         }
     }
 
+    private GameObject lastHit;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (fire)
-        {
+            
             Collider2D collision = other;
-            if (collision.gameObject.tag.Equals("Enemy"))
+            if (!other.gameObject.Equals(lastHit))
             {
-
-                collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
-                if (collision.gameObject.GetComponent<EnemyAI>().Hp <= 0)
+                if (collision.gameObject.tag.Equals("Enemy") && maxNbOfPierce > pierceNb)
                 {
-                    if (!collision.gameObject.GetComponent<EnemyAI>().dead)
+                    pierceNb++;
+                    collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
+                    if (collision.gameObject.GetComponent<EnemyAI>().Hp <= 0)
                     {
-                        ply.GetComponent<Player>().addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
-                        collision.gameObject.GetComponent<EnemyAI>().dead = true;
+                        if (!collision.gameObject.GetComponent<EnemyAI>().dead)
+                        {
+                            ply.GetComponent<Player>()
+                                .addScore(collision.gameObject.GetComponent<EnemyAI>().ScorePoints);
+                            collision.gameObject.GetComponent<EnemyAI>().dead = true;
+                        }
                     }
                 }
+                else if (collision.gameObject.tag.Equals("Box"))
+                {
+                    collision.gameObject.GetComponent<Cube>().TakeDamage(damage);
+                    pierceNb++;
+                }
+
+                if (maxNbOfPierce <= pierceNb && maxNbOfPierce != 0)
+                {
+                    Destroy(gameObject);
+                }
             }
-            else if (collision.gameObject.tag.Equals("Box"))
-            {
-                collision.gameObject.GetComponent<Cube>().TakeDamage(damage);
-            }
-        }
+            lastHit = collision.gameObject;
     }
 }

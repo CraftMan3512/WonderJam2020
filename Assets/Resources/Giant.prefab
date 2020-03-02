@@ -88,6 +88,21 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.53
       objectReference: {fileID: 0}
+    - target: {fileID: 7323561120010407071, guid: be1f2f90e5e08eb4db1186d8c9787d6b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5531
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323561120010407071, guid: be1f2f90e5e08eb4db1186d8c9787d6b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5531
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323561120010407071, guid: be1f2f90e5e08eb4db1186d8c9787d6b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5531
+      objectReference: {fileID: 0}
     - target: {fileID: 8983956149800420129, guid: be1f2f90e5e08eb4db1186d8c9787d6b,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
