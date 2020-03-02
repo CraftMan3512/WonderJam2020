@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
     private float frenezie;
     private int score;
     private GameObject backGun;
-    public static bool keyboard;
+    public static bool Keyboard;
+    private bool _keyboard;
     
     public float movementSpeed=5f;
     public float mvmtSpdModWithWp=0.8f;
@@ -74,11 +75,6 @@ public class Player : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(true);
             glovesOn = true;
         }
-
-        if (player != 1)
-        {
-            keyboard = false;
-        }
         allFrenezieGuns=Resources.LoadAll<GameObject>("FrenezieGuns").ToList();
     }
 
@@ -93,19 +89,26 @@ public class Player : MonoBehaviour
                 gloves.Shoot(angle);
         }
         //get new inputs
-        direction=new Vector2(Input.GetAxisRaw("x"+player),Input.GetAxisRaw("y"+player));
-        if ((!keyboard&&(Input.GetButtonDown("submit"+player)|| Input.GetAxisRaw("submit"+player) != 0f))||(Input.GetMouseButtonDown(0)&&keyboard))
+        if(!Keyboard) direction=new Vector2(Input.GetAxisRaw("x"+player),Input.GetAxisRaw("y"+player));
+        else
+        {
+            if (!_keyboard)
+                direction = new Vector2(Input.GetAxisRaw("x" + (player)), Input.GetAxisRaw("y" + (player)));
+            else
+                direction = new Vector2(Input.GetAxisRaw("xKeyboard"), Input.GetAxisRaw("yKeyboard"));
+        }
+        if ((!_keyboard&&(Input.GetButtonDown("submit"+player)|| Input.GetAxisRaw("submit"+player) != 0f))||(Input.GetMouseButtonDown(0)&&_keyboard))
         {
             shooting = true;
             if(gunModel) gunModel.GetComponent<Gun>().Shooting();
         }
-        if ((!keyboard&&(Input.GetButtonUp("submit"+player)|| Input.GetAxisRaw("submit"+player) == 0f))||(Input.GetMouseButtonUp(0)&&keyboard))
+        if ((!_keyboard&&(Input.GetButtonUp("submit"+player)|| Input.GetAxisRaw("submit"+player) == 0f))||(Input.GetMouseButtonUp(0)&&_keyboard))
         {
             shooting = false;
             if(gunModel) gunModel.GetComponent<Gun>().Stopped();
         }
 
-        if (player == 1&&!keyboard)
+        if (!_keyboard)
         {
             if (Input.GetAxisRaw("rightx" + player) != 0 || Input.GetAxisRaw("righty" + player) != 0)
             {
@@ -198,15 +201,19 @@ public class Player : MonoBehaviour
         object_pos = Camera.main.WorldToScreenPoint(target.position);
         mouse_pos.x = mouse_pos.x - object_pos.x;
         mouse_pos.y = mouse_pos.y - object_pos.y;
-        if(keyboard)angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+        if(_keyboard)angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle-90));
     }
 
     public void SetPlayerNumber(int nb)
     {
-
-        this.player = nb;
-
+        _keyboard = Keyboard;
+        player = nb;
+        if(player<PlayerSpawner.playerCount)
+        {
+            _keyboard = false;
+        }
+        Debug.Log(_keyboard);
     }
 
     public void DestroyGun()

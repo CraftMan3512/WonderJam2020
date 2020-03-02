@@ -10,7 +10,7 @@ public class Players : MonoBehaviour
     public void startGame(int nbJoueurs)
     {
         Debug.Log("Nombre de Joueur" + nbJoueurs);
-        Player.keyboard = p1OnKeyboard;
+        Player.Keyboard = p1OnKeyboard;
         //changer de scene et set les joueurs
         PlayerSpawner.playerCount = nbJoueurs;
         SceneManager.LoadScene("CopyMenu");
