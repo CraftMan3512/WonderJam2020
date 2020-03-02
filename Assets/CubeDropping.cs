@@ -23,7 +23,7 @@ public class CubeDropping : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("box" + GetComponent<Player>().player))
+        if (Input.GetButtonDown("box" + GetComponent<Player>().player)||(GetComponent<Player>()._keyboard&&Input.GetMouseButtonDown(1)))
         {
             if (!held)
             {
@@ -64,7 +64,7 @@ public class CubeDropping : MonoBehaviour
 
         }
 
-        if (Input.GetButtonUp("box" + GetComponent<Player>().player))
+        if (Input.GetButtonUp("box" + GetComponent<Player>().player)||(GetComponent<Player>()._keyboard&&Input.GetMouseButtonUp(1)))
         {
             held = false;
         }

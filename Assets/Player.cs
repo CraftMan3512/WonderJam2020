@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     private int score;
     private GameObject backGun;
     public static bool Keyboard;
-    private bool _keyboard;
+    public bool _keyboard;
     
     public float movementSpeed=5f;
     public float mvmtSpdModWithWp=0.8f;
